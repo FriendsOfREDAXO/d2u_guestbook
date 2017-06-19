@@ -15,7 +15,7 @@ class D2UGuestbookModules {
 			"D2U Guestbook - Gästebuch",
 			1);
 		$modules[] = new D2UModule("60-2",
-			"D2U Guestbook - Bewertung Infobox",
+			"D2U Guestbook - Infobox Bewertung",
 			1);
 		return $modules;
 	}

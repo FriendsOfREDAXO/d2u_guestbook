@@ -13,5 +13,8 @@ d2u_guestbook_settings = Einstellungen
 d2u_guestbook_setup = Setup
 d2u_guestbook_url = Webseite
 
+d2u_guestbook_rights = D2U Gästebuch Addon
+d2u_guestbook_rights_settings = D2U Gästebuch Addon: Einstellungen
+
 d2u_guestbook_settings_article = Gästebuch Artikel
 d2u_guestbook_settings_request_form_email = Admin E-Mail
