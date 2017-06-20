@@ -1,11 +1,10 @@
 <?php
 // save settings
 if (filter_input(INPUT_POST, "btn_save") == 'save') {
-	$settings = (array) rex_post('settings', 'array', array());
+	$settings = (array) rex_post('settings', 'array', []);
 
 	// Linkmap Link and media needs special treatment
 	$link_ids = filter_input_array(INPUT_POST, array('REX_INPUT_LINK'=> array('filter' => FILTER_VALIDATE_INT, 'flags' => FILTER_REQUIRE_ARRAY)));
-
 	$settings['guestbook_article_id'] = $link_ids["REX_INPUT_LINK"][1];
 
 	// Save settings
