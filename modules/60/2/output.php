@@ -44,4 +44,3 @@ $num_recommendations = Entry::getRecommendation();
 		</div>
 	</div>
 </div>
-<br />
