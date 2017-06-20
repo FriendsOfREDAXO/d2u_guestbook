@@ -128,7 +128,7 @@ class Entry {
 		$result = rex_sql::factory();
 		$result->setQuery($query);
 		
-		$entries = array();
+		$entries = [];
 		for($i = 0; $i < $result->getRows(); $i++) {
 			$entries[] = new Entry($result->getValue("id"));
 			$result->next();
