@@ -17,7 +17,7 @@ requires:
     php:
         version: '>=5.6'
     packages:
-        d2u_helper: '>=1.2'
+        d2u_helper: '>=1.2.1'
         emailobfuscator: '>=2.1'
         sprog: '>=1.0.0'
         yform: '>=2.0'

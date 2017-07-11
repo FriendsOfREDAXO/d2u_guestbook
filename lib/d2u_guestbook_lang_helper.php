@@ -4,7 +4,7 @@
  */
 class d2u_guestbook_lang_helper {
 	/**
-	 * @var string[] Array with german replacements. Key is the wildcard,
+	 * @var string[] Array with english replacements. Key is the wildcard,
 	 * value the replacement. 
 	 */
 	protected $replacements_english = [
@@ -29,7 +29,7 @@ class d2u_guestbook_lang_helper {
 		'd2u_guestbook_recommended_pre' => 'Recommended by',
 		'd2u_guestbook_recommended_post' => 'customers',
 		'd2u_guestbook_tab_title' => 'Entries',
-		'd2u_guestbook_tab_write' => 'Write',
+		'd2u_guestbook_tab_write' => 'Write new entry',
 		'd2u_guestbook_yes' => 'Yes',
 	];
 	/**
@@ -59,7 +59,7 @@ class d2u_guestbook_lang_helper {
 		'd2u_guestbook_recommended_pre' => 'Von',
 		'd2u_guestbook_recommended_post' => 'Kunden empfohlen',
 		'd2u_guestbook_tab_title' => 'Einträge',
-		'd2u_guestbook_tab_write' => 'Schreiben',
+		'd2u_guestbook_tab_write' => 'Neuen Eintrag Schreiben',
 		'd2u_guestbook_yes' => 'Ja',
 	];
 	
