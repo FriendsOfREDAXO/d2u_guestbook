@@ -72,7 +72,7 @@ class Entry {
 			$this->email = $result->getValue("email");
 			$this->rating = $result->getValue("rating");
 			$this->recommendation = $result->getValue("recommendation") == 1 ? TRUE : FALSE;
-			$this->description = $result->getValue("description");
+			$this->description = stripslashes(htmlspecialchars_decode($result->getValue("description")));
 			$this->online_status = $result->getValue("online_status");
 			$this->create_date = $result->getValue("create_date");
 		}
@@ -174,7 +174,7 @@ class Entry {
 				."email = '". $this->email ."', "
 				."rating = ". $this->rating .", "
 				."recommendation = ". ($this->recommendation ? 1 : 0) .", "
-				."description = '". addcslashes(htmlspecialchars($this->description)) ."', "
+				."description = '". addslashes(htmlspecialchars($this->description)) ."', "
 				."online_status = '". $this->online_status ."' ";
 		if($this->id == 0) {
 			$query = "INSERT INTO ". $query . ", create_date = ". time();

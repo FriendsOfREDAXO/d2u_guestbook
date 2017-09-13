@@ -7,14 +7,14 @@ $tag_close = $sprog->getConfig('wildcard_close_tag');
 // Tabs
 print '<div class="col-12 hidden-print">';
 print '<ul class="nav nav-pills" id="guestbook_tabs">';
-print '<li class="nav-item"><a data-toggle="tab" href="#tab_guestbook" class="active">'. $tag_open .'d2u_guestbook_tab_title'. $tag_close .'</a></li>';
-print '<li class="nav-item"><a data-toggle="tab" href="#tab_write">'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</a></li>';
+print '<li class="nav-item"><a data-toggle="tab" href="#tab_guestbook" class="nav-link active">'. $tag_open .'d2u_guestbook_tab_title'. $tag_close .'</a></li>';
+print '<li class="nav-item"><a data-toggle="tab" href="#tab_write" class="nav-link">'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</a></li>';
 print '</ul>';
 print '</div>';
 	
 print '<div class="col-12">';
 print '<div class="tab-content">';
-print '<div id="tab_guestbook" class="tab-pane guestbook-tab fade in active show">';
+print '<div id="tab_guestbook" class="tab-pane fade active show guestbook-tab">';
 	
 // Entries
 print '<div class="row">';
@@ -61,7 +61,7 @@ print '</div>';
 print '</div>';
 
 // Entry Form
-print '<div id="tab_write" class="tab-pane guestbook-tab fade">';
+print '<div id="tab_write" class="tab-pane fade guestbook-tab">';
 print '<div class="row">';
 print '<div class="col-12">';
 print '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</legend>';
@@ -108,7 +108,7 @@ $form_data = '
 	submit|submit|'. $tag_open .'d2u_guestbook_form_send'. $tag_close .'|no_db
 
 	validate|empty|name|'. $tag_open .'d2u_guestbook_form_validate_name'. $tag_close .'
-	validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_message'. $tag_close .'
+	validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_description'. $tag_close .'
 
 	action|db|'. rex::getTablePrefix() .'d2u_guestbook|';
 //	action|tpl2email|d2u_guestbook_request|emaillabel|'. $property->contact->email;

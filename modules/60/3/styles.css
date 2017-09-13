@@ -1,0 +1,50 @@
+@font-face{
+	font-family:'FontAwesome';
+	src:url("./assets/addons/be_style/fonts/fontawesome-webfont.eot?v=4.6.3");
+	src:url("./assets/addons/be_style/fonts/fontawesome-webfont.eot?#iefix&v=4.6.3") format('embedded-opentype'),
+		url("./assets/addons/be_style/fonts/fontawesome-webfont.woff2?v=4.6.3") format('woff2'),
+		url("./assets/addons/be_style/fonts/fontawesome-webfont.woff?v=4.6.3") format('woff'),
+		url("./assets/addons/be_style/fonts/fontawesome-webfont.ttf?v=4.6.3") format('truetype'),
+		url("./assets/addons/be_style/fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular") format('svg');
+}
+
+.left {
+	float: left;
+}
+.right {
+	text-align: right;
+}
+.entry-body {
+	padding-bottom: 2em;
+}
+.entry-header {
+	padding-top: 0.25em;
+}
+.recommendation-stars {
+	font-size: 1.5em;
+}
+a.recommendation:hover {
+	text-decoration: none;
+}
+.icon {
+	color: #3c3c3c;
+	font-family: FontAwesome;
+	font-weight: normal;
+	line-height: 1em;
+}
+.mail:before {
+	color: goldenrod;
+	content: "\f003";
+}
+.star-full:before {
+	color: gold;
+	content: "\f005";
+}
+.star-half:before {
+	color: gold;
+	content: "\f123";
+}
+.star-empty:before {
+	color: gold;
+	content: "\f006";
+}
