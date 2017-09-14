@@ -17,7 +17,7 @@ if (filter_input(INPUT_POST, "btn_save") == 1 || filter_input(INPUT_POST, "btn_a
 	$entry->clang_id = $form['clang_id'];
 	$entry->name = $form['name'];
 	$entry->email = $form['email'];
-	$entry->rating = $form['rating'];
+	$entry->rating = $form['rating'] != '' ? $form['rating'] : 0;
 	$entry->recommendation =  array_key_exists('recommendation', $form) ? TRUE : FALSE;
 	$entry->description = $form['description'];
 	$entry->online_status = array_key_exists('online_status', $form) ? 'online' : 'offline';
@@ -30,10 +30,10 @@ if (filter_input(INPUT_POST, "btn_save") == 1 || filter_input(INPUT_POST, "btn_a
 	
 	// Redirect to make reload and thus double save impossible
 	if(filter_input(INPUT_POST, "btn_apply") == 1 && $entry !== FALSE) {
-		header("Location: ". rex_url::currentBackendPage(array("entry_id"=>$entry->id, "func"=>'edit', "message"=>$message), FALSE));
+		header("Location: ". rex_url::currentBackendPage(["entry_id" => $entry->id, "func" => 'edit', "message" => $message], FALSE));
 	}
 	else {
-		header("Location: ". rex_url::currentBackendPage(array("message"=>$message), FALSE));
+		header("Location: ". rex_url::currentBackendPage(["message"=>$message], FALSE));
 	}
 	exit;
 }
@@ -83,7 +83,7 @@ if ($func == 'edit' || $func == 'add') {
 							}
 
 							d2u_addon_backend_helper::form_input('d2u_guestbook_name', 'form[name]', $entry->name, TRUE, FALSE);
-							d2u_addon_backend_helper::form_input('d2u_guestbook_email', 'form[email]', $entry->email, FALSE, FALSE);
+							d2u_addon_backend_helper::form_input('d2u_guestbook_email', 'form[email]', $entry->email, FALSE, FALSE, 'email');
 							d2u_addon_backend_helper::form_input('d2u_guestbook_rating', 'form[rating]', $entry->rating, FALSE, FALSE, 'number');
 							d2u_addon_backend_helper::form_checkbox('d2u_guestbook_recommendation', 'form[recommendation]', 'true', $entry->recommendation);
 							d2u_addon_backend_helper::form_textarea('d2u_guestbook_description', "form[description]", $entry->description, 10, TRUE, FALSE, FALSE);

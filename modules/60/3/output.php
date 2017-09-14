@@ -100,16 +100,18 @@ else {
 		print '<div class="entry-body">';
 		print '<div class="row">';
 		print '<div class="col-12">'. nl2br($entry->description) .'</div>';
-		print '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
-		for($i = 1; $i <= 5; $i++) {
-			if($i <= $entry->rating) {
-				print ' <span class="icon star-full"></span>';
+		if($entry->rating > 0) {
+			print '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
+			for($i = 1; $i <= 5; $i++) {
+				if($i <= $entry->rating) {
+					print ' <span class="icon star-full"></span>';
+				}
+				else {
+					print ' <span class="icon star-empty"></span>';
+				}
 			}
-			else {
-				print ' <span class="icon star-empty"></span>';
-			}
+			print '</b></div>';
 		}
-		print '</b></div>';
 		print '</div>';
 		print '</div>';
 
