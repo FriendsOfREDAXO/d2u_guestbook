@@ -2,7 +2,7 @@
 /*
  * Modules
  */
-$d2u_module_manager = new D2UModuleManager(D2UGuestbookModules::getD2UGuestbookModules(), "modules/", "d2u_guestbook");
+$d2u_module_manager = new D2UModuleManager(D2UGuestbookModules::getModules(), "modules/", "d2u_guestbook");
 
 // D2UModuleManager actions
 $d2u_module_id = rex_request('d2u_module_id', 'string');

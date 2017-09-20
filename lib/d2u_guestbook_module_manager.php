@@ -9,7 +9,7 @@ class D2UGuestbookModules {
 	 * Get modules offered by this addon.
 	 * @return D2UModule[] Modules offered by this addon
 	 */
-	public static function getD2UGuestbookModules() {
+	public static function getModules() {
 		$modules = [];
 		$modules[] = new D2UModule("60-1",
 			"D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs",
