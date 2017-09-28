@@ -58,6 +58,7 @@ else if($tvsgb_available) {
 <ul>
 	<li>Neues Modul ohne Tabs.</li>
 	<li>Import aus Redaxo 4 TVS Gästebuch, sofern Tabelle in Datenbank vorhanden ist.</li>
+	<li>Bugfix wenn Sprache gelöscht wird.</li>
 </ul>
 <p>1.0.0:</p>
 <ul>
