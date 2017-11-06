@@ -6,7 +6,6 @@ d2u_guestbook_entries = Gästebuch Einträge
 d2u_guestbook_entry = Gästebuch Eintrag
 d2u_guestbook_name = Name
 d2u_guestbook_no_entries_found = Es sind noch keine Gästebucheinträge vorhanden.
-d2u_guestbook_online_status = Online
 d2u_guestbook_rating = Bewertung (1=schlecht / 5=sgt)
 d2u_guestbook_recommendation = Empfehlung
 d2u_guestbook_setup = Setup

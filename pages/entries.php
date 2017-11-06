@@ -87,7 +87,7 @@ if ($func == 'edit' || $func == 'add') {
 							d2u_addon_backend_helper::form_input('d2u_guestbook_rating', 'form[rating]', $entry->rating, FALSE, FALSE, 'number');
 							d2u_addon_backend_helper::form_checkbox('d2u_guestbook_recommendation', 'form[recommendation]', 'true', $entry->recommendation);
 							d2u_addon_backend_helper::form_textarea('d2u_guestbook_description', "form[description]", $entry->description, 10, TRUE, FALSE, FALSE);
-							d2u_addon_backend_helper::form_checkbox('d2u_guestbook_online_status', 'form[online_status]', 'online', $entry->online_status == 'online' ? TRUE : FALSE);
+							d2u_addon_backend_helper::form_checkbox('d2u_helper_online_status', 'form[online_status]', 'online', $entry->online_status == 'online' ? TRUE : FALSE);
 						?>
 					</div>
 				</fieldset>
