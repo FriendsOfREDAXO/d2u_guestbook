@@ -54,6 +54,10 @@ else if($tvsgb_available) {
 <h2>Support</h2>
 <p>Fehlermeldungen bitte im <a href="https://github.com/TobiasKrais/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
+<p>1.0.2 (NEXT):</p>
+<ul>
+	<li>Namespace "D2U_Guestbook" für Klasse "Entry" hinzugefügt: Achtung! Module müssen angepasst / aktualisiert werden.</li>
+</ul>
 <p>1.0.1:</p>
 <ul>
 	<li>Neues Modul ohne Tabs.</li>

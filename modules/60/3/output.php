@@ -77,7 +77,7 @@ else {
 	print '</div>';
 	
 	// Entries
-	$entries = Entry::getAll(TRUE);
+	$entries = D2U_Guestbook\Entry::getAll(TRUE);
 	foreach($entries as $entry) {
 		print '<div class="col-12">';
 

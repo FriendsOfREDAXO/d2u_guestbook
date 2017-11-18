@@ -19,7 +19,7 @@ print '<div id="tab_guestbook" class="tab-pane fade active show guestbook-tab">'
 // Entries
 print '<div class="row">';
 
-$entries = Entry::getAll(TRUE);
+$entries = D2U_Guestbook\Entry::getAll(TRUE);
 foreach($entries as $entry) {
 	print '<div class="col-12">';
 	

@@ -13,7 +13,7 @@ if (filter_input(INPUT_POST, "btn_save") == 1 || filter_input(INPUT_POST, "btn_a
 	$form = (array) rex_post('form', 'array', []);
 
 	// Media fields and links need special treatment
-	$entry = new Entry($form['id']);
+	$entry = new D2U_Guestbook\Entry($form['id']);
 	$entry->clang_id = $form['clang_id'];
 	$entry->name = $form['name'];
 	$entry->email = $form['email'];
@@ -43,14 +43,14 @@ else if(filter_input(INPUT_POST, "btn_delete") == 1 || $func == 'delete') {
 		$form = (array) rex_post('form', 'array', []);
 		$entry_id = $form['$entry_id'];
 	}
-	$entry = new Entry($entry_id);
+	$entry = new D2U_Guestbook\Entry($entry_id);
 	$entry->delete();
 	
 	$func = '';
 }
 // Change online status of machine
 else if($func == 'changestatus') {
-	$entry = new Entry($entry_id);
+	$entry = new D2U_Guestbook\Entry($entry_id);
 	$entry->changeStatus();
 	
 	header("Location: ". rex_url::currentBackendPage());
@@ -70,7 +70,7 @@ if ($func == 'edit' || $func == 'add') {
 					<legend><?php echo rex_i18n::msg('d2u_guestbook_entry'); ?></legend>
 					<div class="panel-body-wrapper slide">
 						<?php
-							$entry = new Entry($entry_id);
+							$entry = new D2U_Guestbook\Entry($entry_id);
 							if(count(rex_clang::getAllIds(TRUE)) > 1) {
 								$options_clang = [];
 								foreach(rex_clang::getAll(TRUE) as $rex_clang){

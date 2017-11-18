@@ -5,6 +5,7 @@
  * @author <a href="http://www.design-to-use.de">www.design-to-use.de</a>
  */
 
+namespace D2u_Guestbook;
 /**
  * Guestbook entry
  */
@@ -59,9 +60,9 @@ class Entry {
 	 * @param int $id Entry ID.
 	 */
 	 public function __construct($id) {
-		$query = "SELECT * FROM ". rex::getTablePrefix() ."d2u_guestbook "
+		$query = "SELECT * FROM ". \rex::getTablePrefix() ."d2u_guestbook "
 				."WHERE id = ". $id;
-		$result = rex_sql::factory();
+		$result = \rex_sql::factory();
 		$result->setQuery($query);
 		$num_rows = $result->getRows();
 
@@ -84,20 +85,20 @@ class Entry {
 	public function changeStatus() {
 		if($this->online_status == "online") {
 			if($this->id > 0) {
-				$query = "UPDATE ". rex::getTablePrefix() ."d2u_guestbook "
+				$query = "UPDATE ". \rex::getTablePrefix() ."d2u_guestbook "
 					."SET online_status = 'offline' "
 					."WHERE id = ". $this->id;
-				$result = rex_sql::factory();
+				$result = \rex_sql::factory();
 				$result->setQuery($query);
 			}
 			$this->online_status = "offline";
 		}
 		else {
 			if($this->id > 0) {
-				$query = "UPDATE ". rex::getTablePrefix() ."d2u_guestbook "
+				$query = "UPDATE ". \rex::getTablePrefix() ."d2u_guestbook "
 					."SET online_status = 'online' "
 					."WHERE id = ". $this->id;
-				$result = rex_sql::factory();
+				$result = \rex_sql::factory();
 				$result->setQuery($query);
 			}
 			$this->online_status = "online";
@@ -108,9 +109,9 @@ class Entry {
 	 * Deletes the object.
 	 */
 	public function delete() {
-		$query = "DELETE FROM ". rex::getTablePrefix() ."d2u_guestbook "
+		$query = "DELETE FROM ". \rex::getTablePrefix() ."d2u_guestbook "
 			."WHERE id = ". $this->id;
-		$result = rex_sql::factory();
+		$result = \rex_sql::factory();
 		$result->setQuery($query);
 	}
 
@@ -120,12 +121,12 @@ class Entry {
 	 * @return Entry[] Array with Entry objects.
 	 */
 	public static function getAll($online_only = FALSE) {
-		$query = "SELECT id FROM ". rex::getTablePrefix() ."d2u_guestbook ";
+		$query = "SELECT id FROM ". \rex::getTablePrefix() ."d2u_guestbook ";
 		if($online_only) {
 			$query .= "WHERE online_status = 'online' ";
 		}
 		$query .= "ORDER BY create_date DESC";
-		$result = rex_sql::factory();
+		$result = \rex_sql::factory();
 		$result->setQuery($query);
 		
 		$entries = [];
@@ -141,9 +142,9 @@ class Entry {
 	 * @return float Average rating
 	 */
 	public static function getRating() {
-		$query = "SELECT AVG(rating) AS rating FROM ". rex::getTablePrefix() ."d2u_guestbook "
+		$query = "SELECT AVG(rating) AS rating FROM ". \rex::getTablePrefix() ."d2u_guestbook "
 			."WHERE online_status = 'online' ";
-		$result = rex_sql::factory();
+		$result = \rex_sql::factory();
 		$result->setQuery($query);
 		
 		return floatval($result->getValue("rating"));
@@ -154,9 +155,9 @@ class Entry {
 	 * @return float Average rating
 	 */
 	public static function getRecommendation() {
-		$query = "SELECT COUNT(recommendation) AS recommendation FROM ". rex::getTablePrefix() ."d2u_guestbook "
+		$query = "SELECT COUNT(recommendation) AS recommendation FROM ". \rex::getTablePrefix() ."d2u_guestbook "
 			."WHERE recommendation = 1";
-		$result = rex_sql::factory();
+		$result = \rex_sql::factory();
 		$result->setQuery($query);
 		
 		return floatval($result->getValue("recommendation"));
@@ -168,7 +169,7 @@ class Entry {
 	 */
 	public function save() {
 		$error = 0;
-		$query = rex::getTablePrefix() ."d2u_guestbook SET "
+		$query = \rex::getTablePrefix() ."d2u_guestbook SET "
 				."clang_id = ". $this->clang_id .", "
 				."name = '". $this->name ."', "
 				."email = '". $this->email ."', "
@@ -183,7 +184,7 @@ class Entry {
 			$query = "UPDATE ". $query ." WHERE id = ". $this->id;
 		}
 
-		$result = rex_sql::factory();
+		$result = \rex_sql::factory();
 		$result->setQuery($query);
 		if($this->id == 0) {
 			$this->id = $result->getLastId();
