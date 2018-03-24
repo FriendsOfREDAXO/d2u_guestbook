@@ -13,7 +13,7 @@ if (filter_input(INPUT_POST, "btn_save") == 1 || filter_input(INPUT_POST, "btn_a
 	$form = (array) rex_post('form', 'array', []);
 
 	// Media fields and links need special treatment
-	$entry = new D2U_Guestbook\Entry($form['id']);
+	$entry = new D2U_Guestbook\Entry($form['entry_id']);
 	$entry->clang_id = $form['clang_id'];
 	$entry->name = $form['name'];
 	$entry->email = $form['email'];
@@ -41,7 +41,7 @@ if (filter_input(INPUT_POST, "btn_save") == 1 || filter_input(INPUT_POST, "btn_a
 else if(filter_input(INPUT_POST, "btn_delete") == 1 || $func == 'delete') {
 	if($entry_id == 0) {
 		$form = (array) rex_post('form', 'array', []);
-		$entry_id = $form['$entry_id'];
+		$entry_id = $form['entry_id'];
 	}
 	$entry = new D2U_Guestbook\Entry($entry_id);
 	$entry->delete();
@@ -65,7 +65,7 @@ if ($func == 'edit' || $func == 'add') {
 		<div class="panel panel-edit">
 			<header class="panel-heading"><div class="panel-title"><?php print rex_i18n::msg('d2u_guestbook_entries'); ?></div></header>
 			<div class="panel-body">
-				<input type="hidden" name="form[id]" value="<?php echo $entry_id; ?>">
+				<input type="hidden" name="form[entry_id]" value="<?php echo $entry_id; ?>">
 				<fieldset>
 					<legend><?php echo rex_i18n::msg('d2u_guestbook_entry'); ?></legend>
 					<div class="panel-body-wrapper slide">

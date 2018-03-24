@@ -72,10 +72,10 @@ guestbook-page {
 	padding: 1em;
 	text-align: center;
 }
-.page {
+.page, .page:visited {
 	background-color: navi_color_bg;
 	border: 1px solid navi_color_bg;
-	color: navi_color_font;
+	color: navi_color_font !important;
 	padding: 0.25em 0.75em;
 	margin-right: 1em;
 }

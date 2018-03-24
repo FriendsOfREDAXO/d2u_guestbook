@@ -19,6 +19,7 @@ print '<div id="tab_guestbook" class="tab-pane fade active show guestbook-tab">'
 // Entries
 $entries = \D2U_Guestbook\Entry::getAll(TRUE);
 $page_no = 0;
+
 for($i = 0; $i < count($entries); $i++) {
 	$entry = $entries[$i];
 
@@ -53,8 +54,8 @@ for($i = 0; $i < count($entries); $i++) {
 	print '<div class="col-12">'. nl2br($entry->description) .'</div>';
 	if($entry->rating > 0) {
 		print '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
-		for($i = 1; $i <= 5; $i++) {
-			if($i <= $entry->rating) {
+		for($j = 1; $j <= 5; $j++) {
+			if($j <= $entry->rating) {
 				print ' <span class="icon star-full"></span>';
 			}
 			else {

@@ -48,3 +48,28 @@ a.recommendation:hover {
 	color: gold;
 	content: "\f006";
 }
+
+guestbook-page {
+	display: inline-block;
+}
+.guestbook-tab {
+	border: navi_color_bg 1px solid;
+	padding: 1em 1em 0 1em;
+}
+.page-selection {
+	background-color: article_color_box;
+	border-top: 1px solid navi_color_bg;
+	padding: 1em;
+	text-align: center;
+}
+.page, .page:visited {
+	background-color: navi_color_bg;
+	border: 1px solid navi_color_bg;
+	color: navi_color_font !important;
+	padding: 0.25em 0.75em;
+	margin-right: 1em;
+}
+.page:hover {
+	background-color: navi_color_font;
+	color: navi_color_bg;
+}
