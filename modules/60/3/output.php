@@ -77,14 +77,25 @@ else {
 	print '</div>';
 	
 	// Entries
+	print '<div class="col-12">';
 	$entries = D2U_Guestbook\Entry::getAll(TRUE);
-	foreach($entries as $entry) {
-		print '<div class="col-12">';
+	$page_no = 0;
+	for($i = 0; $i < count($entries); $i++) {
+		$entry = $entries[$i];
 
+		if($i % rex_config::get('d2u_guestbook', 'no_entries_page', 10) == 0) {
+			$page_no++;
+			if($page_no != 1) {
+				print '</div>';
+			}
+			print '<div class="row guestbook-page pages-'. $page_no .'">'; // Pagination div
+		}
+
+		print '<div class="col-12">';
 		print '<div class="entry-header">';
 		print '<div class="row">';
 		print '<div class="col-6 left"><b>'. $tag_open .'d2u_guestbook_form_name'. $tag_close .': ';
-		if($entry->email != '') {
+		if($entry->email != '' && rex_config::get('d2u_guestbook', 'allow_answer', 'false') == 'true') {
 			print '<a href="mailto:'. $entry->email .'">';
 			print $entry->name .' <span class="icon mail"></span>';
 			print '</a>';
@@ -117,5 +128,29 @@ else {
 
 		print '</div>';
 	}
+	print '</div>'; // End pagination
+	// Page selection
+	if($page_no > 1) {
+		print "<script type='text/javascript'>
+				// show only first page
+				jQuery(document).ready(function($) {
+					$('.guestbook-page').hide();
+					$('.pages-1').show();
+				});
+				// hide pages and show selected page
+				function changePage(pageno) {
+					$('.guestbook-page').slideUp();
+					$('.pages-' + pageno).slideDown();
+				}
+			</script>";
+		print '<div class="row">';
+		print '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
+		for($i = 1; $i <= $page_no; $i++) {
+			print '<a href="javascript:changePage('. $i .')" class="page">'. $i .'</a>';
+		}
+		print '</div>';
+		print '</div>';
+	}
+	print '</div>';
 }
 ?>

@@ -48,3 +48,38 @@ a.recommendation:hover {
 	color: gold;
 	content: "\f006";
 }
+
+#guestbook_tabs a.active {
+	background-color: navi_color_bg;
+}
+#guestbook_tabs .nav-link {
+	border-radius: 0.25rem 0.25rem 0rem 0rem;
+	border-left: navi_color_bg 1px solid;
+	border-right: navi_color_bg 1px solid;
+	border-top: navi_color_bg 1px solid;
+	padding: 0.75em;
+}
+guestbook-page {
+	display: inline-block;
+}
+.guestbook-tab {
+	border: navi_color_bg 1px solid;
+	padding: 1em 1em 0 1em;
+}
+.page-selection {
+	background-color: article_color_box;
+	border-top: 1px solid navi_color_bg;
+	padding: 1em;
+	text-align: center;
+}
+.page {
+	background-color: navi_color_bg;
+	border: 1px solid navi_color_bg;
+	color: navi_color_font;
+	padding: 0.25em 0.75em;
+	margin-right: 1em;
+}
+.page:hover {
+	background-color: navi_color_font;
+	color: navi_color_bg;
+}

@@ -7,6 +7,9 @@ if (filter_input(INPUT_POST, "btn_save") == 'save') {
 	$link_ids = filter_input_array(INPUT_POST, array('REX_INPUT_LINK'=> array('filter' => FILTER_VALIDATE_INT, 'flags' => FILTER_REQUIRE_ARRAY)));
 	$settings['guestbook_article_id'] = $link_ids["REX_INPUT_LINK"][1];
 
+	// Checkbox also need special treatment if empty
+	$settings['allow_answer'] = array_key_exists('allow_answer', $settings) ? "true" : "false";
+
 	// Save settings
 	if(rex_config::set("d2u_guestbook", $settings)) {
 		echo rex_view::success(rex_i18n::msg('form_saved'));
@@ -29,6 +32,8 @@ if (filter_input(INPUT_POST, "btn_save") == 'save') {
 					<?php
 						d2u_addon_backend_helper::form_input('d2u_guestbook_settings_request_form_email', 'settings[request_form_email]', $this->getConfig('request_form_email'), TRUE, FALSE, 'email');
 						d2u_addon_backend_helper::form_linkfield('d2u_guestbook_settings_article', '1', $this->getConfig('guestbook_article_id'), rex_config::get("d2u_helper", "default_lang", rex_clang::getStartId()));
+						d2u_addon_backend_helper::form_checkbox('d2u_guestbook_settings_allow_answer', 'settings[allow_answer]', 'true', $this->getConfig('allow_answer') == 'true');
+						d2u_addon_backend_helper::form_input('d2u_guestbook_settings_no_entries_page', 'settings[no_entries_page]', $this->getConfig('no_entries_page', 10), TRUE, FALSE, 'number');
 					?>
 				</div>
 			</fieldset>

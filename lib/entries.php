@@ -136,7 +136,7 @@ class Entry {
 		}
 		return $entries;
 	}
-	
+
 	/**
 	 * Get average guestbook rating.
 	 * @return float Average rating

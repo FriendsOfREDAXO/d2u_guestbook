@@ -8,11 +8,12 @@ d2u_guestbook_name = Name
 d2u_guestbook_no_entries_found = Es sind noch keine Gästebucheinträge vorhanden.
 d2u_guestbook_rating = Bewertung (1=schlecht / 5=sgt)
 d2u_guestbook_recommendation = Empfehlung
-d2u_guestbook_setup = Setup
 d2u_guestbook_url = Webseite
 
 d2u_guestbook_rights = D2U Gästebuch Addon
 d2u_guestbook_rights_settings = D2U Gästebuch Addon: Einstellungen
 
+d2u_guestbook_settings_allow_answer = E-Mailadresse von Einträgen geschützt veröffentlichen um Antworten zu erlauben?
 d2u_guestbook_settings_article = Gästebuch Artikel
+d2u_guestbook_settings_no_entries_page = Anzahl Einträge pro Seite
 d2u_guestbook_settings_request_form_email = Admin E-Mail

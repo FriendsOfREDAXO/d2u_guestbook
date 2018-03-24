@@ -9,13 +9,10 @@ page:
     icon: rex-icon fa-book
     subpages:
         entries: { title: 'translate:d2u_guestbook_entries', icon: rex-icon fa-book, perm: d2u_guestbook[] }
-        settings: { title: 'translate:d2u_guestbook_settings', icon: rex-icon rex-icon-system, perm: d2u_guestbook[settings] }
-        setup: { title: 'translate:d2u_guestbook_setup', icon: rex-icon rex-icon-install, perm: d2u_guestbook[settings] }
+        settings: { title: 'translate:d2u_helper_settings', icon: rex-icon rex-icon-system, perm: d2u_guestbook[settings] }
+        setup: { title: 'translate:d2u_helper_setup', icon: rex-icon rex-icon-install, perm: d2u_guestbook[settings] }
 
 requires:
-    redaxo: '>=5.3.0'
-    php:
-        version: '>=5.6'
     packages:
         d2u_helper: '>=1.2.4'
         emailobfuscator: '>=2.1'

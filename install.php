@@ -14,3 +14,10 @@ $sql->setQuery("CREATE TABLE IF NOT EXISTS `". rex::getTablePrefix() ."d2u_guest
 	`create_date` int(11) NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;");
+
+// Standard settings
+if (!$this->hasConfig()) {
+    $this->setConfig('guestbook_article_id', rex_article::getSiteStartArticleId());
+    $this->setConfig('allow_answer', 'false');
+    $this->setConfig('no_entries_page', 10);
+}
