@@ -82,13 +82,15 @@ if($page_no > 1) {
 			// hide pages and show selected page
 			function changePage(pageno) {
 				$('.guestbook-page').slideUp();
+				$('.active-page').removeClass('active-page');
 				$('.pages-' + pageno).slideDown();
+				$('#page-' + pageno).addClass('active-page');
 			}
 		</script>";
 	print '<div class="row">';
 	print '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
 	for($i = 1; $i <= $page_no; $i++) {
-		print '<a href="javascript:changePage('. $i .')" class="page">'. $i .'</a>';
+		print '<a href="javascript:changePage('. $i .')" class="page'. ($i == 1 ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
 	}
 	print '</div>';
 	print '</div>';

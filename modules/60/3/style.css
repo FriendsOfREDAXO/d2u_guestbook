@@ -69,7 +69,7 @@ guestbook-page {
 	padding: 0.25em 0.75em;
 	margin-right: 1em;
 }
-.page:hover {
+.page:hover, .active-page {
 	background-color: navi_color_font;
-	color: navi_color_bg;
+	color: navi_color_bg !important;
 }

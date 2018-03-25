@@ -1,0 +1,19 @@
+d2u_guestbook = D2U Guestbook
+d2u_guestbook_clang = Language
+d2u_guestbook_description = Message
+d2u_guestbook_email = E-mail address
+d2u_guestbook_entries = Guestbook entries
+d2u_guestbook_entry = Guestbook entry
+d2u_guestbook_name = Name
+d2u_guestbook_no_entries_found = No guestbook entries found.
+d2u_guestbook_rating = Rating (1=bad / 5=best)
+d2u_guestbook_recommendation = recommendation
+d2u_guestbook_url = Website
+
+d2u_guestbook_rights = D2U Guestbook Addon
+d2u_guestbook_rights_settings = D2U Guestbook Addon: Settings
+
+d2u_guestbook_settings_allow_answer = Do not show email address and thus allow answering to entries
+d2u_guestbook_settings_article = Guestbook redaxo article
+d2u_guestbook_settings_no_entries_page = Number guestbook entries per page
+d2u_guestbook_settings_request_form_email = Admin e-mail address
