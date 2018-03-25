@@ -56,7 +56,8 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.3-DEV:</p>
 <ul>
-	<li>Aktuelle Seite in Gästebuch Modulen farblich markiert</li>
+	<li>Englische Übersetzung fürs Backend hinzugefügt.</li>
+	<li>Aktuelle Seite in Gästebuch Modulen farblich markiert.</li>
 </ul>
 <p>1.0.2:</p>
 <ul>
