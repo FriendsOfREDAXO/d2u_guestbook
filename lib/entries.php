@@ -69,7 +69,7 @@ class Entry {
 		if ($num_rows > 0) {
 			$this->id = $result->getValue("id");
 			$this->clang_id = $result->getValue("clang_id");
-			$this->name = $result->getValue("name");
+			$this->name = stripslashes($result->getValue("name"));
 			$this->email = $result->getValue("email");
 			$this->rating = $result->getValue("rating");
 			$this->recommendation = $result->getValue("recommendation") == 1 ? TRUE : FALSE;
@@ -171,7 +171,7 @@ class Entry {
 		$error = 0;
 		$query = \rex::getTablePrefix() ."d2u_guestbook SET "
 				."clang_id = ". $this->clang_id .", "
-				."name = '". $this->name ."', "
+				."name = '". addslashes($this->name) ."', "
 				."email = '". $this->email ."', "
 				."rating = ". $this->rating .", "
 				."recommendation = ". ($this->recommendation ? 1 : 0) .", "
