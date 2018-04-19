@@ -54,6 +54,10 @@ else if($tvsgb_available) {
 <h2>Support</h2>
 <p>Fehlermeldungen bitte im <a href="https://github.com/TobiasKrais/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
+<p>1.0.4-DEV:</p>
+<ul>
+	<li></li>
+</ul>
 <p>1.0.3:</p>
 <ul>
 	<li>Feld Datenschutzerklärung akzeptiert im Frontend Formular hinzugefügt.</li>
