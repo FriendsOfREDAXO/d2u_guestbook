@@ -56,7 +56,8 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.3-DEV:</p>
 <ul>
-	<li>Bugfix: TVSGB Import wenn Tabellen Prefix von Standard abweichts.</li>
+	<li>Feld Datenschutzerklärung akzeptiert im Frontend Formular hinzugefügt.</li>
+	<li>Bugfix: TVSGB Import wenn Tabellen Prefix von Standard abweicht.</li>
 	<li>Bugfix: Fehler beim Speichern von Namen mit einfachem Anführungszeichen behoben.</li>
 	<li>Englische Übersetzung fürs Backend hinzugefügt.</li>
 	<li>Aktuelle Seite in Gästebuch Modulen farblich markiert.</li>

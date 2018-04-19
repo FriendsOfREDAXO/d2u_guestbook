@@ -41,6 +41,7 @@ if(rex_get('entry', 'string') == 'add') {
 		text|email|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'
 		textarea|description|'. $tag_open .'d2u_guestbook_form_message'. $tag_close .'
 		radio|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|'. $tag_open .'d2u_guestbook_no'. $tag_close .'=0,'. $tag_open .'d2u_guestbook_yes'. $tag_close .'=1|1|
+		'. ($privacy_policy_article_name != '' ? 'checkbox|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_privacy_policy'. $tag_close . ' <a href="'. $privacy_policy_article->getUrl() .'" target="_blank">'. $privacy_policy_article_name .'</a> *|no,yes|no' : '') .'
 		text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"visibility:hidden"}
 		html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
 		captcha|'. $tag_open .'d2u_guestbook_form_captcha'. $tag_close .'|'. $tag_open .'d2u_guestbook_form_validate_captcha'. $tag_close .'|'. rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']) .'
@@ -52,6 +53,7 @@ if(rex_get('entry', 'string') == 'add') {
 
 		validate|empty|name|'. $tag_open .'d2u_guestbook_form_validate_name'. $tag_close .'
 		validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_description'. $tag_close .'
+	'. ($privacy_policy_article_name != '' ? 'validate|empty|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_validate_privacy_policy'. $tag_close .'' : '') .'
 
 		action|db|'. rex::getTablePrefix() .'d2u_guestbook|';
 	//	action|tpl2email|d2u_guestbook_request|emaillabel|'. $property->contact->email;

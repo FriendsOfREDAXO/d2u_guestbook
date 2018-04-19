@@ -76,7 +76,7 @@ if ($func == 'edit' || $func == 'add') {
 								foreach(rex_clang::getAll(TRUE) as $rex_clang){
 									$options_clang[$rex_clang->getId()] = $rex_clang->getName();
 								}
-								d2u_addon_backend_helper::form_select('d2u_guestbook_clang', 'form[clang_id]', $options_clang, array($entry->clang_id), 1, FALSE);
+								d2u_addon_backend_helper::form_select('d2u_guestbook_clang', 'form[clang_id]', $options_clang, [$entry->clang_id], 1, FALSE);
 							}
 							else {
 								print '<input type="hidden" name="form[clang_id]" value="'. rex_clang::getStartId() .'">';
@@ -86,6 +86,7 @@ if ($func == 'edit' || $func == 'add') {
 							d2u_addon_backend_helper::form_input('d2u_guestbook_email', 'form[email]', $entry->email, FALSE, FALSE, 'email');
 							d2u_addon_backend_helper::form_input('d2u_guestbook_rating', 'form[rating]', $entry->rating, FALSE, FALSE, 'number');
 							d2u_addon_backend_helper::form_checkbox('d2u_guestbook_recommendation', 'form[recommendation]', 'true', $entry->recommendation);
+							d2u_addon_backend_helper::form_checkbox('d2u_guestbook_privacy_policy_accepted', 'form[privacy_policy_accepted]', 'true', $entry->privacy_policy_accepted, TRUE);
 							d2u_addon_backend_helper::form_textarea('d2u_guestbook_description', "form[description]", $entry->description, 10, TRUE, FALSE, FALSE);
 							d2u_addon_backend_helper::form_checkbox('d2u_helper_online_status', 'form[online_status]', 'online', $entry->online_status == 'online' ? TRUE : FALSE);
 						?>

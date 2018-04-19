@@ -131,11 +131,14 @@ print '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'<
 </script>
 <?php
 $stars = '<span class="icon star-empty" id="star1" onmouseover="set_stars(1)" onmouseout="reset_stars(1)" onclick="click_stars(1)"></span> <span class="icon star-empty" id="star2" onmouseover="set_stars(2)" onmouseout="reset_stars(2)" onclick="click_stars(2)"></span> <span class="icon star-empty" id="star3" onmouseover="set_stars(3)" onmouseout="reset_stars(3)" onclick="click_stars(3)"></span> <span class="icon star-empty" id="star4" onmouseover="set_stars(4)" onmouseout="reset_stars(4)" onclick="click_stars(4)"></span> <span class="icon star-empty" id="star5" onmouseover="set_stars(5)" onmouseout="reset_stars(5)" onclick="click_stars(5)"></span>';
+$privacy_policy_article = rex_article::get(rex_config::get('d2u_helper', 'article_id_privacy_policy', 0));
+$privacy_policy_article_name = $privacy_policy_article instanceof rex_article ? $privacy_policy_article->getName() : '';
 $form_data = '
 	text|name|'. $tag_open .'d2u_guestbook_form_name'. $tag_close .' *
 	text|email|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'
 	textarea|description|'. $tag_open .'d2u_guestbook_form_message'. $tag_close .'
 	radio|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|'. $tag_open .'d2u_guestbook_no'. $tag_close .'=0,'. $tag_open .'d2u_guestbook_yes'. $tag_close .'=1|1|
+	'. ($privacy_policy_article_name != '' ? 'checkbox|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_privacy_policy'. $tag_close . ' <a href="'. $privacy_policy_article->getUrl() .'" target="_blank">'. $privacy_policy_article_name .'</a> *|no,yes|no' : '') .'
 	text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"visibility:hidden"}
 	html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
 	captcha|'. $tag_open .'d2u_guestbook_form_captcha'. $tag_close .'|'. $tag_open .'d2u_guestbook_form_validate_captcha'. $tag_close .'|
@@ -147,6 +150,7 @@ $form_data = '
 
 	validate|empty|name|'. $tag_open .'d2u_guestbook_form_validate_name'. $tag_close .'
 	validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_description'. $tag_close .'
+	'. ($privacy_policy_article_name != '' ? 'validate|empty|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_validate_privacy_policy'. $tag_close .'' : '') .'
 
 	action|db|'. rex::getTablePrefix() .'d2u_guestbook|';
 

@@ -49,6 +49,7 @@ a.recommendation:hover {
 	content: "\f006";
 }
 
+
 #guestbook_tabs a.active {
 	background-color: navi_color_bg;
 }
@@ -82,4 +83,23 @@ guestbook-page {
 .page:hover, .active-page {
 	background-color: navi_color_font;
 	color: navi_color_bg !important;
+}
+#tab_write {
+	padding-bottom: 1em;
+}
+
+/* YForm */
+.input-group-addon {
+	min-width: 150px;
+	padding: 0px !important;
+}
+.input-group-addon img {
+	height: 100%;
+}
+.formcheckbox {
+    margin-bottom: 1rem;
+}
+.btn-primary {
+	background-color: article_color_h !important;
+	border: none !important;
 }
