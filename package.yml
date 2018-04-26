@@ -14,7 +14,7 @@ page:
 
 requires:
     packages:
-        d2u_helper: '>=1.4.1'
-        emailobfuscator: '>=2.1'
+        d2u_helper: '>=1.4.3'
+        emailobfuscator: '>=2.1.5'
         sprog: '>=1.0.0'
         yform: '>=2.0'

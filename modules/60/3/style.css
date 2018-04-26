@@ -52,7 +52,7 @@ a.recommendation:hover {
 guestbook-page {
 	display: inline-block;
 }
-.guestbook-tab {
+.tab-pane {
 	border: navi_color_bg 1px solid;
 	padding: 1em 1em 0 1em;
 }

@@ -120,7 +120,7 @@ if ($func == 'edit' || $func == 'add') {
 }
 
 if ($func == '') {
-	$query = 'SELECT id, name, email, rating, online_status '
+	$query = 'SELECT id, name, email, rating, FROM_UNIXTIME(create_date, "%Y-%m-%d  %H:%i") AS create_date, online_status '
 		. 'FROM '. rex::getTablePrefix() .'d2u_guestbook '
 		. 'ORDER BY create_date DESC';
     $list = rex_list::factory($query);
@@ -141,6 +141,8 @@ if ($func == '') {
     $list->setColumnLabel('email', rex_i18n::msg('d2u_guestbook_email'));
 
     $list->setColumnLabel('rating', rex_i18n::msg('d2u_guestbook_rating'));
+
+	$list->setColumnLabel('create_date', rex_i18n::msg('d2u_guestbook_date'));
 
   	$list->removeColumn('online_status');
     $list->addColumn(rex_i18n::msg('status_online'), '<a class="rex-###online_status###" href="' . rex_url::currentBackendPage(['func' => 'changestatus']) . '&entry_id=###id###"><i class="rex-icon rex-icon-###online_status###"></i> ###online_status###</a>');
