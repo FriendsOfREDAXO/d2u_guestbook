@@ -1,11 +1,13 @@
 d2u_guestbook = D2U Guestbook
 d2u_guestbook_clang = Language
+d2u_guestbook_date = Date
 d2u_guestbook_description = Message
 d2u_guestbook_email = E-mail address
 d2u_guestbook_entries = Guestbook entries
 d2u_guestbook_entry = Guestbook entry
 d2u_guestbook_name = Name
 d2u_guestbook_no_entries_found = No guestbook entries found.
+d2u_guestbook_privacy_policy_accepted = Accepted Privacy Policy
 d2u_guestbook_rating = Rating (1=bad / 5=best)
 d2u_guestbook_recommendation = recommendation
 d2u_guestbook_url = Website
