@@ -82,7 +82,7 @@ if ($func == 'edit' || $func == 'add') {
 								print '<input type="hidden" name="form[clang_id]" value="'. rex_clang::getStartId() .'">';
 							}
 
-							d2u_addon_backend_helper::form_input('d2u_guestbook_name', 'form[name]', $entry->name, TRUE, FALSE);
+							d2u_addon_backend_helper::form_input('d2u_helper_name', 'form[name]', $entry->name, TRUE, FALSE);
 							d2u_addon_backend_helper::form_input('d2u_guestbook_email', 'form[email]', $entry->email, FALSE, FALSE, 'email');
 							d2u_addon_backend_helper::form_input('d2u_guestbook_rating', 'form[rating]', $entry->rating, FALSE, FALSE, 'number');
 							d2u_addon_backend_helper::form_checkbox('d2u_guestbook_recommendation', 'form[recommendation]', 'true', $entry->recommendation);
@@ -135,7 +135,7 @@ if ($func == '') {
     $list->setColumnLabel('id', rex_i18n::msg('id'));
     $list->setColumnLayout('id', ['<th class="rex-table-id">###VALUE###</th>', '<td class="rex-table-id">###VALUE###</td>']);
 
-    $list->setColumnLabel('name', rex_i18n::msg('d2u_guestbook_name'));
+    $list->setColumnLabel('name', rex_i18n::msg('d2u_helper_name'));
     $list->setColumnParams('name', ['func' => 'edit', 'entry_id' => '###id###']);
 
     $list->setColumnLabel('email', rex_i18n::msg('d2u_guestbook_email'));

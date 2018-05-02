@@ -5,7 +5,6 @@ d2u_guestbook_description = Nachricht
 d2u_guestbook_email = E-Mail Adresse
 d2u_guestbook_entries = Gästebuch Einträge
 d2u_guestbook_entry = Gästebuch Eintrag
-d2u_guestbook_name = Name
 d2u_guestbook_no_entries_found = Es sind noch keine Gästebucheinträge vorhanden.
 d2u_guestbook_privacy_policy_accepted = Datenschutzerklärung akzeptiert
 d2u_guestbook_rating = Bewertung (1=schlecht / 5=sgt)
