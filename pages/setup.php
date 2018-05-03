@@ -54,8 +54,10 @@ else if($tvsgb_available) {
 <h2>Support</h2>
 <p>Fehlermeldungen bitte im <a href="https://github.com/TobiasKrais/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
-<p>1.0.4-DEV:</p>
+<p>1.0.4:</p>
 <ul>
+	<li>Spamschutz Timer von 5 Sekunden in Beispielmodule eingefügt.</li>
+	<li>Mail an Admin wenn ein neuer Eintrag erstellt wird.</li>
 	<li>Datum in Übersichtsliste eingefügt.</li>
 	<li>Hinweis Datenschutzerklärung in Modulen verbessert.</li>
 </ul>

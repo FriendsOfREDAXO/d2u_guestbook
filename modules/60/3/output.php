@@ -1,4 +1,31 @@
 <?php
+if(!function_exists('sendAdminNotification')) {
+	/**
+	 * Send mail to admin address when news guestbook entry is created.
+	 * @param mixed $yform
+	 */
+	function sendAdminNotification($yform) {
+		\D2U_Guestbook\d2u_guestbook_backend_helper::sendAdminNotification($yform);
+	}
+}
+
+if(!function_exists('yform_validate_timer')) {
+	/**
+	 * Timer Spamprotection function
+	 * @param string $label
+	 * @param int $microtime
+	 * @param int $seconds
+	 * @return boolean
+	 */
+	function yform_validate_timer($label, $microtime, $seconds) {
+        if (($microtime + $seconds) > microtime(true)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
 // Get placeholder wildcard tags and other presets
 $sprog = rex_addon::get("sprog");
 $tag_open = $sprog->getConfig('wildcard_open_tag');
@@ -44,6 +71,7 @@ if(rex_get('entry', 'string') == 'add') {
 		checkbox|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_privacy_policy'. $tag_close . ' *|no,yes|no
 		text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"display:none"}
 		html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
+		php|validate_timer|Spamprotection|<input name="validate_timer" type="hidden" value="'. microtime(true) .'" />|
 		captcha|'. $tag_open .'d2u_guestbook_form_captcha'. $tag_close .'|'. $tag_open .'d2u_guestbook_form_validate_captcha'. $tag_close .'|'. rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']) .'
 		hidden|online_status|offline
 		hidden|create_date|'. time() .'
@@ -53,10 +81,10 @@ if(rex_get('entry', 'string') == 'add') {
 
 		validate|empty|name|'. $tag_open .'d2u_guestbook_form_validate_name'. $tag_close .'
 		validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_description'. $tag_close .'
-		validate|empty|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_validate_privacy_policy'. $tag_close .'
+		validate|customfunction|validate_timer|yform_validate_timer|5|'. $tag_open .'d2u_guestbook_form_validate_spambots'. $tag_close .'|
 
+		action|callback|sendAdminNotification
 		action|db|'. rex::getTablePrefix() .'d2u_guestbook|';
-	//	action|tpl2email|d2u_guestbook_request|emaillabel|'. $property->contact->email;
 
 	$yform = new rex_yform;
 	$yform->setFormData(trim($form_data));

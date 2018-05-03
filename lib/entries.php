@@ -5,7 +5,7 @@
  * @author <a href="http://www.design-to-use.de">www.design-to-use.de</a>
  */
 
-namespace D2u_Guestbook;
+namespace D2U_Guestbook;
 /**
  * Guestbook entry
  */
