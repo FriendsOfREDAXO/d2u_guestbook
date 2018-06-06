@@ -9,23 +9,6 @@ if(!function_exists('sendAdminNotification')) {
 	}
 }
 
-if(!function_exists('yform_validate_timer')) {
-	/**
-	 * Timer Spamprotection function
-	 * @param string $label
-	 * @param int $microtime
-	 * @param int $seconds
-	 * @return boolean
-	 */
-	function yform_validate_timer($label, $microtime, $seconds) {
-        if (($microtime + $seconds) > microtime(true)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
-
 // Get placeholder wildcard tags and other presets
 $sprog = rex_addon::get("sprog");
 $tag_open = $sprog->getConfig('wildcard_open_tag');
@@ -177,20 +160,20 @@ $form_data = '
 	validate|empty|name|'. $tag_open .'d2u_guestbook_form_validate_name'. $tag_close .'
 	validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_description'. $tag_close .'
 	validate|empty|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_validate_privacy_policy'. $tag_close .'
-	validate|customfunction|validate_timer|yform_validate_timer|5|'. $tag_open .'d2u_guestbook_form_validate_spambots'. $tag_close .'|
+	validate|customfunction|validate_timer|d2u_addon_frontend_helper::yform_validate_timer|10|'. $tag_open .'d2u_guestbook_form_validate_spambots'. $tag_close .'|
 
 	action|callback|sendAdminNotification
 	action|db|'. rex::getTablePrefix() .'d2u_guestbook|';
 
 $yform = new rex_yform;
 $yform->setFormData(trim($form_data));
-$yform->setObjectparams('real_field_names', 1);
+$yform->setObjectparams('real_field_names', TRUE);
 $yform->setObjectparams("form_action", rex_getUrl(rex_article::getCurrentId()));
 $yform->setObjectparams("form_anchor", "tab_write");
 $yform->setObjectparams("Error-occured", $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
 
 // action - showtext
-$yform->setActionField("showtext", array($tag_open .'d2u_guestbook_form_thanks'. $tag_close));
+$yform->setActionField("showtext", [$tag_open .'d2u_guestbook_form_thanks'. $tag_close]);
 
 echo $yform->getForm();
 print '</fieldset>';

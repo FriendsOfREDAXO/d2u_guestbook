@@ -1,5 +1,5 @@
 package: d2u_guestbook
-version: '1.0.4'
+version: '1.0.5'
 author: Tobias Krais
 supportpage: http://github.com/tobiaskrais/d2u_guestbook
 
@@ -14,7 +14,7 @@ page:
 
 requires:
     packages:
-        d2u_helper: '>=1.4.3'
+        d2u_helper: '>=1.4.6'
         emailobfuscator: '>=2.1.5'
         sprog: '>=1.0.0'
         yform: '>=2.0'

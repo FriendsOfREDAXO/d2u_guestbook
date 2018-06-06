@@ -73,3 +73,28 @@ guestbook-page {
 	background-color: navi_color_font;
 	color: navi_color_bg !important;
 }
+
+/* YForm */
+.input-group-addon {
+	min-width: 150px;
+	padding: 0px !important;
+}
+.input-group-addon img {
+	height: 100%;
+}
+.formcheckbox {
+    margin-bottom: 1rem;
+}
+.btn-primary {
+	background-color: article_color_h !important;
+	border: none !important;
+}
+.input-group-btn:last-child > .btn {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+.btn-default {
+	background-color: article_color_h;
+	border: 1px solid article_color_h;
+	color: article_color_bg;
+}
