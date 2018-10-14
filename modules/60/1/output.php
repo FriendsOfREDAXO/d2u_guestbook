@@ -114,7 +114,7 @@ print '<div class="row">';
 print '<div class="col-12">';
 print '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</legend>';
 ?>
-<script type="text/javascript">
+<script>
 	function set_stars(wert) {
 		for(var x = 1; x <= 5; x++) {
 			if(x <= wert) {
