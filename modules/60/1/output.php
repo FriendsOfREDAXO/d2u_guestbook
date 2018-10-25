@@ -10,9 +10,8 @@ if(!function_exists('sendAdminNotification')) {
 }
 
 // Get placeholder wildcard tags and other presets
-$sprog = rex_addon::get("sprog");
-$tag_open = $sprog->getConfig('wildcard_open_tag');
-$tag_close = $sprog->getConfig('wildcard_close_tag');
+$tag_open = '{{';
+$tag_close = '}}';
 
 // Tabs
 print '<div class="col-12 d-print-none">';
