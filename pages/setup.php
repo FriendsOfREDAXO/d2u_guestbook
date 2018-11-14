@@ -56,6 +56,7 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.5-DEV:</p>
 <ul>
+	<li>Bugfix: SProg Sprachersetzungen werden beim deinstallieren entfernt.</li>
 	<li>In den Einstellungen gibt es jetzt eine Option, eigene Übersetzungen in SProg dauerhaft zu erhalten.</li>
 	<li>CSS Captcha Reload Button verbessert.</li>
 </ul>
