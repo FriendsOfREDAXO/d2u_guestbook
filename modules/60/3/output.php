@@ -144,7 +144,7 @@ else {
 	print '</div>'; // End pagination
 	// Page selection
 	if($page_no > 1) {
-		print "<script type='text/javascript'>
+		print "<script>
 				// show only first page
 				jQuery(document).ready(function($) {
 					$('.guestbook-page').hide();
