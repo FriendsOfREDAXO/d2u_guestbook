@@ -10,7 +10,7 @@ $sql->setQuery("CREATE TABLE IF NOT EXISTS `". rex::getTablePrefix() ."d2u_guest
 	`clang_id` int(10) NOT NULL,
 	`rating` tinyint(1) DEFAULT 0,
 	`recommendation` tinyint(1) DEFAULT 0,
-	`privacy_policy_accepted` varchar(3) DEFAULT 'no',
+	`privacy_policy_accepted` tinyint(1) DEFAULT 0,
 	`online_status` varchar(10) DEFAULT NULL,
 	`create_date` int(11) NOT NULL,
 	PRIMARY KEY (`id`)

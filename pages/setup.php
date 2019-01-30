@@ -46,8 +46,10 @@ else if($tvsgb_available) {
 	Verzeichnis im Pfad modules/60/<i>Nummer des Moduls</i>/styles.css.</p>
 <h2>Beispielseiten</h2>
 <ul>
-	<li>Gästebuch Addon mit Bootstrap 4 Tabs: <a href="https://www.immobiliengaiser.de/home/unser-gaestebuch/" target="_blank">
+	<li>Gästebuch Addon mit Bootstrap 4 Tabs: <a href="https://immobiliengaiser.de/home/unser-gaestebuch/" target="_blank">
 		ImmobilienGaiser</a>.</li>
+	<li>Gästebuch Addon mit Bootstrap 4 Tabs: <a href="https://www.optik-muelhaupt.de/gaestebuch/" target="_blank">
+		Optik Mülhaupt</a>.</li>
 	<li>Gästebuch Addon ohne Tabs: <a href="http://www.hotel-albatros.de" target="_blank">
 		Hotel Albatros</a>.</li>
 </ul>
@@ -56,7 +58,7 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.6:</p>
 <ul>
-	<li>...</li>
+	<li>Anpassungen an YForm 3.</li>
 </ul>
 <p>1.0.5:</p>
 <ul>

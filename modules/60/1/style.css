@@ -112,3 +112,6 @@ guestbook-page {
 	border: 1px solid article_color_h;
 	color: article_color_bg;
 }
+input[type="radio"] {
+	width: 1em;
+}
