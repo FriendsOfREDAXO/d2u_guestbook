@@ -50,12 +50,11 @@ if(rex_get('entry', 'string') == 'add') {
 		text|name|'. $tag_open .'d2u_guestbook_form_name'. $tag_close .' *
 		text|email|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'
 		textarea|description|'. $tag_open .'d2u_guestbook_form_message'. $tag_close .'
-		radio|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|'. $tag_open .'d2u_guestbook_no'. $tag_close .'=0,'. $tag_open .'d2u_guestbook_yes'. $tag_close .'=1|1|
+		choice|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|'. $tag_open .'d2u_guestbook_no'. $tag_close .'=0,'. $tag_open .'d2u_guestbook_yes'. $tag_close .'=1|1|0|
 		checkbox|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_privacy_policy'. $tag_close . ' *|0,1|0
 		text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"display:none"}
 		html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
 		php|validate_timer|Spamprotection|<input name="validate_timer" type="hidden" value="'. microtime(true) .'" />|
-		captcha|'. $tag_open .'d2u_guestbook_form_captcha'. $tag_close .'|'. $tag_open .'d2u_guestbook_form_validate_captcha'. $tag_close .'|'. rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']) .'
 		hidden|online_status|offline
 		hidden|create_date|'. time() .'
 		hidden|clang_id|'. rex_clang::getCurrentId() .'
@@ -64,7 +63,7 @@ if(rex_get('entry', 'string') == 'add') {
 
 		validate|empty|name|'. $tag_open .'d2u_guestbook_form_validate_name'. $tag_close .'
 		validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_description'. $tag_close .'
-		validate|customfunction|validate_timer|d2u_addon_frontend_helper::yform_validate_timer|10|'. $tag_open .'d2u_guestbook_form_validate_spambots'. $tag_close .'|
+		validate|customfunction|validate_timer|d2u_addon_frontend_helper::yform_validate_timer|3|'. $tag_open .'d2u_guestbook_form_validate_spambots'. $tag_close .'|
 
 		action|callback|sendAdminNotification
 		action|db|'. rex::getTablePrefix() .'d2u_guestbook|';

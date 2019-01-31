@@ -8,7 +8,6 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper {
 	 * value the replacement. 
 	 */
 	protected $replacements_english = [
-		'd2u_guestbook_form_captcha' => 'To prevent abuse, please enter captcha.',
 		'd2u_guestbook_form_email' => 'E-mail address',
 		'd2u_guestbook_form_message' => 'Message',
 		'd2u_guestbook_form_name' => 'Name',
@@ -19,7 +18,6 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper {
 		'd2u_guestbook_form_send' => 'Send',
 		'd2u_guestbook_form_thanks' => 'Thank you for your guestbook entry. Our administrator will check the entry for spam or offending speech. This may take some time.',
 		'd2u_guestbook_form_title' => 'Request form',
-		'd2u_guestbook_form_validate_captcha' => 'The Captcha was not read correctly.',
 		'd2u_guestbook_form_validate_description' => 'Please enter a message for the guestbook.',
 		'd2u_guestbook_form_validate_name' => 'Please enter your full name.',
 		'd2u_guestbook_form_validate_privacy_policy' => 'It\'s necessary to accept the privacy policy.',
@@ -41,7 +39,6 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper {
 	 * value the replacement. 
 	 */
 	protected $replacements_german = [
-		'd2u_guestbook_form_captcha' => 'Um Missbrauch vorzubeugen bitten wir Sie das Captcha einzugeben.',
 		'd2u_guestbook_form_email' => 'E-Mail Adresse',
 		'd2u_guestbook_form_message' => 'Nachricht',
 		'd2u_guestbook_form_name' => 'Name',
@@ -52,7 +49,6 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper {
 		'd2u_guestbook_form_send' => 'Abschicken',
 		'd2u_guestbook_form_thanks' => 'Danke für Ihren Eintrag. Unser Eintrag wird von unserem Administrator auf Spam und inakzeptable Sprache geprüft. Das kann einige Zeit in Anspruch nehmen. Es besteht kein Anspruch auf eine Veröffentlichung.',
 		'd2u_guestbook_form_title' => 'Anfrage zum Objekt',
-		'd2u_guestbook_form_validate_captcha' => 'Bitte geben Sie erneut das Captcha ein.',
 		'd2u_guestbook_form_validate_description' => 'Bitte geben Sie noch eine Nachricht fürs Gästebuch ein.',
 		'd2u_guestbook_form_validate_name' => 'Um Sie korrekt ansprechen zu können, geben Sie bitte Ihren vollständigen Namen an.',
 		'd2u_guestbook_form_validate_privacy_policy' => 'Der Datenschutzerklärung muss zugestimmt werden.',

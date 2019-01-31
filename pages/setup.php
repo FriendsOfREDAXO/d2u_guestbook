@@ -31,7 +31,7 @@ if(rex_request('import', 'string') == "tvsgb" && $tvsgb_available) {
 		print rex_view::error('Fehler beim Import: '. $sql->getError());
 	}
 	else {
-		print rex_view::success('Daten aus TVS Gästebucherfolgreich importiert und alte Tabelle gelöscht');
+		print rex_view::success('Daten aus TVS Gästebucherfolgreich importiert und alte Tabelle gelöscht.');
 	}
 }
 else if($tvsgb_available) {
@@ -58,7 +58,7 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.6:</p>
 <ul>
-	<li>Anpassungen an YForm 3.</li>
+	<li>Anpassungen der Module an YForm 3, welches jetzt Voraussetzung für die Version ist..</li>
 </ul>
 <p>1.0.5:</p>
 <ul>
