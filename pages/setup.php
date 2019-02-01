@@ -56,9 +56,9 @@ else if($tvsgb_available) {
 <h2>Support</h2>
 <p>Fehlermeldungen bitte im <a href="https://github.com/TobiasKrais/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
-<p>1.0.6:</p>
+<p>1.0.7-DEV:</p>
 <ul>
-	<li>Anpassungen der Module an YForm 3, welches jetzt Voraussetzung für die Version ist.</li>
+	<li>...</li>
 </ul>
 <p>1.0.6:</p>
 <ul>
