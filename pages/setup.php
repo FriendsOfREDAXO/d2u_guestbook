@@ -58,7 +58,11 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.6:</p>
 <ul>
-	<li>Anpassungen der Module an YForm 3, welches jetzt Voraussetzung für die Version ist..</li>
+	<li>Anpassungen der Module an YForm 3, welches jetzt Voraussetzung für die Version ist.</li>
+</ul>
+<p>1.0.6:</p>
+<ul>
+	<li>Anpassungen der Module an YForm 3, welches jetzt Voraussetzung für die Version ist.</li>
 </ul>
 <p>1.0.5:</p>
 <ul>
