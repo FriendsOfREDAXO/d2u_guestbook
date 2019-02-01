@@ -50,7 +50,7 @@ if(rex_get('entry', 'string') == 'add') {
 		text|name|'. $tag_open .'d2u_guestbook_form_name'. $tag_close .' *
 		text|email|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'
 		textarea|description|'. $tag_open .'d2u_guestbook_form_message'. $tag_close .'
-		choice|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|'. $tag_open .'d2u_guestbook_no'. $tag_close .'=0,'. $tag_open .'d2u_guestbook_yes'. $tag_close .'=1|1|0|
+		choice|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|{"'. $tag_open .'d2u_guestbook_no'. $tag_close .'":"0","'. $tag_open .'d2u_guestbook_yes'. $tag_close .'":"1"}|1|0|
 		checkbox|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_privacy_policy'. $tag_close . ' *|0,1|0
 		text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"display:none"}
 		html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
