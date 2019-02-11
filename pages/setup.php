@@ -58,7 +58,7 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.7-DEV:</p>
 <ul>
-	<li>...</li>
+	<li>Konvertierung der Datenbanktabellen zu utf8mb4.</li>
 </ul>
 <p>1.0.6:</p>
 <ul>

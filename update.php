@@ -42,3 +42,6 @@ if (!$this->hasConfig()) {
     $this->setConfig('allow_answer', 'false');
     $this->setConfig('no_entries_page', 10);
 }
+
+// Update database to 1.0.7
+$sql->setQuery("ALTER TABLE `". rex::getTablePrefix() ."d2u_guestbook` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;");
