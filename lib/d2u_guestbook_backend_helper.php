@@ -25,7 +25,7 @@ class d2u_guestbook_backend_helper {
 
 			$mail->AddAddress(\rex_config::get('d2u_guestbook', 'request_form_email'));
 			$mail->addReplyTo($fields['email'], $fields['name']);
-			$mail->Subject = 'New Guestbook entry - Neuer Gästebuch eintrag - '. \rex::getServer();
+			$mail->Subject = 'New Guestbook entry - Neuer Gästebuch eintrag - '. (\rex_addon::get('yrewrite') && \rex_addon::get('yrewrite')->isAvailable() ? \rex_yrewrite::getCurrentDomain()->getUrl() : \rex::getServer());
 
 			$mail_body = "Guten Tag,\n\n";
 			$mail_body .= $fields['name'] ." hat einen neuen Gästebucheintrag erstellt:\n";
