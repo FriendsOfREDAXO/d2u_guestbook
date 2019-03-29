@@ -58,6 +58,7 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.7-DEV:</p>
 <ul>
+	<li>Listen im Backend werden jetzt nicht mehr in Seiten unterteilt.</li>
 	<li>YRewrite Multidomain support.</li>
 	<li>Konvertierung der Datenbanktabellen zu utf8mb4.</li>
 </ul>
