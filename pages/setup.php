@@ -22,7 +22,7 @@ $tvsgb_available = $sql->getRows() > 0 ? TRUE : FALSE;
 if(rex_request('import', 'string') == "tvsgb" && $tvsgb_available) {
 	$sql->setQuery("UPDATE `". rex::getTablePrefix() ."771_entries` SET description = REPLACE(description, '\r\n', '<br>');
 		INSERT INTO ". rex::getTablePrefix() ."d2u_guestbook (`name`, `email`, `description`, `clang_id`, `online_status`, `create_date`)
-			SELECT `create_user`, `email`, `description`, `clang`, `status`, `create_date` FROM ". rex::getTablePrefix() ."771_entries;
+			SELECT `create_user`, `email`, `description`, `clang`, `status`, FROM_UNIXTIME(`create_date`) FROM ". rex::getTablePrefix() ."771_entries;
 		UPDATE `". rex::getTablePrefix() ."d2u_guestbook` SET `online_status` = 'online' WHERE `online_status` = '1';
 		UPDATE `". rex::getTablePrefix() ."d2u_guestbook` SET `online_status` = 'offline' WHERE `online_status` = '0';
 		UPDATE `". rex::getTablePrefix() ."d2u_guestbook` SET rating = 0 WHERE rating = NULL;
@@ -60,6 +60,7 @@ else if($tvsgb_available) {
 <ul>
 	<li>Listen im Backend werden jetzt nicht mehr in Seiten unterteilt.</li>
 	<li>YRewrite Multidomain support.</li>
+	<li>Datenbankfeld "create_date" in Redaxo Standard DATETIME umgewandelt. Beispielmodule sind angepasst.</li>
 	<li>Konvertierung der Datenbanktabellen zu utf8mb4.</li>
 </ul>
 <p>1.0.6:</p>

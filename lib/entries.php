@@ -56,9 +56,9 @@ class Entry {
 	var $online_status = "online";
 	
 	/**
-	 * @var int create date
+	 * @var string create date
 	 */
-	var $create_date = 0;
+	var $create_date = "";
 	
 	/**
 	 * Constructor. Reads a contact stored in database.
@@ -185,7 +185,7 @@ class Entry {
 				."description = '". addslashes(htmlspecialchars($this->description)) ."', "
 				."online_status = '". $this->online_status ."' ";
 		if($this->id == 0) {
-			$query = "INSERT INTO ". $query . ", create_date = ". time();
+			$query = "INSERT INTO ". $query . ", create_date = CURRENT_TIMESTAMP";
 		}
 		else {
 			$query = "UPDATE ". $query ." WHERE id = ". $this->id;

@@ -12,7 +12,7 @@ $sql->setQuery("CREATE TABLE IF NOT EXISTS `". rex::getTablePrefix() ."d2u_guest
 	`recommendation` tinyint(1) DEFAULT 0,
 	`privacy_policy_accepted` tinyint(1) DEFAULT 0,
 	`online_status` varchar(10) DEFAULT NULL,
-	`create_date` int(11) NOT NULL,
+	`create_date` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1;");
 

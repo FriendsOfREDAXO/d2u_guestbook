@@ -55,7 +55,7 @@ for($i = 0; $i < count($entries); $i++) {
 		print $entry->name;
 	}
 	print '</b></div>';
-	print '<div class="col-6 right">'. date('d.m.Y H:i', $entry->create_date) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
+	print '<div class="col-6 right">'. date('d.m.Y H:i', strtotime($entry->create_date)) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
 	print '</div>';
 	print '</div>';
 
