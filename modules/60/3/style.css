@@ -73,6 +73,9 @@ guestbook-page {
 	background-color: navi_color_font;
 	color: navi_color_bg !important;
 }
+.hide-validation {
+	display: none;
+}
 
 /* YForm */
 .input-group-addon {

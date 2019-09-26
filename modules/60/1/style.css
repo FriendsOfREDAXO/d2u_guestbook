@@ -87,6 +87,9 @@ guestbook-page {
 #tab_write {
 	padding-bottom: 1em;
 }
+.hide-validation {
+	display: none;
+}
 
 /* YForm */
 .input-group-addon {
