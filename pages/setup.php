@@ -59,6 +59,7 @@ else if($tvsgb_available) {
 <p>1.0.8-DEV:</p>
 <ul>
 	<li>Bugfix: Datum in Übersichtsliste korrekt dargestellt.</li>
+	<li>Bugfix: Datum des Eintrags wird wieder korrekt gespeichert.</li>
 	<li>Honeypot als Spamschutzmaßnahme für die Module hinzugefügt.</li>
 </ul>
 <p>1.0.7:</p>
