@@ -146,7 +146,7 @@ $form_data = '
 	email|email|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'
 	html|honeypot||<div class="hide-validation">
 	text|mailvalidate|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'|1|no_db
-	validate|compare|email|mailvalidate|==|Spam|
+	validate|compare_value|mailvalidate|1|!=|'. $tag_open .'d2u_guestbook_form_validate_spam_detected'. $tag_close .'|
     html|honeypot||</div>
 	textarea|description|'. $tag_open .'d2u_guestbook_form_message'. $tag_close .'
 	choice|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|{"'. $tag_open .'d2u_guestbook_no'. $tag_close .'":"0","'. $tag_open .'d2u_guestbook_yes'. $tag_close .'":"1"}|1|0|

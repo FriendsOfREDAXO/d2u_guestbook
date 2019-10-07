@@ -51,7 +51,7 @@ if(rex_get('entry', 'string') == 'add') {
 		email|email|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'
 		html|honeypot||<div class="hide-validation">
 		text|mailvalidate|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'|1|no_db
-		validate|compare|email|mailvalidate|==|Spam|
+		validate|compare_value|mailvalidate|1|!=|'. $tag_open .'d2u_guestbook_form_validate_spam_detected'. $tag_close .'|
 		html|honeypot||</div>
 		textarea|description|'. $tag_open .'d2u_guestbook_form_message'. $tag_close .'
 		choice|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|{"'. $tag_open .'d2u_guestbook_no'. $tag_close .'":"0","'. $tag_open .'d2u_guestbook_yes'. $tag_close .'":"1"}|1|0|
@@ -67,6 +67,7 @@ if(rex_get('entry', 'string') == 'add') {
 
 		validate|empty|name|'. $tag_open .'d2u_guestbook_form_validate_name'. $tag_close .'
 		validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_description'. $tag_close .'
+		validate|empty|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_validate_privacy_policy'. $tag_close .'
 		validate|customfunction|validate_timer|d2u_addon_frontend_helper::yform_validate_timer|5|'. $tag_open .'d2u_guestbook_form_validate_spambots'. $tag_close .'|
 
 		action|callback|sendAdminNotification
