@@ -155,7 +155,7 @@ $form_data = '
 	html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
 	php|validate_timer|Spamprotection|<input name="validate_timer" type="hidden" value="'. microtime(true) .'" />|
 	hidden|online_status|offline
-	hidden|create_date|'. time() .'
+	hidden|create_date|'. date("Y-m-d H:i:s") .'
 	hidden|clang_id|'. rex_clang::getCurrentId() .'
 
 	submit|submit|'. $tag_open .'d2u_guestbook_form_send'. $tag_close .'|no_db
