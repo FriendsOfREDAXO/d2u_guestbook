@@ -58,6 +58,7 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.8-DEV:</p>
 <ul>
+	<li>Bugfix: Datum in Übersichtsliste korrekt dargestellt.</li>
 	<li>Honeypot als Spamschutzmaßnahme für die Module hinzugefügt.</li>
 </ul>
 <p>1.0.7:</p>

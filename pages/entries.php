@@ -120,7 +120,7 @@ if ($func == 'edit' || $func == 'add') {
 }
 
 if ($func == '') {
-	$query = 'SELECT id, name, email, rating, FROM_UNIXTIME(create_date, "%Y-%m-%d  %H:%i") AS create_date, online_status '
+	$query = 'SELECT id, name, email, rating, create_date, online_status '
 		. 'FROM '. rex::getTablePrefix() .'d2u_guestbook '
 		. 'ORDER BY create_date DESC';
     $list = rex_list::factory($query, 1000);
