@@ -78,7 +78,7 @@ class Entry {
 			$this->email = $result->getValue("email");
 			$this->rating = $result->getValue("rating");
 			$this->recommendation = $result->getValue("recommendation") == 1 ? TRUE : FALSE;
-			$this->privacy_policy_accepted = $result->getValue("privacy_policy_accepted") == 'yes' ? TRUE : FALSE;
+			$this->privacy_policy_accepted = $result->getValue("privacy_policy_accepted") == '1' ? TRUE : FALSE;
 			$this->description = stripslashes(htmlspecialchars_decode($result->getValue("description")));
 			$this->online_status = $result->getValue("online_status");
 			$this->create_date = $result->getValue("create_date");
