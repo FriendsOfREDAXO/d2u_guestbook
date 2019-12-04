@@ -58,7 +58,7 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.9-DEV:</p>
 <ul>
-	<li>...</li>
+	<li>Backend: Einstellungen und Setup Tabs rechts eingeordnet um sie vom Inhalt besser zu unterscheiden.</li>
 </ul>
 <p>1.0.8:</p>
 <ul>
