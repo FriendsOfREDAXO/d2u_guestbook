@@ -13,7 +13,7 @@ page:
         settings: { title: 'translate:d2u_helper_settings', icon: rex-icon rex-icon-system, itemclass: pull-right, perm: d2u_guestbook[settings] }
 
 requires:
-    redaxo: >=5.10.0
+    redaxo: '>=5.10.0'
     packages:
         d2u_helper: '>=1.5.2'
         emailobfuscator: '>=2.1.5'
