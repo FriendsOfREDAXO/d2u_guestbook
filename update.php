@@ -37,7 +37,7 @@ if($sql->getRows() == 0) {
 		. "ADD privacy_policy_accepted tinyint(1) DEFAULT 0 AFTER recommendation;");
 }
 // 1.0.6 Update database
-if (rex_string::versionCompare($this->getVersion(), '1.0.6', '<')) {
+if (rex_version::compare($this->getVersion(), '1.0.6', '<')) {
 	$sql->setQuery("UPDATE ". \rex::getTablePrefix() ."d2u_guestbook SET privacy_policy_accepted = '0' WHERE privacy_policy_accepted = 'no';");
 	$sql->setQuery("UPDATE ". \rex::getTablePrefix() ."d2u_guestbook SET privacy_policy_accepted = '1' WHERE privacy_policy_accepted = 'yes';");
 	$sql->setQuery("ALTER TABLE ". \rex::getTablePrefix() ."d2u_guestbook CHANGE privacy_policy_accepted privacy_policy_accepted tinyint(1) DEFAULT 0;");
@@ -45,7 +45,7 @@ if (rex_string::versionCompare($this->getVersion(), '1.0.6', '<')) {
 
 // Update database to 1.0.7
 $sql->setQuery("ALTER TABLE `". rex::getTablePrefix() ."d2u_guestbook` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;");
-if (rex_string::versionCompare($this->getVersion(), '1.0.7', '<')) {
+if (rex_version::compare($this->getVersion(), '1.0.7', '<')) {
 	$sql->setQuery("ALTER TABLE ". \rex::getTablePrefix() ."d2u_guestbook ADD COLUMN `create_date_new` DATETIME NOT NULL AFTER `create_date`;");
 	$sql->setQuery("UPDATE ". \rex::getTablePrefix() ."d2u_guestbook SET `create_date_new` = FROM_UNIXTIME(`create_date`);");
 	$sql->setQuery("ALTER TABLE ". \rex::getTablePrefix() ."d2u_guestbook DROP create_date;");
