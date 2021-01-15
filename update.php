@@ -18,7 +18,7 @@ if(class_exists('D2UModuleManager')) {
 	$modules[] = new D2UModule("60-3",
 		"D2U Guestbook - Gästebuch ohne Tabs",
 		9);
-	$d2u_module_manager = new D2UModuleManager($modules, "", "d2u_address");
+	$d2u_module_manager = new D2UModuleManager($modules, "", "d2u_guestbook");
 	$d2u_module_manager->autoupdate();
 }
 
