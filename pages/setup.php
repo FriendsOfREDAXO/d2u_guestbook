@@ -56,7 +56,7 @@ else if($tvsgb_available) {
 <h2>Support</h2>
 <p>Fehlermeldungen bitte im <a href="https://github.com/TobiasKrais/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
-<p>1.0.9-DEV:</p>
+<p>1.0.9:</p>
 <ul>
 	<li>Fehler in der Updatedatei hat die Module nicht aktualisiert und zu einem fatalen fehler führen können.</li>
 	<li>Benötigt Redaxo >= 5.10, da die neue Klasse rex_version verwendet wird.</li>
