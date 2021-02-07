@@ -65,6 +65,7 @@ else if($tvsgb_available) {
 	<li>Fehler in der Updatedatei hat die Module nicht aktualisiert und zu einem fatalen Fehler führen können.</li>
 	<li>Benötigt Redaxo >= 5.10, da die neue Klasse rex_version verwendet wird.</li>
 	<li>Backend: Einstellungen und Setup Tabs rechts eingeordnet um sie vom Inhalt besser zu unterscheiden.</li>
+	<li>Modul "60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs": Kundenbewertungen können optional ausgeblendet werden.</li>
 </ul>
 <p>1.0.8:</p>
 <ul>

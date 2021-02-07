@@ -40,7 +40,7 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper {
 	 * value the replacement. 
 	 */
 	protected $replacements_german = [
-		'd2u_guestbook_form_email' => 'E-Mail Adresse',
+		'd2u_guestbook_form_email' => 'E-Mail-SAdresse',
 		'd2u_guestbook_form_message' => 'Nachricht',
 		'd2u_guestbook_form_name' => 'Name',
 		'd2u_guestbook_form_privacy_policy' => 'Ich willige in die Speicherung und Verarbeitung meiner Kontakt- und Nutzungsdaten durch den Betreiber des Gästebuches ein. Über den Umfang der Datenverarbeitung habe ich mich  <a href="+++LINK_PRIVACY_POLICY+++" target="_blank">hier</a> informiert. Ich habe das Recht dieser Verwendung jederzeit unter den im <a href="+++LINK_IMPRESS+++" target="_blank">Impressum</a> angegebenen Kontaktdaten zu widersprechen.',

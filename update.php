@@ -11,7 +11,7 @@ if(class_exists('D2UModuleManager')) {
 	$modules = [];
 	$modules[] = new D2UModule("60-1",
 		"D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs",
-		10);
+		11);
 	$modules[] = new D2UModule("60-2",
 		"D2U Guestbook - Infobox Bewertung",
 		2);

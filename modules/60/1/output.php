@@ -1,4 +1,6 @@
 <?php
+$hide_rating = "REX_VALUE[1]" == 'true' ? TRUE : FALSE;
+
 if(!function_exists('sendAdminNotification')) {
 	/**
 	 * Send mail to admin address when news guestbook entry is created.
@@ -45,7 +47,7 @@ for($i = 0; $i < count($entries); $i++) {
 	
 	print '<div class="entry-header">';
 	print '<div class="row">';
-	print '<div class="col-6"><b>'. $tag_open .'d2u_guestbook_form_name'. $tag_close .': ';
+	print '<div class="col-6"><b>';
 	if($entry->email != '' && rex_config::get('d2u_guestbook', 'allow_answer', 'false') == 'true') {
 		print '<a href="mailto:'. $entry->email .'">';
 		print $entry->name .' <span class="icon mail"></span>';
@@ -62,7 +64,7 @@ for($i = 0; $i < count($entries); $i++) {
 	print '<div class="entry-body">';
 	print '<div class="row">';
 	print '<div class="col-12">'. nl2br($entry->description) .'</div>';
-	if($entry->rating > 0) {
+	if(!$hide_rating && $entry->rating > 0) {
 		print '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
 		for($j = 1; $j <= 5; $j++) {
 			if($j <= $entry->rating) {
@@ -151,7 +153,7 @@ $form_data = '
 	textarea|description|'. $tag_open .'d2u_guestbook_form_message'. $tag_close .'
 	choice|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|{"'. $tag_open .'d2u_guestbook_no'. $tag_close .'":"0","'. $tag_open .'d2u_guestbook_yes'. $tag_close .'":"1"}|1|0|
 	checkbox|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_privacy_policy'. $tag_close . ' *|0,1|0
-	text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"display:none"}
+	'. ($hide_rating ? 'hidden|rating|0' : 'text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"display:none"}') .'
 	html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
 	php|validate_timer|Spamprotection|<input name="validate_timer" type="hidden" value="'. microtime(true) .'" />|
 	hidden|online_status|offline
