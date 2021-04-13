@@ -1,4 +1,25 @@
 <?php
+$cols_sm = "REX_VALUE[20]";
+if($cols_sm == "") {
+	$cols_sm = 12;
+}
+$cols_md = "REX_VALUE[19]";
+if($cols_md == "") {
+	$cols_md = 12;
+}
+$cols_lg = "REX_VALUE[18]";
+if($cols_lg == "") {
+	$cols_lg = 12;
+}
+$offset_lg_cols = intval("REX_VALUE[17]");
+$offset_lg = "";
+if($offset_lg_cols > 0) {
+	$offset_lg = " mr-lg-auto ml-lg-auto ";
+}
+
+print '<div class="col-12 col-sm-'. $cols_sm .' col-md-'. $cols_md .' col-lg-'. $cols_lg . $offset_lg .'">';
+print '<div class="row">';
+
 $hide_rating = "REX_VALUE[1]" == 'true' ? TRUE : FALSE;
 
 if(!function_exists('sendAdminNotification')) {
@@ -81,7 +102,7 @@ for($i = 0; $i < count($entries); $i++) {
 
 	print '</div>';
 }
-print '</div>'; // End pagination div
+print '</div>'; // tab_guestbook
 
 // Page selection
 if($page_no > 1) {
@@ -182,10 +203,10 @@ $yform->setActionField("showtext", [$tag_open .'d2u_guestbook_form_thanks'. $tag
 
 echo $yform->getForm();
 print '</fieldset>';
-print '</div>';
-print '</div>';
+print '</div>'; // col-12
+print '</div>'; // row
 // End request form
-print '</div>';
+print '</div>'; // tab_write
 
 print '</div>';
 print '</div>';
@@ -200,3 +221,5 @@ print '</div>';
 	// set stars on failure page correctly
 	set_stars($('input[name=rating]').val());
 </script>
+</div>
+</div>
