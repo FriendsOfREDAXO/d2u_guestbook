@@ -58,6 +58,7 @@ else if($tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.1.0-DEV:</p>
 <ul>
+	<li>Abhängigkeit zum emailobfuscator Addon entfernt.</li>
 	<li>Modul "60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs": Gesamtbreite kann eingestellt werden.</li>
 </ul>
 <p>1.0.9:</p>

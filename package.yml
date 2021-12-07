@@ -16,6 +16,5 @@ requires:
     redaxo: '>=5.10.0'
     packages:
         d2u_helper: '>=1.5.2'
-        emailobfuscator: '>=2.1.5'
         sprog: '>=1.0.0'
         yform: '>=3.0'
