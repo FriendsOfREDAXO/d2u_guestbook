@@ -14,6 +14,7 @@ if(rex::isBackend()) {
  * @return string[] Warning message as array
  */
 function rex_d2u_guestbook_clang_deleted(rex_extension_point $ep) {
+	/** @var string[] $warning */
 	$warning = $ep->getSubject();
 	$params = $ep->getParams();
 	$clang_id = $params['id'];
