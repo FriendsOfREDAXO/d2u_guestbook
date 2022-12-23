@@ -20,9 +20,9 @@ function rex_d2u_guestbook_clang_deleted(rex_extension_point $ep) {
 	$clang_id = $params['id'];
 
 	// Delete
-	$entries = D2U_Guestbook\Entry::getAll(FALSE);
+	$entries = D2U_Guestbook\Entry::getAll(false);
 	foreach ($entries as $entry) {
-		if($entry->clang_id == $clang_id) {
+		if($entry->clang_id === $clang_id) {
 			$entry->delete();
 		}
 	}

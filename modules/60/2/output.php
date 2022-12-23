@@ -5,7 +5,7 @@ $tag_open = $sprog->getConfig('wildcard_open_tag');
 $tag_close = $sprog->getConfig('wildcard_close_tag');
 
 $d2u_guestbook = rex_addon::get("d2u_guestbook");
-$show_link = ($d2u_guestbook->hasConfig('guestbook_article_id') && $d2u_guestbook->getConfig('guestbook_article_id') != "") ? TRUE : FALSE;
+$show_link = ($d2u_guestbook->hasConfig('guestbook_article_id') && $d2u_guestbook->getConfig('guestbook_article_id') != "") ? true : false;
 
 $rating = round(D2U_Guestbook\Entry::getRating(), 1);
 $num_recommendations = D2U_Guestbook\Entry::getRecommendation();

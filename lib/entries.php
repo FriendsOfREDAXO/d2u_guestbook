@@ -43,12 +43,12 @@ class Entry {
 	/**
 	 * @var boolean recommendation
 	 */
-	var $recommendation = TRUE;
+	var $recommendation = true;
 	
 	/**
 	 * @var boolean Did user accept privacy policy
 	 */
-	var $privacy_policy_accepted = FALSE;
+	var $privacy_policy_accepted = false;
 	
 	/**
 	 * @var string Online status
@@ -77,8 +77,8 @@ class Entry {
 			$this->name = stripslashes($result->getValue("name"));
 			$this->email = $result->getValue("email");
 			$this->rating = $result->getValue("rating");
-			$this->recommendation = $result->getValue("recommendation") == 1 ? TRUE : FALSE;
-			$this->privacy_policy_accepted = $result->getValue("privacy_policy_accepted") == '1' ? TRUE : FALSE;
+			$this->recommendation = $result->getValue("recommendation") == 1 ? true : false;
+			$this->privacy_policy_accepted = $result->getValue("privacy_policy_accepted") == '1' ? true : false;
 			$this->description = stripslashes(htmlspecialchars_decode($result->getValue("description")));
 			$this->online_status = $result->getValue("online_status");
 			$this->create_date = $result->getValue("create_date");
@@ -88,8 +88,8 @@ class Entry {
 	/**
 	 * Changes the status of a property
 	 */
-	public function changeStatus() {
-		if($this->online_status == "online") {
+	public function changeStatus():void {
+		if($this->online_status === "online") {
 			if($this->id > 0) {
 				$query = "UPDATE ". \rex::getTablePrefix() ."d2u_guestbook "
 					."SET online_status = 'offline' "
@@ -123,10 +123,10 @@ class Entry {
 
 	/**
 	 * Get all guestbook entries.
-	 * @param boolean $online_only TRUE if only online objects should be returned
+	 * @param boolean $online_only true if only online objects should be returned
 	 * @return Entry[] Array with Entry objects.
 	 */
-	public static function getAll($online_only = FALSE) {
+	public static function getAll($online_only = false) {
 		$query = "SELECT id FROM ". \rex::getTablePrefix() ."d2u_guestbook ";
 		if($online_only) {
 			$query .= "WHERE online_status = 'online' ";
@@ -194,7 +194,7 @@ class Entry {
 		$result = \rex_sql::factory();
 		$result->setQuery($query);
 		if($this->id == 0) {
-			$this->id = $result->getLastId();
+			$this->id = intval($result->getLastId());
 			$error = $result->hasError();
 		}
 		

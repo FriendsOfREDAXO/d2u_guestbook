@@ -75,7 +75,7 @@ if(rex_get('entry', 'string') == 'add') {
 
 	$yform = new rex_yform;
 	$yform->setFormData(trim($form_data));
-	$yform->setObjectparams('real_field_names', TRUE);
+	$yform->setObjectparams('real_field_names', true);
 	$yform->setObjectparams("form_action", rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']));
 	$yform->setObjectparams("Error-occured", $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
 
@@ -95,7 +95,7 @@ else {
 	
 	// Entries
 	print '<div class="col-12">';
-	$entries = D2U_Guestbook\Entry::getAll(TRUE);
+	$entries = D2U_Guestbook\Entry::getAll(true);
 	$page_no = 0;
 	for($i = 0; $i < count($entries); $i++) {
 		$entry = $entries[$i];

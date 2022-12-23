@@ -18,7 +18,7 @@ $d2u_module_manager->showManagerList();
 // Import from TVS Guestbook
 $sql = rex_sql::factory();
 $sql->setQuery("SHOW TABLES LIKE '". rex::getTablePrefix() ."771_entries'");
-$tvsgb_available = $sql->getRows() > 0 ? TRUE : FALSE;
+$tvsgb_available = $sql->getRows() > 0 ? true : false;
 if(rex_request('import', 'string') == "tvsgb" && $tvsgb_available) {
 	$sql->setQuery("UPDATE `". rex::getTablePrefix() ."771_entries` SET description = REPLACE(description, '\r\n', '<br>');
 		INSERT INTO ". rex::getTablePrefix() ."d2u_guestbook (`name`, `email`, `description`, `clang_id`, `online_status`, `create_date`)
@@ -38,7 +38,7 @@ else if($tvsgb_available) {
 	print "<h2>Import aus Redaxo 4 TVS Gästebuch</h2>";
 	print "<p>Es wurde eine TVS Gästebuch Tabelle aus Redaxo 4 in der Datenbank gefunden."
 	. "Sollen die Daten importiert werden und die alte Tabelle gelöscht werden?</p>";
-	print '<a href="'. rex_url::currentBackendPage(["import" => "tvsgb"], FALSE) .'"><button class="btn btn-save">Import</button></a>';
+	print '<a href="'. rex_url::currentBackendPage(["import" => "tvsgb"], false) .'"><button class="btn btn-save">Import</button></a>';
 }
 ?>
 <h2>Installation der Module</h2>

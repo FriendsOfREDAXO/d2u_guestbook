@@ -18,7 +18,7 @@ class d2u_guestbook_backend_helper {
 			}
 			
 			$mail = new \rex_mailer();
-			$mail->IsHTML(FALSE);
+			$mail->IsHTML(false);
 			$mail->CharSet = "utf-8";
 			$mail->From = \rex_config::get('d2u_guestbook', 'request_form_email');
 			$mail->Sender = \rex_config::get('d2u_guestbook', 'request_form_email');

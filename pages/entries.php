@@ -10,7 +10,7 @@ if($message != "") {
 
 // save settings
 if (intval(filter_input(INPUT_POST, "btn_save")) === 1 || intval(filter_input(INPUT_POST, "btn_apply")) === 1) {
-	$form = (array) rex_post('form', 'array', []);
+	$form = rex_post('form', 'array', []);
 
 	// Media fields and links need special treatment
 	$entry = new D2U_Guestbook\Entry($form['entry_id']);
@@ -18,7 +18,7 @@ if (intval(filter_input(INPUT_POST, "btn_save")) === 1 || intval(filter_input(IN
 	$entry->name = $form['name'];
 	$entry->email = $form['email'];
 	$entry->rating = $form['rating'] != '' ? $form['rating'] : 0;
-	$entry->recommendation =  array_key_exists('recommendation', $form) ? TRUE : FALSE;
+	$entry->recommendation =  array_key_exists('recommendation', $form) ? true : false;
 	$entry->description = $form['description'];
 	$entry->online_status = array_key_exists('online_status', $form) ? 'online' : 'offline';
 
@@ -29,18 +29,18 @@ if (intval(filter_input(INPUT_POST, "btn_save")) === 1 || intval(filter_input(IN
 	}
 	
 	// Redirect to make reload and thus double save impossible
-	if(filter_input(INPUT_POST, "btn_apply") == 1 && $entry !== FALSE) {
-		header("Location: ". rex_url::currentBackendPage(["entry_id" => $entry->id, "func" => 'edit', "message" => $message], FALSE));
+	if(intval(filter_input(INPUT_POST, "btn_apply", FILTER_VALIDATE_INT)) === 1 &&$entry !== false) {
+		header("Location: ". rex_url::currentBackendPage(["entry_id" => $entry->id, "func" => 'edit', "message" => $message], false));
 	}
 	else {
-		header("Location: ". rex_url::currentBackendPage(["message"=>$message], FALSE));
+		header("Location: ". rex_url::currentBackendPage(["message"=>$message], false));
 	}
 	exit;
 }
 // Delete
-else if(filter_input(INPUT_POST, "btn_delete") == 1 || $func == 'delete') {
-	if($entry_id == 0) {
-		$form = (array) rex_post('form', 'array', []);
+else if(intval(filter_input(INPUT_POST, "btn_delete", FILTER_VALIDATE_INT)) === 1 || $func === 'delete') {
+	if($entry_id === 0) {
+		$form = rex_post('form', 'array', []);
 		$entry_id = $form['entry_id'];
 	}
 	$entry = new D2U_Guestbook\Entry($entry_id);
@@ -49,7 +49,7 @@ else if(filter_input(INPUT_POST, "btn_delete") == 1 || $func == 'delete') {
 	$func = '';
 }
 // Change online status of machine
-else if($func == 'changestatus') {
+else if($func === 'changestatus') {
 	$entry = new D2U_Guestbook\Entry($entry_id);
 	$entry->changeStatus();
 	
@@ -59,7 +59,7 @@ else if($func == 'changestatus') {
 
 
 // Eingabeformular
-if ($func == 'edit' || $func == 'add') {
+if ($func === 'edit' || $func === 'add') {
 ?>
 	<form action="<?php print rex_url::currentBackendPage(); ?>" method="post">
 		<div class="panel panel-edit">
@@ -71,24 +71,24 @@ if ($func == 'edit' || $func == 'add') {
 					<div class="panel-body-wrapper slide">
 						<?php
 							$entry = new D2U_Guestbook\Entry($entry_id);
-							if(count(rex_clang::getAllIds(TRUE)) > 1) {
+							if(count(rex_clang::getAllIds(true)) > 1) {
 								$options_clang = [];
-								foreach(rex_clang::getAll(TRUE) as $rex_clang){
+								foreach(rex_clang::getAll(true) as $rex_clang){
 									$options_clang[$rex_clang->getId()] = $rex_clang->getName();
 								}
-								d2u_addon_backend_helper::form_select('d2u_guestbook_clang', 'form[clang_id]', $options_clang, [$entry->clang_id], 1, FALSE);
+								d2u_addon_backend_helper::form_select('d2u_guestbook_clang', 'form[clang_id]', $options_clang, [$entry->clang_id], 1, false);
 							}
 							else {
 								print '<input type="hidden" name="form[clang_id]" value="'. rex_clang::getStartId() .'">';
 							}
 
-							d2u_addon_backend_helper::form_input('d2u_helper_name', 'form[name]', $entry->name, TRUE, FALSE);
-							d2u_addon_backend_helper::form_input('d2u_guestbook_email', 'form[email]', $entry->email, FALSE, FALSE, 'email');
-							d2u_addon_backend_helper::form_input('d2u_guestbook_rating', 'form[rating]', $entry->rating, FALSE, FALSE, 'number');
+							d2u_addon_backend_helper::form_input('d2u_helper_name', 'form[name]', $entry->name, true, false);
+							d2u_addon_backend_helper::form_input('d2u_guestbook_email', 'form[email]', $entry->email, false, false, 'email');
+							d2u_addon_backend_helper::form_input('d2u_guestbook_rating', 'form[rating]', $entry->rating, false, false, 'number');
 							d2u_addon_backend_helper::form_checkbox('d2u_guestbook_recommendation', 'form[recommendation]', 'true', $entry->recommendation);
-							d2u_addon_backend_helper::form_checkbox('d2u_guestbook_privacy_policy_accepted', 'form[privacy_policy_accepted]', 'true', $entry->privacy_policy_accepted, TRUE);
-							d2u_addon_backend_helper::form_textarea('d2u_guestbook_description', "form[description]", $entry->description, 10, TRUE, FALSE, FALSE);
-							d2u_addon_backend_helper::form_checkbox('d2u_helper_online_status', 'form[online_status]', 'online', $entry->online_status == 'online' ? TRUE : FALSE);
+							d2u_addon_backend_helper::form_checkbox('d2u_guestbook_privacy_policy_accepted', 'form[privacy_policy_accepted]', 'true', $entry->privacy_policy_accepted, true);
+							d2u_addon_backend_helper::form_textarea('d2u_guestbook_description', "form[description]", $entry->description, 10, true, false, false);
+							d2u_addon_backend_helper::form_checkbox('d2u_helper_online_status', 'form[online_status]', 'online', $entry->online_status == 'online' ? true : false);
 						?>
 					</div>
 				</fieldset>
@@ -119,7 +119,7 @@ if ($func == 'edit' || $func == 'add') {
 //		print d2u_addon_backend_helper::getJS();
 }
 
-if ($func == '') {
+if ($func === '') {
 	$query = 'SELECT id, name, email, rating, create_date, online_status '
 		. 'FROM '. rex::getTablePrefix() .'d2u_guestbook '
 		. 'ORDER BY create_date DESC';

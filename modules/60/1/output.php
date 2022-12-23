@@ -20,7 +20,7 @@ if($offset_lg_cols > 0) {
 print '<div class="col-12 col-sm-'. $cols_sm .' col-md-'. $cols_md .' col-lg-'. $cols_lg . $offset_lg .'">';
 print '<div class="row">';
 
-$hide_rating = "REX_VALUE[1]" == 'true' ? TRUE : FALSE;
+$hide_rating = "REX_VALUE[1]" == 'true' ? true : false;
 
 if(!function_exists('sendAdminNotification')) {
 	/**
@@ -50,7 +50,7 @@ print '<div class="tab-content">';
 print '<div id="tab_guestbook" class="tab-pane fade active show guestbook-tab">';
 	
 // Entries
-$entries = \D2U_Guestbook\Entry::getAll(TRUE);
+$entries = \D2U_Guestbook\Entry::getAll(true);
 $page_no = 0;
 
 for($i = 0; $i < count($entries); $i++) {
@@ -193,7 +193,7 @@ $form_data = '
 
 $yform = new rex_yform;
 $yform->setFormData(trim($form_data));
-$yform->setObjectparams('real_field_names', TRUE);
+$yform->setObjectparams('real_field_names', true);
 $yform->setObjectparams("form_action", rex_getUrl(rex_article::getCurrentId()));
 $yform->setObjectparams("form_anchor", "tab_write");
 $yform->setObjectparams("Error-occured", $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);

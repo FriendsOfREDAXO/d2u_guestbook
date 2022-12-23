@@ -32,7 +32,7 @@ if (!$this->hasConfig()) {
 $sql = rex_sql::factory();
 // 1.0.3 Update database
 $sql->setQuery("SHOW COLUMNS FROM ". \rex::getTablePrefix() ."d2u_guestbook LIKE 'privacy_policy_accepted';");
-if($sql->getRows() == 0) {
+if(intval($sql->getRows()) === 0) {
 	$sql->setQuery("ALTER TABLE ". \rex::getTablePrefix() ."d2u_guestbook "
 		. "ADD privacy_policy_accepted tinyint(1) DEFAULT 0 AFTER recommendation;");
 }
