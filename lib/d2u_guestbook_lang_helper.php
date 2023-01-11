@@ -4,10 +4,10 @@
  */
 class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper {
 	/**
-	 * @var string[] Array with english replacements. Key is the wildcard,
+	 * @var array<string, string> Array with english replacements. Key is the wildcard,
 	 * value the replacement. 
 	 */
-	protected $replacements_english = [
+	protected array $replacements_english = [
 		'd2u_guestbook_form_email' => 'E-mail address',
 		'd2u_guestbook_form_message' => 'Message',
 		'd2u_guestbook_form_name' => 'Name',
@@ -36,10 +36,10 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper {
 		'd2u_guestbook_yes' => 'Yes',
 	];
 	/**
-	 * @var string[] Array with german replacements. Key is the wildcard,
+	 * @var array<string, string> Array with german replacements. Key is the wildcard,
 	 * value the replacement. 
 	 */
-	protected $replacements_german = [
+	protected array $replacements_german = [
 		'd2u_guestbook_form_email' => 'E-Mail-SAdresse',
 		'd2u_guestbook_form_message' => 'Nachricht',
 		'd2u_guestbook_form_name' => 'Name',
