@@ -10,11 +10,11 @@ if(rex::isBackend()) {
 
 /**
  * Deletes language specific configurations and objects
- * @param rex_extension_point $ep Redaxo extension point
- * @return string[] Warning message as array
+ * @param rex_extension_point<string> $ep Redaxo extension point
+ * @return array<string> Warning message as array
  */
 function rex_d2u_guestbook_clang_deleted(rex_extension_point $ep) {
-	/** @var string[] $warning */
+	/** @var array<string> $warning */
 	$warning = $ep->getSubject();
 	$params = $ep->getParams();
 	$clang_id = $params['id'];

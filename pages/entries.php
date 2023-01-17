@@ -4,7 +4,7 @@ $entry_id = rex_request('entry_id', 'int');
 $message = rex_get('message', 'string');
 
 // Print comments
-if($message != "") {
+if($message !== '') {
 	print rex_view::success(rex_i18n::msg($message));
 }
 

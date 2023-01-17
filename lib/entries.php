@@ -114,7 +114,7 @@ class Entry {
 	/**
 	 * Deletes the object.
 	 */
-	public function delete() {
+	public function delete():void {
 		$query = "DELETE FROM ". \rex::getTablePrefix() ."d2u_guestbook "
 			."WHERE id = ". $this->id;
 		$result = \rex_sql::factory();

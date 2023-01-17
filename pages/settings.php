@@ -1,11 +1,11 @@
 <?php
 // save settings
-if (filter_input(INPUT_POST, "btn_save") == 'save') {
-	$settings = (array) rex_post('settings', 'array', []);
+if (filter_input(INPUT_POST, 'btn_save') === 'save') {
+	$settings = rex_post('settings', 'array', []);
 
 	// Linkmap Link and media needs special treatment
-	$link_ids = filter_input_array(INPUT_POST, array('REX_INPUT_LINK'=> array('filter' => FILTER_VALIDATE_INT, 'flags' => FILTER_REQUIRE_ARRAY)));
-	$settings['guestbook_article_id'] = $link_ids["REX_INPUT_LINK"][1];
+	$link_ids = filter_input_array(INPUT_POST, ['REX_INPUT_LINK'=> ['filter' => FILTER_VALIDATE_INT, 'flags' => FILTER_REQUIRE_ARRAY]]);
+	$settings['guestbook_article_id'] = !is_array($link_ids) ? 0 : $link_ids["REX_INPUT_LINK"][1];
 
 	// Checkbox also need special treatment if empty
 	$settings['allow_answer'] = array_key_exists('allow_answer', $settings) ? "true" : "false";

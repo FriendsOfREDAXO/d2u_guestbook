@@ -7,7 +7,7 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper {
 	 * @var array<string, string> Array with english replacements. Key is the wildcard,
 	 * value the replacement. 
 	 */
-	protected array $replacements_english = [
+	var $replacements_english = [
 		'd2u_guestbook_form_email' => 'E-mail address',
 		'd2u_guestbook_form_message' => 'Message',
 		'd2u_guestbook_form_name' => 'Name',
@@ -79,7 +79,7 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper {
 	/**
 	 * Installs the replacement table for this addon.
 	 */
-	public function install() {
+	public function install():void {
 		foreach($this->replacements_english as $key => $value) {
 			foreach (rex_clang::getAllIds() as $clang_id) {
 				$lang_replacement = rex_config::get('d2u_guestbook', 'lang_replacement_'. $clang_id, '');
