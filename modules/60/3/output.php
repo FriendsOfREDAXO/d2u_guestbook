@@ -1,24 +1,25 @@
 <?php
-if(!function_exists('sendAdminNotification')) {
-	/**
-	 * Send mail to admin address when news guestbook entry is created.
-	 * @param mixed $yform
-	 */
-	function sendAdminNotification($yform) {
-		\D2U_Guestbook\d2u_guestbook_backend_helper::sendAdminNotification($yform);
-	}
+if (!function_exists('sendAdminNotification')) {
+    /**
+     * Send mail to admin address when news guestbook entry is created.
+     * @param mixed $yform
+     */
+    function sendAdminNotification($yform)
+    {
+        \D2U_Guestbook\d2u_guestbook_backend_helper::sendAdminNotification($yform);
+    }
 }
 
 // Get placeholder wildcard tags and other presets
-$sprog = rex_addon::get("sprog");
+$sprog = rex_addon::get('sprog');
 $tag_open = $sprog->getConfig('wildcard_open_tag');
 $tag_close = $sprog->getConfig('wildcard_close_tag');
 
-if(rex_get('entry', 'string') == 'add') {
-	// Entry Form
-	print '<div class="col-12">';
-	print '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</legend>';
-	?>
+if ('add' == rex_get('entry', 'string')) {
+    // Entry Form
+    echo '<div class="col-12">';
+    echo '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</legend>';
+    ?>
 	<script>
 		function set_stars(wert) {
 			for(var x = 1; x <= 5; x++) {
@@ -45,8 +46,8 @@ if(rex_get('entry', 'string') == 'add') {
 		}
 	</script>
 	<?php
-	$stars = '<span class="icon star-empty" id="star1" onmouseover="set_stars(1)" onmouseout="reset_stars(1)" onclick="click_stars(1)"></span> <span class="icon star-empty" id="star2" onmouseover="set_stars(2)" onmouseout="reset_stars(2)" onclick="click_stars(2)"></span> <span class="icon star-empty" id="star3" onmouseover="set_stars(3)" onmouseout="reset_stars(3)" onclick="click_stars(3)"></span> <span class="icon star-empty" id="star4" onmouseover="set_stars(4)" onmouseout="reset_stars(4)" onclick="click_stars(4)"></span> <span class="icon star-empty" id="star5" onmouseover="set_stars(5)" onmouseout="reset_stars(5)" onclick="click_stars(5)"></span>';
-	$form_data = '
+    $stars = '<span class="icon star-empty" id="star1" onmouseover="set_stars(1)" onmouseout="reset_stars(1)" onclick="click_stars(1)"></span> <span class="icon star-empty" id="star2" onmouseover="set_stars(2)" onmouseout="reset_stars(2)" onclick="click_stars(2)"></span> <span class="icon star-empty" id="star3" onmouseover="set_stars(3)" onmouseout="reset_stars(3)" onclick="click_stars(3)"></span> <span class="icon star-empty" id="star4" onmouseover="set_stars(4)" onmouseout="reset_stars(4)" onclick="click_stars(4)"></span> <span class="icon star-empty" id="star5" onmouseover="set_stars(5)" onmouseout="reset_stars(5)" onclick="click_stars(5)"></span>';
+    $form_data = '
 		text|name|'. $tag_open .'d2u_guestbook_form_name'. $tag_close .' *
 		email|email|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'
 		html|honeypot||<div class="hide-validation">
@@ -60,7 +61,7 @@ if(rex_get('entry', 'string') == 'add') {
 		html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
 		php|validate_timer|Spamprotection|<input name="validate_timer" type="hidden" value="'. microtime(true) .'" />|
 		hidden|online_status|offline
-		hidden|create_date|'. date("Y-m-d H:i:s") .'
+		hidden|create_date|'. date('Y-m-d H:i:s') .'
 		hidden|clang_id|'. rex_clang::getCurrentId() .'
 
 		submit|submit|'. $tag_open .'d2u_guestbook_form_send'. $tag_close .'|no_db
@@ -73,82 +74,79 @@ if(rex_get('entry', 'string') == 'add') {
 		action|callback|sendAdminNotification
 		action|db|'. rex::getTablePrefix() .'d2u_guestbook|';
 
-	$yform = new rex_yform;
-	$yform->setFormData(trim($form_data));
-	$yform->setObjectparams('real_field_names', true);
-	$yform->setObjectparams("form_action", rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']));
-	$yform->setObjectparams("Error-occured", $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
+    $yform = new rex_yform();
+    $yform->setFormData(trim($form_data));
+    $yform->setObjectparams('real_field_names', true);
+    $yform->setObjectparams('form_action', rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']));
+    $yform->setObjectparams('Error-occured', $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
 
-	// action - showtext
-	$yform->setActionField("showtext", [$tag_open .'d2u_guestbook_form_thanks'. $tag_close]);
+    // action - showtext
+    $yform->setActionField('showtext', [$tag_open .'d2u_guestbook_form_thanks'. $tag_close]);
 
-	echo $yform->getForm();
-	print '</fieldset>';
-	print '</div>';
-	// End request form
-}
-else {
-	// Add entry button
-	print '<div class="col-12">';
-	print '<a href="'. rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']) .'"><button>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</button></a><br><br>';
-	print '</div>';
-	
-	// Entries
-	print '<div class="col-12">';
-	$entries = D2U_Guestbook\Entry::getAll(true);
-	$page_no = 0;
-	for($i = 0; $i < count($entries); $i++) {
-		$entry = $entries[$i];
+    echo $yform->getForm();
+    echo '</fieldset>';
+    echo '</div>';
+    // End request form
+} else {
+    // Add entry button
+    echo '<div class="col-12">';
+    echo '<a href="'. rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']) .'"><button>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</button></a><br><br>';
+    echo '</div>';
 
-		if($i % rex_config::get('d2u_guestbook', 'no_entries_page', 10) == 0) {
-			$page_no++;
-			if($page_no != 1) {
-				print '</div>';
-			}
-			print '<div class="row guestbook-page pages-'. $page_no .'">'; // Pagination div
-		}
+    // Entries
+    echo '<div class="col-12">';
+    $entries = D2U_Guestbook\Entry::getAll(true);
+    $page_no = 0;
+    for ($i = 0; $i < count($entries); ++$i) {
+        $entry = $entries[$i];
 
-		print '<div class="col-12">';
-		print '<div class="entry-header">';
-		print '<div class="row">';
-		print '<div class="col-6 left"><b>'. $tag_open .'d2u_guestbook_form_name'. $tag_close .': ';
-		if($entry->email != '' && rex_config::get('d2u_guestbook', 'allow_answer', 'false') == 'true') {
-			print '<a href="mailto:'. $entry->email .'">';
-			print $entry->name .' <span class="icon mail"></span>';
-			print '</a>';
-		}
-		else {
-			print $entry->name;
-		}
-		print '</b></div>';
-		print '<div class="col-6 right">'. date('d.m.Y H:i', strtotime($entry->create_date)) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
-		print '</div>';
-		print '</div>';
+        if (0 == $i % rex_config::get('d2u_guestbook', 'no_entries_page', 10)) {
+            ++$page_no;
+            if (1 != $page_no) {
+                echo '</div>';
+            }
+            echo '<div class="row guestbook-page pages-'. $page_no .'">'; // Pagination div
+        }
 
-		print '<div class="entry-body">';
-		print '<div class="row">';
-		print '<div class="col-12">'. nl2br($entry->description) .'</div>';
-		if($entry->rating > 0) {
-			print '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
-			for($j = 1; $j <= 5; $j++) {
-				if($j <= $entry->rating) {
-					print ' <span class="icon star-full"></span>';
-				}
-				else {
-					print ' <span class="icon star-empty"></span>';
-				}
-			}
-			print '</b></div>';
-		}
-		print '</div>';
-		print '</div>';
+        echo '<div class="col-12">';
+        echo '<div class="entry-header">';
+        echo '<div class="row">';
+        echo '<div class="col-6 left"><b>'. $tag_open .'d2u_guestbook_form_name'. $tag_close .': ';
+        if ('' != $entry->email && 'true' == rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
+            echo '<a href="mailto:'. $entry->email .'">';
+            echo $entry->name .' <span class="icon mail"></span>';
+            echo '</a>';
+        } else {
+            echo $entry->name;
+        }
+        echo '</b></div>';
+        echo '<div class="col-6 right">'. date('d.m.Y H:i', strtotime($entry->create_date)) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
+        echo '</div>';
+        echo '</div>';
 
-		print '</div>';
-	}
-	print '</div>'; // End pagination
-	// Page selection
-	if($page_no > 1) {
-		print "<script>
+        echo '<div class="entry-body">';
+        echo '<div class="row">';
+        echo '<div class="col-12">'. nl2br($entry->description) .'</div>';
+        if ($entry->rating > 0) {
+            echo '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
+            for ($j = 1; $j <= 5; ++$j) {
+                if ($j <= $entry->rating) {
+                    echo ' <span class="icon star-full"></span>';
+                } else {
+                    echo ' <span class="icon star-empty"></span>';
+                }
+            }
+            echo '</b></div>';
+        }
+        echo '</div>';
+        echo '</div>';
+
+        echo '</div>';
+    }
+    echo '</div>'; // End pagination
+    // Page selection
+    if ($page_no > 1) {
+        echo "<script>
 				// show only first page
 				jQuery(document).ready(function($) {
 					$('.guestbook-page').hide();
@@ -162,15 +160,15 @@ else {
 					$('#page-' + pageno).addClass('active-page');
 				}
 			</script>";
-		print '<div class="row">';
-		print '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
-		for($i = 1; $i <= $page_no; $i++) {
-			print '<a href="javascript:changePage('. $i .')" class="page'. ($i == 1 ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
-		}
-		print '</div>';
-		print '</div>';
-	}
+        echo '<div class="row">';
+        echo '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
+        for ($i = 1; $i <= $page_no; ++$i) {
+            echo '<a href="javascript:changePage('. $i .')" class="page'. (1 == $i ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
+        }
+        echo '</div>';
+        echo '</div>';
+    }
 
-	print '</div>';
+    echo '</div>';
 }
 ?>

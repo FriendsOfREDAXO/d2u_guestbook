@@ -1,103 +1,102 @@
 <?php
-$cols_sm = intval("REX_VALUE[20]") === 0 ? 12 : intval("REX_VALUE[20]"); /** @phpstan-ignore-line */
-$cols_md = intval("REX_VALUE[19]") === 0 ? 12 : intval("REX_VALUE[19]"); /** @phpstan-ignore-line */
-$cols_lg = intval("REX_VALUE[18]") === 0 ? 12 : intval("REX_VALUE[18]"); /** @phpstan-ignore-line */
-$offset_lg_cols = intval("REX_VALUE[17]");
-$offset_lg = "";
-if($offset_lg_cols > 0) { /** @phpstan-ignore-line */
-	$offset_lg = " mr-lg-auto ml-lg-auto ";
+$cols_sm = 0 === (int) 'REX_VALUE[20]' ? 12 : (int) 'REX_VALUE[20]'; /** @phpstan-ignore-line */
+$cols_md = 0 === (int) 'REX_VALUE[19]' ? 12 : (int) 'REX_VALUE[19]'; /** @phpstan-ignore-line */
+$cols_lg = 0 === (int) 'REX_VALUE[18]' ? 12 : (int) 'REX_VALUE[18]'; /** @phpstan-ignore-line */
+$offset_lg_cols = (int) 'REX_VALUE[17]';
+$offset_lg = '';
+if ($offset_lg_cols > 0) { /** @phpstan-ignore-line */
+    $offset_lg = ' mr-lg-auto ml-lg-auto ';
 }
 
-print '<div class="col-12 col-sm-'. $cols_sm .' col-md-'. $cols_md .' col-lg-'. $cols_lg . $offset_lg .'">';
-print '<div class="row">';
+echo '<div class="col-12 col-sm-'. $cols_sm .' col-md-'. $cols_md .' col-lg-'. $cols_lg . $offset_lg .'">';
+echo '<div class="row">';
 
-$hide_rating = "REX_VALUE[1]" == 'true' ? true : false;
+$hide_rating = 'REX_VALUE[1]' == 'true' ? true : false;
 
-if(!function_exists('sendAdminNotification')) {
-	/**
-	 * Send mail to admin address when news guestbook entry is created.
-	 * @param mixed $yform
-	 */
-	function sendAdminNotification($yform) {
-		\D2U_Guestbook\d2u_guestbook_backend_helper::sendAdminNotification($yform);
-	}
+if (!function_exists('sendAdminNotification')) {
+    /**
+     * Send mail to admin address when news guestbook entry is created.
+     * @param mixed $yform
+     */
+    function sendAdminNotification($yform)
+    {
+        \D2U_Guestbook\d2u_guestbook_backend_helper::sendAdminNotification($yform);
+    }
 }
 
 // Get placeholder wildcard tags and other presets
-$sprog = rex_addon::get("sprog");
+$sprog = rex_addon::get('sprog');
 $tag_open = $sprog->getConfig('wildcard_open_tag');
 $tag_close = $sprog->getConfig('wildcard_close_tag');
 
 // Tabs
-print '<div class="col-12 d-print-none">';
-print '<ul class="nav nav-pills" id="guestbook_tabs">';
-print '<li class="nav-item"><a data-toggle="tab" href="#tab_guestbook" class="nav-link active">'. $tag_open .'d2u_guestbook_tab_title'. $tag_close .'</a></li>';
-print '<li class="nav-item"><a data-toggle="tab" href="#tab_write" class="nav-link">'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</a></li>';
-print '</ul>';
-print '</div>';
-	
-print '<div class="col-12">';
-print '<div class="tab-content">';
-print '<div id="tab_guestbook" class="tab-pane fade active show guestbook-tab">';
-	
+echo '<div class="col-12 d-print-none">';
+echo '<ul class="nav nav-pills" id="guestbook_tabs">';
+echo '<li class="nav-item"><a data-toggle="tab" href="#tab_guestbook" class="nav-link active">'. $tag_open .'d2u_guestbook_tab_title'. $tag_close .'</a></li>';
+echo '<li class="nav-item"><a data-toggle="tab" href="#tab_write" class="nav-link">'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</a></li>';
+echo '</ul>';
+echo '</div>';
+
+echo '<div class="col-12">';
+echo '<div class="tab-content">';
+echo '<div id="tab_guestbook" class="tab-pane fade active show guestbook-tab">';
+
 // Entries
 $entries = \D2U_Guestbook\Entry::getAll(true);
 $page_no = 0;
 
-for($i = 0; $i < count($entries); $i++) {
-	$entry = $entries[$i];
+for ($i = 0; $i < count($entries); ++$i) {
+    $entry = $entries[$i];
 
-	if($i % rex_config::get('d2u_guestbook', 'no_entries_page', 10) == 0) {
-		$page_no++;
-		if($page_no != 1) {
-			print '</div>';
-		}
-		print '<div class="row guestbook-page pages-'. $page_no .'">'; // Pagination div
-	}
+    if (0 == $i % rex_config::get('d2u_guestbook', 'no_entries_page', 10)) {
+        ++$page_no;
+        if (1 != $page_no) {
+            echo '</div>';
+        }
+        echo '<div class="row guestbook-page pages-'. $page_no .'">'; // Pagination div
+    }
 
-	print '<div class="col-12">';
-	
-	print '<div class="entry-header">';
-	print '<div class="row">';
-	print '<div class="col-6"><b>';
-	if($entry->email != '' && rex_config::get('d2u_guestbook', 'allow_answer', 'false') == 'true') {
-		print '<a href="mailto:'. $entry->email .'">';
-		print $entry->name .' <span class="icon mail"></span>';
-		print '</a>';
-	}
-	else {
-		print $entry->name;
-	}
-	print '</b></div>';
-	print '<div class="col-6 right">'. date('d.m.Y H:i', strtotime($entry->create_date)) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
-	print '</div>';
-	print '</div>';
+    echo '<div class="col-12">';
 
-	print '<div class="entry-body">';
-	print '<div class="row">';
-	print '<div class="col-12">'. nl2br($entry->description) .'</div>';
-	if(!$hide_rating && $entry->rating > 0) {
-		print '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
-		for($j = 1; $j <= 5; $j++) {
-			if($j <= $entry->rating) {
-				print ' <span class="icon star-full"></span>';
-			}
-			else {
-				print ' <span class="icon star-empty"></span>';
-			}
-		}
-		print '</b></div>';
-	}
-	print '</div>';
-	print '</div>';
+    echo '<div class="entry-header">';
+    echo '<div class="row">';
+    echo '<div class="col-6"><b>';
+    if ('' != $entry->email && 'true' == rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
+        echo '<a href="mailto:'. $entry->email .'">';
+        echo $entry->name .' <span class="icon mail"></span>';
+        echo '</a>';
+    } else {
+        echo $entry->name;
+    }
+    echo '</b></div>';
+    echo '<div class="col-6 right">'. date('d.m.Y H:i', strtotime($entry->create_date)) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
+    echo '</div>';
+    echo '</div>';
 
-	print '</div>';
+    echo '<div class="entry-body">';
+    echo '<div class="row">';
+    echo '<div class="col-12">'. nl2br($entry->description) .'</div>';
+    if (!$hide_rating && $entry->rating > 0) {
+        echo '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
+        for ($j = 1; $j <= 5; ++$j) {
+            if ($j <= $entry->rating) {
+                echo ' <span class="icon star-full"></span>';
+            } else {
+                echo ' <span class="icon star-empty"></span>';
+            }
+        }
+        echo '</b></div>';
+    }
+    echo '</div>';
+    echo '</div>';
+
+    echo '</div>';
 }
-print '</div>'; // tab_guestbook
+echo '</div>'; // tab_guestbook
 
 // Page selection
-if($page_no > 1) {
-	print "<script>
+if ($page_no > 1) {
+    echo "<script>
 			// show only first page
 			jQuery(document).ready(function($) {
 				$('.guestbook-page').hide();
@@ -111,22 +110,22 @@ if($page_no > 1) {
 				$('#page-' + pageno).addClass('active-page');
 			}
 		</script>";
-	print '<div class="row">';
-	print '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
-	for($i = 1; $i <= $page_no; $i++) {
-		print '<a href="javascript:changePage('. $i .')" class="page'. ($i == 1 ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
-	}
-	print '</div>';
-	print '</div>';
+    echo '<div class="row">';
+    echo '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
+    for ($i = 1; $i <= $page_no; ++$i) {
+        echo '<a href="javascript:changePage('. $i .')" class="page'. (1 == $i ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
+    }
+    echo '</div>';
+    echo '</div>';
 }
 
-print '</div>';
+echo '</div>';
 
 // Entry Form
-print '<div id="tab_write" class="tab-pane fade guestbook-tab">';
-print '<div class="row">';
-print '<div class="col-12">';
-print '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</legend>';
+echo '<div id="tab_write" class="tab-pane fade guestbook-tab">';
+echo '<div class="row">';
+echo '<div class="col-12">';
+echo '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</legend>';
 ?>
 <script>
 	function set_stars(wert) {
@@ -169,7 +168,7 @@ $form_data = '
 	html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
 	php|validate_timer|Spamprotection|<input name="validate_timer" type="hidden" value="'. microtime(true) .'" />|
 	hidden|online_status|offline
-	hidden|create_date|'. date("Y-m-d H:i:s") .'
+	hidden|create_date|'. date('Y-m-d H:i:s') .'
 	hidden|clang_id|'. rex_clang::getCurrentId() .'
 
 	submit|submit|'. $tag_open .'d2u_guestbook_form_send'. $tag_close .'|no_db
@@ -182,25 +181,25 @@ $form_data = '
 	action|callback|sendAdminNotification
 	action|db|'. rex::getTablePrefix() .'d2u_guestbook|';
 
-$yform = new rex_yform;
+$yform = new rex_yform();
 $yform->setFormData(trim($form_data));
 $yform->setObjectparams('real_field_names', true);
-$yform->setObjectparams("form_action", rex_getUrl(rex_article::getCurrentId()));
-$yform->setObjectparams("form_anchor", "tab_write");
-$yform->setObjectparams("Error-occured", $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
+$yform->setObjectparams('form_action', rex_getUrl(rex_article::getCurrentId()));
+$yform->setObjectparams('form_anchor', 'tab_write');
+$yform->setObjectparams('Error-occured', $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
 
 // action - showtext
-$yform->setActionField("showtext", [$tag_open .'d2u_guestbook_form_thanks'. $tag_close]);
+$yform->setActionField('showtext', [$tag_open .'d2u_guestbook_form_thanks'. $tag_close]);
 
 echo $yform->getForm();
-print '</fieldset>';
-print '</div>'; // col-12
-print '</div>'; // row
+echo '</fieldset>';
+echo '</div>'; // col-12
+echo '</div>'; // row
 // End request form
-print '</div>'; // tab_write
+echo '</div>'; // tab_write
 
-print '</div>';
-print '</div>';
+echo '</div>';
+echo '</div>';
 ?>
 <script>
 	// Allow activation of bootstrap tab via URL

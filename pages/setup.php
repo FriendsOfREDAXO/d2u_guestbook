@@ -2,14 +2,14 @@
 /*
  * Modules
  */
-$d2u_module_manager = new D2UModuleManager(D2UGuestbookModules::getModules(), "modules/", "d2u_guestbook");
+$d2u_module_manager = new D2UModuleManager(D2UGuestbookModules::getModules(), 'modules/', 'd2u_guestbook');
 
 // D2UModuleManager actions
 $d2u_module_id = rex_request('d2u_module_id', 'string');
 $paired_module = rex_request('pair_'. $d2u_module_id, 'int');
 $function = rex_request('function', 'string');
-if($d2u_module_id !== "") {
-	$d2u_module_manager->doActions($d2u_module_id, $function, $paired_module);
+if ('' !== $d2u_module_id) {
+    $d2u_module_manager->doActions($d2u_module_id, $function, $paired_module);
 }
 
 // D2UModuleManager show list
@@ -19,26 +19,24 @@ $d2u_module_manager->showManagerList();
 $sql = rex_sql::factory();
 $sql->setQuery("SHOW TABLES LIKE '". rex::getTablePrefix() ."771_entries'");
 $tvsgb_available = $sql->getRows() > 0 ? true : false;
-if(rex_request('import', 'string') == "tvsgb" && $tvsgb_available) {
-	$sql->setQuery("UPDATE `". rex::getTablePrefix() ."771_entries` SET description = REPLACE(description, '\r\n', '<br>');
-		INSERT INTO ". rex::getTablePrefix() ."d2u_guestbook (`name`, `email`, `description`, `clang_id`, `online_status`, `create_date`)
-			SELECT `create_user`, `email`, `description`, `clang`, `status`, FROM_UNIXTIME(`create_date`) FROM ". rex::getTablePrefix() ."771_entries;
-		UPDATE `". rex::getTablePrefix() ."d2u_guestbook` SET `online_status` = 'online' WHERE `online_status` = '1';
+if ('tvsgb' == rex_request('import', 'string') && $tvsgb_available) {
+    $sql->setQuery('UPDATE `'. rex::getTablePrefix() ."771_entries` SET description = REPLACE(description, '\r\n', '<br>');
+		INSERT INTO ". rex::getTablePrefix() .'d2u_guestbook (`name`, `email`, `description`, `clang_id`, `online_status`, `create_date`)
+			SELECT `create_user`, `email`, `description`, `clang`, `status`, FROM_UNIXTIME(`create_date`) FROM '. rex::getTablePrefix() .'771_entries;
+		UPDATE `'. rex::getTablePrefix() ."d2u_guestbook` SET `online_status` = 'online' WHERE `online_status` = '1';
 		UPDATE `". rex::getTablePrefix() ."d2u_guestbook` SET `online_status` = 'offline' WHERE `online_status` = '0';
-		UPDATE `". rex::getTablePrefix() ."d2u_guestbook` SET rating = 0 WHERE rating = NULL;
-		DROP TABLE `". rex::getTablePrefix() ."771_entries`;");
-	if($sql->hasError()) {
-		print rex_view::error('Fehler beim Import: '. $sql->getError());
-	}
-	else {
-		print rex_view::success('Daten aus TVS Gästebucherfolgreich importiert und alte Tabelle gelöscht.');
-	}
-}
-else if($tvsgb_available) {
-	print "<h2>Import aus Redaxo 4 TVS Gästebuch</h2>";
-	print "<p>Es wurde eine TVS Gästebuch Tabelle aus Redaxo 4 in der Datenbank gefunden."
-	. "Sollen die Daten importiert werden und die alte Tabelle gelöscht werden?</p>";
-	print '<a href="'. rex_url::currentBackendPage(["import" => "tvsgb"], false) .'"><button class="btn btn-save">Import</button></a>';
+		UPDATE `". rex::getTablePrefix() .'d2u_guestbook` SET rating = 0 WHERE rating = NULL;
+		DROP TABLE `'. rex::getTablePrefix() .'771_entries`;');
+    if ($sql->hasError()) {
+        echo rex_view::error('Fehler beim Import: '. $sql->getError());
+    } else {
+        echo rex_view::success('Daten aus TVS Gästebucherfolgreich importiert und alte Tabelle gelöscht.');
+    }
+} elseif ($tvsgb_available) {
+    echo '<h2>Import aus Redaxo 4 TVS Gästebuch</h2>';
+    echo '<p>Es wurde eine TVS Gästebuch Tabelle aus Redaxo 4 in der Datenbank gefunden.'
+    . 'Sollen die Daten importiert werden und die alte Tabelle gelöscht werden?</p>';
+    echo '<a href="'. rex_url::currentBackendPage(['import' => 'tvsgb'], false) .'"><button class="btn btn-save">Import</button></a>';
 }
 ?>
 <h2>Installation der Module</h2>

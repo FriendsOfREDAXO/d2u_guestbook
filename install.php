@@ -1,8 +1,9 @@
 <?php
+
 $sql = rex_sql::factory();
 
 // Install database
-$sql->setQuery("CREATE TABLE IF NOT EXISTS `". rex::getTablePrefix() ."d2u_guestbook` (
+$sql->setQuery('CREATE TABLE IF NOT EXISTS `'. rex::getTablePrefix() .'d2u_guestbook` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`email` varchar(255) NOT NULL,
@@ -14,7 +15,7 @@ $sql->setQuery("CREATE TABLE IF NOT EXISTS `". rex::getTablePrefix() ."d2u_guest
 	`online_status` varchar(10) DEFAULT NULL,
 	`create_date` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1;");
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1;');
 
 // Standard settings
 if (!$this->hasConfig()) {
