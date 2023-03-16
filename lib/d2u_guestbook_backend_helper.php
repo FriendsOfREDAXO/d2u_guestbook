@@ -28,14 +28,14 @@ class d2u_guestbook_backend_helper
             }
 
             $mail = new rex_mailer();
-            $mail->IsHTML(false);
+            $mail->isHTML(false);
             $mail->CharSet = 'utf-8';
             $mail->From = rex_config::get('d2u_guestbook', 'request_form_email');
             $mail->Sender = rex_config::get('d2u_guestbook', 'request_form_email');
 
-            $mail->AddAddress(rex_config::get('d2u_guestbook', 'request_form_email'));
+            $mail->addAddress(rex_config::get('d2u_guestbook', 'request_form_email'));
             $mail->addReplyTo($fields['email'], $fields['name']);
-            $mail->Subject = 'New Guestbook entry - Neuer Gästebuch eintrag - '. (rex_addon::get('yrewrite') && rex_addon::get('yrewrite')->isAvailable() ? rex_yrewrite::getCurrentDomain()->getUrl() : rex::getServer());
+            $mail->Subject = 'New Guestbook entry - Neuer Gästebuch eintrag - '. (\rex_addon::get('yrewrite') instanceof \rex_addon_interface && rex_addon::get('yrewrite')->isAvailable() ? rex_yrewrite::getCurrentDomain()->getUrl() : rex::getServer());
 
             $mail_body = "Guten Tag,\n\n";
             $mail_body .= $fields['name'] ." hat einen neuen Gästebucheintrag erstellt:\n";
