@@ -54,12 +54,15 @@ if ('tvsgb' == rex_request('import', 'string') && $tvsgb_available) {
 <h2>Support</h2>
 <p>Fehlermeldungen bitte im <a href="https://github.com/TobiasKrais/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
-<p>1.1.0-DEV:</p>
+<p>1.0.10:</p>
 <ul>
 	<li>PHP-CS-Fixer Code Verbesserungen.</li>
 	<li>Anpassungen an Publish Github Release to Redaxo.</li>
 	<li>Abhängigkeit zum emailobfuscator Addon entfernt.</li>
-	<li>Modul "60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs": Gesamtbreite kann eingestellt werden.</li>
+	<li>Erste rexstan Verbesserungen.</li>
+	<li>install.php und update.php vereinheitlicht.</li>
+	<li>Modul "60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs": Gesamtbreite kann eingestellt werden und Formularname hinzugefügt, damit mehrere Formulare auf einer Webseite it YFrom Spamprotection funktionieren..</li>
+	<li>Modul "60-3 D2U Guestbook - Gästebuch ohne Tabs": Formularname hinzugefügt, damit mehrere Formulare auf einer Webseite it YFrom Spamprotection funktionieren.</li>
 </ul>
 <p>1.0.9:</p>
 <ul>

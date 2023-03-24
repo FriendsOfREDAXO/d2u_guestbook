@@ -79,6 +79,7 @@ if ('add' == rex_get('entry', 'string')) {
     $yform->setObjectparams('real_field_names', true);
     $yform->setObjectparams('form_action', rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']));
     $yform->setObjectparams('Error-occured', $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
+    $yform->setObjectparams('form_name', 'd2u_guestbook_module_60_3_'. rand(1, 100));
 
     // action - showtext
     $yform->setActionField('showtext', [$tag_open .'d2u_guestbook_form_thanks'. $tag_close]);

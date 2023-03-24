@@ -1,25 +1,44 @@
 <?php
 
-$sql = rex_sql::factory();
-
 // Install database
-$sql->setQuery('CREATE TABLE IF NOT EXISTS `'. rex::getTablePrefix() .'d2u_guestbook` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`name` varchar(255) NOT NULL,
-	`email` varchar(255) NOT NULL,
-	`description` text NOT NULL,
-	`clang_id` int(10) NOT NULL,
-	`rating` tinyint(1) DEFAULT 0,
-	`recommendation` tinyint(1) DEFAULT 0,
-	`privacy_policy_accepted` tinyint(1) DEFAULT 0,
-	`online_status` varchar(10) DEFAULT NULL,
-	`create_date` DATETIME NOT NULL,
-	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1;');
+\rex_sql_table::get(\rex::getTable('d2u_guestbook'))
+    ->ensureColumn(new rex_sql_column('id', 'INT(11) unsigned', false, null, 'auto_increment'))
+    ->setPrimaryKey('id')
+    ->ensureColumn(new \rex_sql_column('name', 'VARCHAR(255)', true))
+    ->ensureColumn(new \rex_sql_column('email', 'VARCHAR(255)', true))
+    ->ensureColumn(new \rex_sql_column('description', 'TEXT', true))
+    ->ensureColumn(new \rex_sql_column('clang_id', 'INT(11)', true))
+    ->ensureColumn(new \rex_sql_column('rating', 'TINYINT(1)', true))
+    ->ensureColumn(new \rex_sql_column('recommendation', 'TINYINT(1)', true))
+    ->ensureColumn(new \rex_sql_column('privacy_policy_accepted', 'TINYINT(1)', true))
+    ->ensureColumn(new \rex_sql_column('online_status', 'VARCHAR(10)', true))
+    ->ensureColumn(new \rex_sql_column('create_date', 'DATETIME'))
+    ->ensure();
 
 // Standard settings
-if (!$this->hasConfig()) {
+if (!$this->hasConfig('guestbook_article_id')) {
     $this->setConfig('guestbook_article_id', rex_article::getSiteStartArticleId());
-    $this->setConfig('allow_answer', 'false');
-    $this->setConfig('no_entries_page', 10);
 }
+
+// Update modules
+if (class_exists('D2UModuleManager')) {
+    $modules = [];
+    $modules[] = new D2UModule('60-1',
+        'D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs',
+        12);
+    $modules[] = new D2UModule('60-2',
+        'D2U Guestbook - Infobox Bewertung',
+        2);
+    $modules[] = new D2UModule('60-3',
+        'D2U Guestbook - Gästebuch ohne Tabs',
+        10);
+    $d2u_module_manager = new D2UModuleManager($modules, '', 'd2u_guestbook');
+    $d2u_module_manager->autoupdate();
+}
+
+// Update language replacements
+if (!class_exists('d2u_guestbook_lang_helper')) {
+    // Load class in case addon is deactivated
+    require_once 'lib/d2u_guestbook_lang_helper.php';
+}
+d2u_guestbook_lang_helper::factory()->install();

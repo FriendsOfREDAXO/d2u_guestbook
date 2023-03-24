@@ -21,7 +21,7 @@ class D2UGuestbookModules
             2);
         $modules[] = new D2UModule('60-3',
             'D2U Guestbook - Gästebuch ohne Tabs',
-            9);
+            10);
         return $modules;
     }
 }
