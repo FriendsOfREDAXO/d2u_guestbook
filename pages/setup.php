@@ -44,6 +44,9 @@ if ('tvsgb' == rex_request('import', 'string') && $tvsgb_available) {
 	Verzeichnis im Pfad modules/60/<i>Nummer des Moduls</i>/styles.css.</p>
 <h2>Beispielseiten</h2>
 <ul>
+
+	<li>Generelle Demoseite: <a href="https://test.design-to-use.de/de/addontests/d2u-gaestebuch/" target="_blank">
+		design-to-use.de Testseite</a>.</li>
 	<li>Gästebuch Addon mit Bootstrap 4 Tabs: <a href="https://immobiliengaiser.de/home/unser-gaestebuch/" target="_blank">
 		ImmobilienGaiser</a>.</li>
 	<li>Gästebuch Addon mit Bootstrap 4 Tabs: <a href="https://www.optik-muelhaupt.de/gaestebuch/" target="_blank">
@@ -61,7 +64,8 @@ if ('tvsgb' == rex_request('import', 'string') && $tvsgb_available) {
 	<li>Abhängigkeit zum emailobfuscator Addon entfernt.</li>
 	<li>Erste rexstan Verbesserungen.</li>
 	<li>install.php und update.php vereinheitlicht.</li>
-	<li>Modul "60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs": Gesamtbreite kann eingestellt werden und Formularname hinzugefügt, damit mehrere Formulare auf einer Webseite it YFrom Spamprotection funktionieren..</li>
+	<li>Modul "60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs": Gesamtbreite kann eingestellt werden und Formularname hinzugefügt, damit mehrere Formulare auf einer Webseite it YFrom Spamprotection funktionieren. Außerdem Darstellungsfehler bei Anzeige der Tabs behoben.</li>
+	<li>Modul "60-2 D2U Guestbook - Infobox Bewertung": Wenn keine Bewertungen vorliegen, werden keine Sterne ausgegeben. Und CSS Verbesserungen.</li>
 	<li>Modul "60-3 D2U Guestbook - Gästebuch ohne Tabs": Formularname hinzugefügt, damit mehrere Formulare auf einer Webseite it YFrom Spamprotection funktionieren.</li>
 </ul>
 <p>1.0.9:</p>

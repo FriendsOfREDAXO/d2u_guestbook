@@ -9,34 +9,39 @@ $show_link = ($d2u_guestbook->hasConfig('guestbook_article_id') && '' != $d2u_gu
 
 $rating = round(D2U_Guestbook\Entry::getRating(), 1);
 $num_recommendations = D2U_Guestbook\Entry::getRecommendation();
-
+$entries = D2U_Guestbook\Entry::getAll(true);
 ?>
 <div class="col-12 col-sm-6 col-md-4 col-lg-12">
 	<div class="infobox">
 		<div class="infobox-header"><?= $tag_open .'d2u_guestbook_ratings'. $tag_close ?></div>
 		<div class="infobox-content" style="text-align: center" title="<?= $tag_open .'d2u_guestbook_rating'. $tag_close ?>">
 			<?php
-                if ($show_link) {
-                    echo '<a href="'. rex_getUrl($d2u_guestbook->getConfig('guestbook_article_id')) .'" class="recommendation">';
+                if(0 === count($entries)) {
+                    echo '<p>'. \Sprog\Wildcard::get('d2u_guestbook_no_entries') . '</p>'; 
                 }
-                echo '<div class="recommendation-stars">';
-                for ($i = 1; $i <= 5; ++$i) {
-                    if ($i <= $rating) {
-                        echo '<span class="icon star-full"></span> ';
-                    } elseif ($i <= $rating + 1) {
-                        echo '<span class="icon star-half"></span> ';
-                    } else {
-                        echo '<span class="icon star-empty"></span> ';
+                else {
+                    if ($show_link) {
+                        echo '<a href="'. rex_getUrl($d2u_guestbook->getConfig('guestbook_article_id')) .'" class="recommendation">';
                     }
-                }
-                echo '</div>';
-                if ($show_link) {
-                    echo '</a>';
-                    echo '<a href="'. rex_getUrl($d2u_guestbook->getConfig('guestbook_article_id')) .'">';
-                }
-                echo $tag_open .'d2u_guestbook_recommended_pre'. $tag_close .' '. $num_recommendations .' '. $tag_open .'d2u_guestbook_recommended_post'. $tag_close;
-                if ($show_link) {
-                    echo '</a>';
+                    echo '<div class="recommendation-stars">';
+                    for ($i = 1; $i <= 5; ++$i) {
+                        if ($i <= $rating) {
+                            echo '<span class="icon star-full"></span> ';
+                        } elseif ($i <= $rating + 1) {
+                            echo '<span class="icon star-half"></span> ';
+                        } else {
+                            echo '<span class="icon star-empty"></span> ';
+                        }
+                    }
+                    echo '</div>';
+                    if ($show_link) {
+                        echo '</a>';
+                        echo '<a href="'. rex_getUrl($d2u_guestbook->getConfig('guestbook_article_id')) .'">';
+                    }
+                    echo $tag_open .'d2u_guestbook_recommended_pre'. $tag_close .' '. $num_recommendations .' '. $tag_open .'d2u_guestbook_recommended_post'. $tag_close;
+                    if ($show_link) {
+                        echo '</a>';
+                    }
                 }
             ?>
 		</div>

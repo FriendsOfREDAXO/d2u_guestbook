@@ -9,18 +9,18 @@
 		url("./assets/addons/be_style/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format('svg');
 }
 
-.right {
-	text-align: right;
+
+article .infobox-header {
+	background-color: article_color_h;
+	color: #ffffff;
+	padding: 0.25em 0.75em;
+	text-align: center;
 }
-.entry-body {
-	padding: 0.25em 1em 2em 1em;
-}
-.entry-header {
-	background-color: article_color_box;
-	border-bottom: 1px solid navi_color_bg;
-	padding: 0.25em 1em;
+article .infobox {
+	border: 1px solid article_color_h;
+	margin-bottom: 1em;
 	width: 100%;
-}
+  }
 .recommendation-stars {
 	font-size: 1.5em;
 }

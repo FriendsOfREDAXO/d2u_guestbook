@@ -18,7 +18,7 @@ class D2UGuestbookModules
             12);
         $modules[] = new D2UModule('60-2',
             'D2U Guestbook - Infobox Bewertung',
-            2);
+            3);
         $modules[] = new D2UModule('60-3',
             'D2U Guestbook - Gästebuch ohne Tabs',
             10);

@@ -21,32 +21,35 @@ if ('add' == rex_get('entry', 'string')) {
     echo '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</legend>';
     ?>
 	<script>
-		function set_stars(wert) {
+		function d2u_guestbook_module_60_3_set_stars(wert) {
 			for(var x = 1; x <= 5; x++) {
 				if(x <= wert) {
-					if($('#star' + x).hasClass('star-empty')) {
-						$('#star' + x).removeClass('star-empty');
-						$('#star' + x).addClass('star-full');
+					if($('#d2u_guestbook_module_60_3_star' + x).hasClass('star-empty')) {
+						$('#d2u_guestbook_module_60_3_star' + x).removeClass('star-empty');
+						$('#d2u_guestbook_module_60_3_star' + x).addClass('star-full');
 					}
 				}
 				else {
-					if($('#star' + x).hasClass('star-full')) {
-						$('#star' + x).removeClass('star-full');
-						$('#star' + x).addClass('star-empty');
+					if($('#d2u_guestbook_module_60_3_star' + x).hasClass('star-full')) {
+						$('#d2u_guestbook_module_60_3_star' + x).removeClass('star-full');
+						$('#d2u_guestbook_module_60_3_star' + x).addClass('star-empty');
 					}
 				}
 			}
 		}
-		function reset_stars(wert) {
-			set_stars($('input[name=rating]').val());
+		function d2u_guestbook_module_60_3_reset_stars(wert) {
+			d2u_guestbook_module_60_3_set_stars($('input[name=rating]').val());
 		}
-		function click_stars(wert) {
+		function d2u_guestbook_module_60_3_click_stars(wert) {
 			$('input[name=rating]').val(wert);
-			set_stars(wert);
+			d2u_guestbook_module_60_3_set_stars(wert);
 		}
 	</script>
 	<?php
-    $stars = '<span class="icon star-empty" id="star1" onmouseover="set_stars(1)" onmouseout="reset_stars(1)" onclick="click_stars(1)"></span> <span class="icon star-empty" id="star2" onmouseover="set_stars(2)" onmouseout="reset_stars(2)" onclick="click_stars(2)"></span> <span class="icon star-empty" id="star3" onmouseover="set_stars(3)" onmouseout="reset_stars(3)" onclick="click_stars(3)"></span> <span class="icon star-empty" id="star4" onmouseover="set_stars(4)" onmouseout="reset_stars(4)" onclick="click_stars(4)"></span> <span class="icon star-empty" id="star5" onmouseover="set_stars(5)" onmouseout="reset_stars(5)" onclick="click_stars(5)"></span>';
+    $stars = '';
+    for($i = 1; $i <= 5; $i++) {
+        $stars .= '<span class="icon star-empty" id="d2u_guestbook_module_60_3_star'. $i.'" onmouseover="d2u_guestbook_module_60_3_set_stars('. $i.')" onmouseout="d2u_guestbook_module_60_3_reset_stars('. $i.')" onclick="d2u_guestbook_module_60_3_click_stars('. $i.')"></span> ';
+    }
     $form_data = '
 		text|name|'. $tag_open .'d2u_guestbook_form_name'. $tag_close .' *
 		email|email|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'
@@ -76,10 +79,11 @@ if ('add' == rex_get('entry', 'string')) {
 
     $yform = new rex_yform();
     $yform->setFormData(trim($form_data));
-    $yform->setObjectparams('real_field_names', true);
-    $yform->setObjectparams('form_action', rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']));
+    $yform->setObjectparams('csrf_protection', false);
     $yform->setObjectparams('Error-occured', $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
+    $yform->setObjectparams('form_action', rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']));
     $yform->setObjectparams('form_name', 'd2u_guestbook_module_60_3_'. rand(1, 100));
+    $yform->setObjectparams('real_field_names', true);
 
     // action - showtext
     $yform->setActionField('showtext', [$tag_open .'d2u_guestbook_form_thanks'. $tag_close]);
@@ -89,60 +93,65 @@ if ('add' == rex_get('entry', 'string')) {
     echo '</div>';
     // End request form
 } else {
+    $entries = D2U_Guestbook\Entry::getAll(true);
+    $page_no = 0;
     // Add entry button
     echo '<div class="col-12">';
-    echo '<a href="'. rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']) .'"><button>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</button></a><br><br>';
+    if(0 === count($entries)) {
+        echo '<p>'. \Sprog\Wildcard::get('d2u_guestbook_no_entries') . '</p>'; 
+    }
+    echo '<a href="'. rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']) .'"><button class="btn btn-primary">'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</button></a><br><br>';
     echo '</div>';
 
     // Entries
     echo '<div class="col-12">';
-    $entries = D2U_Guestbook\Entry::getAll(true);
-    $page_no = 0;
-    for ($i = 0; $i < count($entries); ++$i) {
-        $entry = $entries[$i];
+    if(count($entries) > 0) {
+        for ($i = 0; $i < count($entries); ++$i) {
+            $entry = $entries[$i];
 
-        if (0 == $i % rex_config::get('d2u_guestbook', 'no_entries_page', 10)) {
-            ++$page_no;
-            if (1 != $page_no) {
-                echo '</div>';
-            }
-            echo '<div class="row guestbook-page pages-'. $page_no .'">'; // Pagination div
-        }
-
-        echo '<div class="col-12">';
-        echo '<div class="entry-header">';
-        echo '<div class="row">';
-        echo '<div class="col-6 left"><b>'. $tag_open .'d2u_guestbook_form_name'. $tag_close .': ';
-        if ('' != $entry->email && 'true' == rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
-            echo '<a href="mailto:'. $entry->email .'">';
-            echo $entry->name .' <span class="icon mail"></span>';
-            echo '</a>';
-        } else {
-            echo $entry->name;
-        }
-        echo '</b></div>';
-        echo '<div class="col-6 right">'. date('d.m.Y H:i', strtotime($entry->create_date)) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
-        echo '</div>';
-        echo '</div>';
-
-        echo '<div class="entry-body">';
-        echo '<div class="row">';
-        echo '<div class="col-12">'. nl2br($entry->description) .'</div>';
-        if ($entry->rating > 0) {
-            echo '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
-            for ($j = 1; $j <= 5; ++$j) {
-                if ($j <= $entry->rating) {
-                    echo ' <span class="icon star-full"></span>';
-                } else {
-                    echo ' <span class="icon star-empty"></span>';
+            if (0 == $i % rex_config::get('d2u_guestbook', 'no_entries_page', 10)) {
+                ++$page_no;
+                if (1 != $page_no) {
+                    echo '</div>';
                 }
+                echo '<div class="row guestbook-page pages-'. $page_no .'">'; // Pagination div
+            }
+
+            echo '<div class="col-12">';
+            echo '<div class="entry-header">';
+            echo '<div class="row">';
+            echo '<div class="col-6 left"><b>'. $tag_open .'d2u_guestbook_form_name'. $tag_close .': ';
+            if ('' != $entry->email && 'true' == rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
+                echo '<a href="mailto:'. $entry->email .'">';
+                echo $entry->name .' <span class="icon mail"></span>';
+                echo '</a>';
+            } else {
+                echo $entry->name;
             }
             echo '</b></div>';
-        }
-        echo '</div>';
-        echo '</div>';
+            echo '<div class="col-6 right">'. date('d.m.Y H:i', strtotime($entry->create_date)) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
+            echo '</div>';
+            echo '</div>';
 
-        echo '</div>';
+            echo '<div class="entry-body">';
+            echo '<div class="row">';
+            echo '<div class="col-12">'. nl2br($entry->description) .'</div>';
+            if ($entry->rating > 0) {
+                echo '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
+                for ($j = 1; $j <= 5; ++$j) {
+                    if ($j <= $entry->rating) {
+                        echo ' <span class="icon star-full"></span>';
+                    } else {
+                        echo ' <span class="icon star-empty"></span>';
+                    }
+                }
+                echo '</b></div>';
+            }
+            echo '</div>';
+            echo '</div>';
+
+            echo '</div>';
+        }
     }
     echo '</div>'; // End pagination
     // Page selection

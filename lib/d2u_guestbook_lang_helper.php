@@ -26,6 +26,7 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper
         'd2u_guestbook_form_validate_spam_detected' => 'Your message was classified as spam, because not visible fields were filled in.',
         'd2u_guestbook_form_validate_title' => 'Failure sending message:',
         'd2u_guestbook_no' => 'No',
+        'd2u_guestbook_no_entries' => 'Currently there are noch entries or ratings available.',
         'd2u_guestbook_oclock' => 'h',
         'd2u_guestbook_page' => 'Page',
         'd2u_guestbook_rating' => 'Customer quality and service rating',
@@ -41,7 +42,7 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper
      * value the replacement.
      */
     protected array $replacements_german = [
-        'd2u_guestbook_form_email' => 'E-Mail-SAdresse',
+        'd2u_guestbook_form_email' => 'E-Mail-Adresse',
         'd2u_guestbook_form_message' => 'Nachricht',
         'd2u_guestbook_form_name' => 'Name',
         'd2u_guestbook_form_privacy_policy' => 'Ich willige in die Speicherung und Verarbeitung meiner Kontakt- und Nutzungsdaten durch den Betreiber des Gästebuches ein. Über den Umfang der Datenverarbeitung habe ich mich  <a href="+++LINK_PRIVACY_POLICY+++" target="_blank">hier</a> informiert. Ich habe das Recht dieser Verwendung jederzeit unter den im <a href="+++LINK_IMPRESS+++" target="_blank">Impressum</a> angegebenen Kontaktdaten zu widersprechen.',
@@ -58,6 +59,7 @@ class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper
         'd2u_guestbook_form_validate_spam_detected' => 'Ihr Eintrag wurde als Spam eingestuft, da nicht sichtbare Felder ausgefüllt wurden.',
         'd2u_guestbook_form_validate_title' => 'Fehler beim Senden:',
         'd2u_guestbook_no' => 'Nein',
+        'd2u_guestbook_no_entries' => 'Es sind noch keine Gästebucheinträge und Bewertungen vorhanden.',
         'd2u_guestbook_oclock' => 'Uhr',
         'd2u_guestbook_page' => 'Seite',
         'd2u_guestbook_rating' => 'Kundenbewertung in Qualität, Service und Zuverlässigkeit',

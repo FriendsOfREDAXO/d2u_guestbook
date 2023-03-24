@@ -50,7 +50,9 @@ a.recommendation:hover {
 	content: "\f006";
 }
 
-
+#guestbook_tabs {
+	border-bottom: none;
+}
 #guestbook_tabs a.active {
 	background-color: navi_color_bg;
 }
