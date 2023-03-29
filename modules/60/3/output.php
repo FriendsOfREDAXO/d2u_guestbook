@@ -47,7 +47,7 @@ if ('add' == rex_get('entry', 'string')) {
 	</script>
 	<?php
     $stars = '';
-    for($i = 1; $i <= 5; $i++) {
+    for ($i = 1; $i <= 5; ++$i) {
         $stars .= '<span class="icon star-empty" id="d2u_guestbook_module_60_3_star'. $i.'" onmouseover="d2u_guestbook_module_60_3_set_stars('. $i.')" onmouseout="d2u_guestbook_module_60_3_reset_stars('. $i.')" onclick="d2u_guestbook_module_60_3_click_stars('. $i.')"></span> ';
     }
     $form_data = '
@@ -82,7 +82,7 @@ if ('add' == rex_get('entry', 'string')) {
     $yform->setObjectparams('csrf_protection', false);
     $yform->setObjectparams('Error-occured', $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
     $yform->setObjectparams('form_action', rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']));
-    $yform->setObjectparams('form_name', 'd2u_guestbook_module_60_3_'. rand(1, 100));
+    $yform->setObjectparams('form_name', 'd2u_guestbook_module_60_3_'. random_int(1, 100));
     $yform->setObjectparams('real_field_names', true);
 
     // action - showtext
@@ -97,15 +97,15 @@ if ('add' == rex_get('entry', 'string')) {
     $page_no = 0;
     // Add entry button
     echo '<div class="col-12">';
-    if(0 === count($entries)) {
-        echo '<p>'. \Sprog\Wildcard::get('d2u_guestbook_no_entries') . '</p>'; 
+    if (0 === count($entries)) {
+        echo '<p>'. \Sprog\Wildcard::get('d2u_guestbook_no_entries') . '</p>';
     }
     echo '<a href="'. rex_getUrl(rex_article::getCurrentId(), null, ['entry' => 'add']) .'"><button class="btn btn-primary">'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</button></a><br><br>';
     echo '</div>';
 
     // Entries
     echo '<div class="col-12">';
-    if(count($entries) > 0) {
+    if (count($entries) > 0) {
         for ($i = 0; $i < count($entries); ++$i) {
             $entry = $entries[$i];
 

@@ -45,10 +45,9 @@ echo '<div id="tab_guestbook" class="tab-pane fade active show guestbook-tab">';
 $entries = \D2U_Guestbook\Entry::getAll(true);
 $page_no = 0;
 
-if(0 === count($entries)) {
-	echo '<p>'. \Sprog\Wildcard::get('d2u_guestbook_no_entries') . '</p>'; 
-}
-else {
+if (0 === count($entries)) {
+    echo '<p>'. \Sprog\Wildcard::get('d2u_guestbook_no_entries') . '</p>';
+} else {
     for ($i = 0; $i < count($entries); ++$i) {
         $entry = $entries[$i];
 
@@ -158,8 +157,8 @@ echo '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</
 </script>
 <?php
 $stars = '';
-for($i = 1; $i <= 5; $i++) {
-	$stars .= '<span class="icon star-empty" id="d2u_guestbook_module_60_1_star'. $i.'" onmouseover="d2u_guestbook_module_60_1_set_stars('. $i.')" onmouseout="d2u_guestbook_module_60_1_reset_stars('. $i.')" onclick="d2u_guestbook_module_60_1_click_stars('. $i.')"></span> ';
+for ($i = 1; $i <= 5; ++$i) {
+    $stars .= '<span class="icon star-empty" id="d2u_guestbook_module_60_1_star'. $i.'" onmouseover="d2u_guestbook_module_60_1_set_stars('. $i.')" onmouseout="d2u_guestbook_module_60_1_reset_stars('. $i.')" onclick="d2u_guestbook_module_60_1_click_stars('. $i.')"></span> ';
 }
 $form_data = '
 	text|name|'. $tag_open .'d2u_guestbook_form_name'. $tag_close .' *
@@ -194,7 +193,7 @@ $yform->setObjectparams('csrf_protection', false);
 $yform->setObjectparams('Error-occured', $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
 $yform->setObjectparams('form_action', rex_getUrl(rex_article::getCurrentId()));
 $yform->setObjectparams('form_anchor', 'tab_write');
-$yform->setObjectparams('form_name', 'd2u_guestbook_module_60_1_'. rand(1, 100));
+$yform->setObjectparams('form_name', 'd2u_guestbook_module_60_1_'. random_int(1, 100));
 $yform->setObjectparams('real_field_names', true);
 
 // action - showtext

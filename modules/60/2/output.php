@@ -16,10 +16,9 @@ $entries = D2U_Guestbook\Entry::getAll(true);
 		<div class="infobox-header"><?= $tag_open .'d2u_guestbook_ratings'. $tag_close ?></div>
 		<div class="infobox-content" style="text-align: center" title="<?= $tag_open .'d2u_guestbook_rating'. $tag_close ?>">
 			<?php
-                if(0 === count($entries)) {
-                    echo '<p>'. \Sprog\Wildcard::get('d2u_guestbook_no_entries') . '</p>'; 
-                }
-                else {
+                if (0 === count($entries)) {
+                    echo '<p>'. \Sprog\Wildcard::get('d2u_guestbook_no_entries') . '</p>';
+                } else {
                     if ($show_link) {
                         echo '<a href="'. rex_getUrl($d2u_guestbook->getConfig('guestbook_article_id')) .'" class="recommendation">';
                     }
