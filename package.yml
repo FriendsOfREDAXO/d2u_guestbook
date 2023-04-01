@@ -18,6 +18,7 @@ requires:
         d2u_helper: '>=1.5.2'
         sprog: '>=1.0.0'
         yform: '>=3.0'
+    php: '>=7.4'
 
 default_config:
     allow_answer: 'false'

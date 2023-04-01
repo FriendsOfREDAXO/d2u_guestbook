@@ -8,7 +8,7 @@ if ($offset_lg_cols > 0) { /** @phpstan-ignore-line */
     $offset_lg = ' mr-lg-auto ml-lg-auto ';
 }
 
-echo '<div class="col-12 col-sm-'. $cols_sm .' col-md-'. $cols_md .' col-lg-'. $cols_lg . $offset_lg .'">';
+echo '<div id="d2u_guestbook_module_60_1" class="col-12 col-sm-'. $cols_sm .' col-md-'. $cols_md .' col-lg-'. $cols_lg . $offset_lg .'">';
 echo '<div class="row">';
 
 $hide_rating = 'REX_VALUE[1]' == 'true' ? true : false;

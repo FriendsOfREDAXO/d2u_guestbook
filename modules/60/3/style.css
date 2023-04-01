@@ -53,10 +53,6 @@ a.recommendation:hover {
 guestbook-page {
 	display: inline-block;
 }
-.tab-pane {
-	border: navi_color_bg 1px solid;
-	padding: 1em 1em 0 1em;
-}
 .page-selection {
 	background-color: article_color_box;
 	border-top: 1px solid navi_color_bg;
