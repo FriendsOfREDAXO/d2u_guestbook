@@ -165,7 +165,7 @@ class Entry
      */
     public function save()
     {
-        $error = 0;
+        $error = false;
         $query = rex::getTablePrefix() .'d2u_guestbook SET '
                 .'clang_id = '. $this->clang_id .', '
                 ."name = '". addslashes($this->name) ."', "

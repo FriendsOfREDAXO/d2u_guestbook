@@ -50,7 +50,7 @@ class d2u_guestbook_backend_helper
             $mail_body .= "Please log in to Redaxo to put the guestbook entry online.\n\n";
 
             $mail->Body = $mail_body;
-            $mail->Send();
+            $mail->send();
         }
     }
 }
