@@ -5,7 +5,7 @@ if ('save' === filter_input(INPUT_POST, 'btn_save')) {
 
     // Linkmap Link and media needs special treatment
     $link_ids = filter_input_array(INPUT_POST, ['REX_INPUT_LINK' => ['filter' => FILTER_VALIDATE_INT, 'flags' => FILTER_REQUIRE_ARRAY]]);
-    $settings['guestbook_article_id'] = !is_array($link_ids) ? 0 : $link_ids['REX_INPUT_LINK'][1];
+    $settings['guestbook_article_id'] = is_array($link_ids['REX_INPUT_LINK']) ? $link_ids['REX_INPUT_LINK'][1] : 0;
 
     // Checkbox also need special treatment if empty
     $settings['allow_answer'] = array_key_exists('allow_answer', $settings) ? 'true' : 'false';
