@@ -19,7 +19,7 @@ $d2u_module_manager->showManagerList();
 $sql = rex_sql::factory();
 $sql->setQuery("SHOW TABLES LIKE '". rex::getTablePrefix() ."771_entries'");
 $tvsgb_available = $sql->getRows() > 0 ? true : false;
-if ('tvsgb' == rex_request('import', 'string') && $tvsgb_available) {
+if ('tvsgb' === rex_request('import', 'string') && $tvsgb_available) {
     $sql->setQuery('UPDATE `'. rex::getTablePrefix() ."771_entries` SET description = REPLACE(description, '\r\n', '<br>');
 		INSERT INTO ". rex::getTablePrefix() .'d2u_guestbook (`name`, `email`, `description`, `clang_id`, `online_status`, `create_date`)
 			SELECT `create_user`, `email`, `description`, `clang`, `status`, FROM_UNIXTIME(`create_date`) FROM '. rex::getTablePrefix() .'771_entries;
@@ -59,7 +59,8 @@ if ('tvsgb' == rex_request('import', 'string') && $tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.11-DEV:</p>
 <ul>
-<li>Modul "60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs": Einige CSS auf Modul beschränkt.</li>
+	<li>Restliche rexstan Verbesserungen.</li>
+	<li>Modul "60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs": Einige CSS auf Modul beschränkt und Bugfix Paginierung.</li>
 </ul>
 <p>1.0.10:</p>
 <ul>

@@ -5,7 +5,7 @@ $tag_open = $sprog->getConfig('wildcard_open_tag');
 $tag_close = $sprog->getConfig('wildcard_close_tag');
 
 $d2u_guestbook = rex_addon::get('d2u_guestbook');
-$show_link = ($d2u_guestbook->hasConfig('guestbook_article_id') && '' != $d2u_guestbook->getConfig('guestbook_article_id')) ? true : false;
+$show_link = ($d2u_guestbook->hasConfig('guestbook_article_id') && 0 < (int) $d2u_guestbook->getConfig('guestbook_article_id')) ? true : false;
 
 $rating = round(D2U_Guestbook\Entry::getRating(), 1);
 $num_recommendations = D2U_Guestbook\Entry::getRecommendation();
@@ -20,7 +20,7 @@ $entries = D2U_Guestbook\Entry::getAll(true);
                     echo '<p>'. \Sprog\Wildcard::get('d2u_guestbook_no_entries') . '</p>';
                 } else {
                     if ($show_link) {
-                        echo '<a href="'. rex_getUrl($d2u_guestbook->getConfig('guestbook_article_id')) .'" class="recommendation">';
+                        echo '<a href="'. rex_getUrl((int) $d2u_guestbook->getConfig('guestbook_article_id')) .'" class="recommendation">';
                     }
                     echo '<div class="recommendation-stars">';
                     for ($i = 1; $i <= 5; ++$i) {
@@ -35,7 +35,7 @@ $entries = D2U_Guestbook\Entry::getAll(true);
                     echo '</div>';
                     if ($show_link) {
                         echo '</a>';
-                        echo '<a href="'. rex_getUrl($d2u_guestbook->getConfig('guestbook_article_id')) .'">';
+                        echo '<a href="'. rex_getUrl((int) $d2u_guestbook->getConfig('guestbook_article_id')) .'">';
                     }
                     echo $tag_open .'d2u_guestbook_recommended_pre'. $tag_close .' '. $num_recommendations .' '. $tag_open .'d2u_guestbook_recommended_post'. $tag_close;
                     if ($show_link) {

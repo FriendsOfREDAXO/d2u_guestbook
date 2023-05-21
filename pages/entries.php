@@ -17,19 +17,19 @@ if (1 === (int) filter_input(INPUT_POST, 'btn_save') || 1 === (int) filter_input
     $entry->clang_id = $form['clang_id'];
     $entry->name = $form['name'];
     $entry->email = $form['email'];
-    $entry->rating = '' != $form['rating'] ? $form['rating'] : 0;
+    $entry->rating = '' !== $form['rating'] ? $form['rating'] : 0;
     $entry->recommendation = array_key_exists('recommendation', $form) ? true : false;
     $entry->description = $form['description'];
     $entry->online_status = array_key_exists('online_status', $form) ? 'online' : 'offline';
 
     // message output
     $message = 'form_save_error';
-    if (0 == $entry->save()) {
+    if (false === $entry->save()) {
         $message = 'form_saved';
     }
 
     // Redirect to make reload and thus double save impossible
-    if (1 === (int) filter_input(INPUT_POST, 'btn_apply', FILTER_VALIDATE_INT) && false !== $entry) {
+    if (1 === (int) filter_input(INPUT_POST, 'btn_apply', FILTER_VALIDATE_INT) && $entry->id > 0) {
         header('Location: '. rex_url::currentBackendPage(['entry_id' => $entry->id, 'func' => 'edit', 'message' => $message], false));
     } else {
         header('Location: '. rex_url::currentBackendPage(['message' => $message], false));
@@ -85,7 +85,7 @@ if ('edit' === $func || 'add' === $func) {
                             d2u_addon_backend_helper::form_checkbox('d2u_guestbook_recommendation', 'form[recommendation]', 'true', $entry->recommendation);
                             d2u_addon_backend_helper::form_checkbox('d2u_guestbook_privacy_policy_accepted', 'form[privacy_policy_accepted]', 'true', $entry->privacy_policy_accepted, true);
                             d2u_addon_backend_helper::form_textarea('d2u_guestbook_description', 'form[description]', $entry->description, 10, true, false, false);
-                            d2u_addon_backend_helper::form_checkbox('d2u_helper_online_status', 'form[online_status]', 'online', 'online' == $entry->online_status ? true : false);
+                            d2u_addon_backend_helper::form_checkbox('d2u_helper_online_status', 'form[online_status]', 'online', 'online' === $entry->online_status ? true : false);
                         ?>
 					</div>
 				</fieldset>

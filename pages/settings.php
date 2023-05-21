@@ -30,10 +30,10 @@ if ('save' === filter_input(INPUT_POST, 'btn_save')) {
 				<legend><small><i class="rex-icon fa-book"></i></small> <?= rex_i18n::msg('d2u_helper_settings') ?></legend>
 				<div class="panel-body-wrapper slide">
 					<?php
-                        d2u_addon_backend_helper::form_input('d2u_guestbook_settings_request_form_email', 'settings[request_form_email]', (string) $this->getConfig('request_form_email'), true, false, 'email');
-                        d2u_addon_backend_helper::form_linkfield('d2u_guestbook_settings_article', '1', $this->getConfig('guestbook_article_id'), (int) rex_config::get('d2u_helper', 'default_lang', rex_clang::getStartId()));
-                        d2u_addon_backend_helper::form_checkbox('d2u_guestbook_settings_allow_answer', 'settings[allow_answer]', 'true', 'true' === (string) $this->getConfig('allow_answer'));
-                        d2u_addon_backend_helper::form_input('d2u_guestbook_settings_no_entries_page', 'settings[no_entries_page]', (int) $this->getConfig('no_entries_page', 10), true, false, 'number');
+                        d2u_addon_backend_helper::form_input('d2u_guestbook_settings_request_form_email', 'settings[request_form_email]', (string) rex_config::get('d2u_guestbook', 'request_form_email'), true, false, 'email');
+                        d2u_addon_backend_helper::form_linkfield('d2u_guestbook_settings_article', '1', (int) rex_config::get('d2u_guestbook', 'guestbook_article_id'), (int) rex_config::get('d2u_helper', 'default_lang', rex_clang::getStartId()));
+                        d2u_addon_backend_helper::form_checkbox('d2u_guestbook_settings_allow_answer', 'settings[allow_answer]', 'true', 'true' === (string) rex_config::get('d2u_guestbook', 'allow_answer'));
+                        d2u_addon_backend_helper::form_input('d2u_guestbook_settings_no_entries_page', 'settings[no_entries_page]', (int) rex_config::get('d2u_guestbook', 'no_entries_page', 10), true, false, 'number');
                     ?>
 				</div>
 			</fieldset>
@@ -41,7 +41,7 @@ if ('save' === filter_input(INPUT_POST, 'btn_save')) {
 				<legend><small><i class="rex-icon rex-icon-language"></i></small> <?= rex_i18n::msg('d2u_helper_lang_replacements') ?></legend>
 				<div class="panel-body-wrapper slide">
 					<?php
-                        d2u_addon_backend_helper::form_checkbox('d2u_helper_lang_wildcard_overwrite', 'settings[lang_wildcard_overwrite]', 'true', 'true' === $this->getConfig('lang_wildcard_overwrite'));
+                        d2u_addon_backend_helper::form_checkbox('d2u_helper_lang_wildcard_overwrite', 'settings[lang_wildcard_overwrite]', 'true', 'true' === rex_config::get('d2u_guestbook', 'lang_wildcard_overwrite'));
                         foreach (rex_clang::getAll() as $rex_clang) {
                             echo '<dl class="rex-form-group form-group">';
                             echo '<dt><label>'. $rex_clang->getName() .'</label></dt>';
@@ -52,7 +52,7 @@ if ('save' === filter_input(INPUT_POST, 'btn_save')) {
                                 'd2u_helper_lang_german' => 'german',
                             ];
                             foreach ($replacement_options as $key => $value) {
-                                $selected = $value == $this->getConfig('lang_replacement_'. $rex_clang->getId()) ? ' selected="selected"' : '';
+                                $selected = $value === rex_config::get('d2u_guestbook', 'lang_replacement_'. $rex_clang->getId()) ? ' selected="selected"' : '';
                                 echo '<option value="'. $value .'"'. $selected .'>'. rex_i18n::msg('d2u_helper_lang_replacements_install') .' '. rex_i18n::msg($key) .'</option>';
                             }
                             echo '</select>';

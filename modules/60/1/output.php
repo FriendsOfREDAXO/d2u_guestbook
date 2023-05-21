@@ -11,14 +11,14 @@ if ($offset_lg_cols > 0) { /** @phpstan-ignore-line */
 echo '<div id="d2u_guestbook_module_60_1" class="col-12 col-sm-'. $cols_sm .' col-md-'. $cols_md .' col-lg-'. $cols_lg . $offset_lg .'">';
 echo '<div class="row">';
 
-$hide_rating = 'REX_VALUE[1]' == 'true' ? true : false;
+$hide_rating = 'REX_VALUE[1]' === 'true' ? true : false; /** @phpstan-ignore-line */
 
 if (!function_exists('sendAdminNotification')) {
     /**
      * Send mail to admin address when news guestbook entry is created.
-     * @param mixed $yform
+     * @param \rex_yform_action_callback $yform
      */
-    function sendAdminNotification($yform)
+    function sendAdminNotification($yform):void
     {
         \D2U_Guestbook\d2u_guestbook_backend_helper::sendAdminNotification($yform);
     }
@@ -50,10 +50,9 @@ if (0 === count($entries)) {
 } else {
     for ($i = 0; $i < count($entries); ++$i) {
         $entry = $entries[$i];
-
-        if (0 == $i % rex_config::get('d2u_guestbook', 'no_entries_page', 10)) {
+        if (0 === $i % (int) rex_config::get('d2u_guestbook', 'no_entries_page', 10)) {
             ++$page_no;
-            if (1 != $page_no) {
+            if (1 !== $page_no) {
                 echo '</div>';
             }
             echo '<div class="row guestbook-page pages-'. $page_no .'">'; // Pagination div
@@ -64,7 +63,7 @@ if (0 === count($entries)) {
         echo '<div class="entry-header">';
         echo '<div class="row">';
         echo '<div class="col-6"><b>';
-        if ('' != $entry->email && 'true' == rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
+        if ('' !== $entry->email && 'true' === (string) rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
             echo '<a href="mailto:'. $entry->email .'">';
             echo $entry->name .' <span class="icon mail"></span>';
             echo '</a>';
@@ -72,14 +71,17 @@ if (0 === count($entries)) {
             echo $entry->name;
         }
         echo '</b></div>';
-        echo '<div class="col-6 right">'. date('d.m.Y H:i', strtotime($entry->create_date)) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
+		$time = strtotime($entry->create_date);
+		if(false !== $time) {
+        	echo '<div class="col-6 right">'. date('d.m.Y H:i', $time) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
+		}
         echo '</div>';
-        echo '</div>';
+        echo '</div>'; // entry-header
 
         echo '<div class="entry-body">';
         echo '<div class="row">';
         echo '<div class="col-12">'. nl2br($entry->description) .'</div>';
-        if (!$hide_rating && $entry->rating > 0) {
+        if (!$hide_rating && $entry->rating > 0) { /** @phpstan-ignore-line */
             echo '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
             for ($j = 1; $j <= 5; ++$j) {
                 if ($j <= $entry->rating) {
@@ -90,39 +92,40 @@ if (0 === count($entries)) {
             }
             echo '</b></div>';
         }
-        echo '</div>';
-        echo '</div>';
+        echo '</div>'; // row
+        echo '</div>'; // entry-body
 
-        echo '</div>';
-        echo '</div>';
+        echo '</div>'; // col-12
     }
+	if($page_no > 0) {
+		echo '</div>'; // row guestbook-page
+		if($page_no > 1) {
+			// Page selection
+			echo "<script>
+					// show only first page
+					jQuery(document).ready(function($) {
+						$('.guestbook-page').hide();
+						$('.pages-1').show();
+					});
+					// hide pages and show selected page
+					function changePage(pageno) {
+						$('.guestbook-page').slideUp();
+						$('.active-page').removeClass('active-page');
+						$('.pages-' + pageno).slideDown();
+						$('#page-' + pageno).addClass('active-page');
+					}
+				</script>";
+			echo '<div class="row">';
+			echo '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
+			for ($i = 1; $i <= $page_no; ++$i) {
+				echo '<a href="javascript:changePage('. $i .')" class="page'. (1 === $i ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
+			}
+			echo '</div>';
+			echo '</div>';
+		}
+	}
 }
 echo '</div>'; // tab_guestbook
-
-// Page selection
-if ($page_no > 1) {
-    echo "<script>
-			// show only first page
-			jQuery(document).ready(function($) {
-				$('.guestbook-page').hide();
-				$('.pages-1').show();
-			});
-			// hide pages and show selected page
-			function changePage(pageno) {
-				$('.guestbook-page').slideUp();
-				$('.active-page').removeClass('active-page');
-				$('.pages-' + pageno).slideDown();
-				$('#page-' + pageno).addClass('active-page');
-			}
-		</script>";
-    echo '<div class="row">';
-    echo '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
-    for ($i = 1; $i <= $page_no; ++$i) {
-        echo '<a href="javascript:changePage('. $i .')" class="page'. (1 == $i ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
-    }
-    echo '</div>';
-    echo '</div>';
-}
 
 // Entry Form
 echo '<div id="tab_write" class="tab-pane fade guestbook-tab">';
@@ -170,7 +173,7 @@ $form_data = '
 	textarea|description|'. $tag_open .'d2u_guestbook_form_message'. $tag_close .'
 	choice|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|{"'. $tag_open .'d2u_guestbook_no'. $tag_close .'":"0","'. $tag_open .'d2u_guestbook_yes'. $tag_close .'":"1"}|1|0|
 	checkbox|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_privacy_policy'. $tag_close . ' *|0,1|0
-	'. ($hide_rating ? 'hidden|rating|0' : 'text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"display:none"}') .'
+	'. ($hide_rating ? 'hidden|rating|0' : 'text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"display:none"}')  /** @phpstan-ignore-line */ .'
 	html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
 	php|validate_timer|Spamprotection|<input name="validate_timer" type="hidden" value="'. microtime(true) .'" />|
 	hidden|online_status|offline
@@ -208,9 +211,9 @@ echo '</div>'; // tab_write
 
 echo '</div>'; // tab_content
 
-echo '</div>';
-echo '</div>';
-echo '</div>';
+echo '</div>'; // col-12
+echo '</div>'; // row
+echo '</div>'; // d2u_guestbook_module_60_1
 ?>
 <script>
 	// Allow activation of bootstrap tab via URL

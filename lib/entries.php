@@ -16,34 +16,34 @@ use rex_sql;
 class Entry
 {
     /** @var int Database ID */
-    public $id = 0;
+    public int $id = 0;
 
     /** @var string name */
-    public $name = '';
+    public string $name = '';
 
     /** @var string email address */
-    public $email = '';
+    public string $email = '';
 
     /** @var string description */
-    public $description = '';
+    public string $description = '';
 
     /** @var int Redaxo clang ID */
-    public $clang_id = 1;
+    public int $clang_id = 1;
 
     /** @var int rating */
-    public $rating = 5;
+    public int $rating = 5;
 
     /** @var bool recommendation */
-    public $recommendation = true;
+    public bool $recommendation = true;
 
     /** @var bool Did user accept privacy policy */
-    public $privacy_policy_accepted = false;
+    public bool $privacy_policy_accepted = false;
 
     /** @var string Online status */
-    public $online_status = 'online';
+    public string $online_status = 'online';
 
     /** @var string create date */
-    public $create_date = '';
+    public string $create_date = '';
 
     /**
      * Constructor. Reads a contact stored in database.
@@ -58,16 +58,16 @@ class Entry
         $num_rows = $result->getRows();
 
         if ($num_rows > 0) {
-            $this->id = $result->getValue('id');
-            $this->clang_id = $result->getValue('clang_id');
-            $this->name = stripslashes($result->getValue('name'));
-            $this->email = $result->getValue('email');
-            $this->rating = $result->getValue('rating');
-            $this->recommendation = 1 == $result->getValue('recommendation') ? true : false;
+            $this->id = (int) $result->getValue('id');
+            $this->clang_id = (int) $result->getValue('clang_id');
+            $this->name = stripslashes((string) $result->getValue('name'));
+            $this->email = (string) $result->getValue('email');
+            $this->rating = (int) $result->getValue('rating');
+            $this->recommendation = 1 === (int) $result->getValue('recommendation') ? true : false;
             $this->privacy_policy_accepted = 1 === (int) $result->getValue('privacy_policy_accepted') ? true : false;
-            $this->description = stripslashes(htmlspecialchars_decode($result->getValue('description')));
-            $this->online_status = $result->getValue('online_status');
-            $this->create_date = $result->getValue('create_date');
+            $this->description = stripslashes(htmlspecialchars_decode((string) $result->getValue('description')));
+            $this->online_status = (string) $result->getValue('online_status');
+            $this->create_date = (string) $result->getValue('create_date');
         }
     }
 
@@ -125,7 +125,7 @@ class Entry
 
         $entries = [];
         for ($i = 0; $i < $result->getRows(); ++$i) {
-            $entries[] = new self($result->getValue('id'));
+            $entries[] = new self((int) $result->getValue('id'));
             $result->next();
         }
         return $entries;
@@ -161,7 +161,7 @@ class Entry
 
     /**
      * Updates or inserts the object into database.
-     * @return in error code if error occurs
+     * @return bool true if error occurs
      */
     public function save()
     {
@@ -175,7 +175,7 @@ class Entry
                 ."privacy_policy_accepted = '". ($this->privacy_policy_accepted ? 'yes' : 'no') ."', "
                 ."description = '". addslashes(htmlspecialchars($this->description)) ."', "
                 ."online_status = '". $this->online_status ."' ";
-        if (0 == $this->id) {
+        if (0 === $this->id) {
             $query = 'INSERT INTO '. $query . ', create_date = CURRENT_TIMESTAMP';
         } else {
             $query = 'UPDATE '. $query .' WHERE id = '. $this->id;
@@ -183,7 +183,7 @@ class Entry
 
         $result = rex_sql::factory();
         $result->setQuery($query);
-        if (0 == $this->id) {
+        if (0 === $this->id) {
             $this->id = (int) $result->getLastId();
             $error = $result->hasError();
         }

@@ -63,12 +63,12 @@ a.recommendation:hover {
 	border-top: navi_color_bg 1px solid;
 	padding: 0.75em;
 }
-guestbook-page {
-	display: inline-block;
-}
-#tab_guestbook.tab-pane {
+#d2u_guestbook_module_60_1 .tab-pane {
 	border: navi_color_bg 1px solid;
-	padding: 1em 1em 0 1em;
+	padding: 15px 15px 0 15px;
+}
+#d2u_guestbook_module_60_1 #tab_write {
+	padding-bottom: 15px;
 }
 .page-selection {
 	background-color: article_color_box;

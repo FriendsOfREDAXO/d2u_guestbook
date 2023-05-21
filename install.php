@@ -16,8 +16,8 @@
     ->ensure();
 
 // Standard settings
-if (!$this->hasConfig('guestbook_article_id')) {
-    $this->setConfig('guestbook_article_id', rex_article::getSiteStartArticleId());
+if (!rex_config::has('d2u_guestbook', 'guestbook_article_id')) {
+    rex_config::set('d2u_guestbook', 'guestbook_article_id', rex_article::getSiteStartArticleId());
 }
 
 // Update modules
@@ -25,7 +25,7 @@ if (class_exists('D2UModuleManager')) {
     $modules = [];
     $modules[] = new D2UModule('60-1',
         'D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs',
-        13);
+        14);
     $modules[] = new D2UModule('60-2',
         'D2U Guestbook - Infobox Bewertung',
         3);

@@ -2,9 +2,9 @@
 if (!function_exists('sendAdminNotification')) {
     /**
      * Send mail to admin address when news guestbook entry is created.
-     * @param mixed $yform
+     * @param \rex_yform_action_callback $yform
      */
-    function sendAdminNotification($yform)
+    function sendAdminNotification($yform):void
     {
         \D2U_Guestbook\d2u_guestbook_backend_helper::sendAdminNotification($yform);
     }
@@ -15,7 +15,7 @@ $sprog = rex_addon::get('sprog');
 $tag_open = $sprog->getConfig('wildcard_open_tag');
 $tag_close = $sprog->getConfig('wildcard_close_tag');
 
-if ('add' == rex_get('entry', 'string')) {
+if ('add' === rex_get('entry', 'string')) {
     // Entry Form
     echo '<div class="col-12">';
     echo '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</legend>';
@@ -109,9 +109,9 @@ if ('add' == rex_get('entry', 'string')) {
         for ($i = 0; $i < count($entries); ++$i) {
             $entry = $entries[$i];
 
-            if (0 == $i % rex_config::get('d2u_guestbook', 'no_entries_page', 10)) {
+            if (0 === $i % (int) rex_config::get('d2u_guestbook', 'no_entries_page', 10)) {
                 ++$page_no;
-                if (1 != $page_no) {
+                if ($page_no > 1) {
                     echo '</div>';
                 }
                 echo '<div class="row guestbook-page pages-'. $page_no .'">'; // Pagination div
@@ -121,7 +121,7 @@ if ('add' == rex_get('entry', 'string')) {
             echo '<div class="entry-header">';
             echo '<div class="row">';
             echo '<div class="col-6 left"><b>'. $tag_open .'d2u_guestbook_form_name'. $tag_close .': ';
-            if ('' != $entry->email && 'true' == rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
+            if ('' !== $entry->email && 'true' === (string) rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
                 echo '<a href="mailto:'. $entry->email .'">';
                 echo $entry->name .' <span class="icon mail"></span>';
                 echo '</a>';
@@ -129,7 +129,10 @@ if ('add' == rex_get('entry', 'string')) {
                 echo $entry->name;
             }
             echo '</b></div>';
-            echo '<div class="col-6 right">'. date('d.m.Y H:i', strtotime($entry->create_date)) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
+            $time = strtotime($entry->create_date);
+            if(false !== $time) {
+                echo '<div class="col-6 right">'. date('d.m.Y H:i', $time) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
+            }
             echo '</div>';
             echo '</div>';
 
@@ -173,7 +176,7 @@ if ('add' == rex_get('entry', 'string')) {
         echo '<div class="row">';
         echo '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
         for ($i = 1; $i <= $page_no; ++$i) {
-            echo '<a href="javascript:changePage('. $i .')" class="page'. (1 == $i ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
+            echo '<a href="javascript:changePage('. $i .')" class="page'. (1 === $i ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
         }
         echo '</div>';
         echo '</div>';

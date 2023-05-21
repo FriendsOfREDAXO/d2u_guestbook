@@ -4,7 +4,6 @@ namespace D2U_Guestbook;
 
 use rex;
 use rex_addon;
-use rex_addon_interface;
 use rex_config;
 use rex_mailer;
 use rex_yrewrite;
@@ -16,14 +15,14 @@ class d2u_guestbook_backend_helper
 {
     /**
      * Send mail to admin address when news guestbook entry is created.
-     * @param mixed $yform
+     * @param \rex_yform_action_callback $yform
      */
-    public static function sendAdminNotification($yform)
+    public static function sendAdminNotification($yform):void
     {
-        if (isset($yform->params['values']) && '' != rex_config::get('d2u_guestbook', 'request_form_email')) {
+        if (isset($yform->params['values']) && '' !== (string) rex_config::get('d2u_guestbook', 'request_form_email')) {
             $fields = [];
             foreach ($yform->params['values'] as $value) {
-                if ('' != $value->name) {
+                if ('' !== $value->name) {
                     $fields[$value->name] = $value->value;
                 }
             }
@@ -31,10 +30,10 @@ class d2u_guestbook_backend_helper
             $mail = new rex_mailer();
             $mail->isHTML(false);
             $mail->CharSet = 'utf-8';
-            $mail->From = rex_config::get('d2u_guestbook', 'request_form_email');
-            $mail->Sender = rex_config::get('d2u_guestbook', 'request_form_email');
+            $mail->From = (string) rex_config::get('d2u_guestbook', 'request_form_email');
+            $mail->Sender = (string)  rex_config::get('d2u_guestbook', 'request_form_email');
 
-            $mail->addAddress(rex_config::get('d2u_guestbook', 'request_form_email'));
+            $mail->addAddress((string) rex_config::get('d2u_guestbook', 'request_form_email'));
             $mail->addReplyTo($fields['email'], $fields['name']);
             $mail->Subject = 'New Guestbook entry - Neuer Gästebuch eintrag - '. (rex_addon::get('yrewrite')->isAvailable() ? rex_yrewrite::getCurrentDomain()->getUrl() : rex::getServer());
 
