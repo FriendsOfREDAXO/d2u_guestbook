@@ -28,10 +28,10 @@ if (class_exists('D2UModuleManager')) {
         14);
     $modules[] = new D2UModule('60-2',
         'D2U Guestbook - Infobox Bewertung',
-        3);
+        4);
     $modules[] = new D2UModule('60-3',
         'D2U Guestbook - Gästebuch ohne Tabs',
-        10);
+        11);
     $d2u_module_manager = new D2UModuleManager($modules, '', 'd2u_guestbook');
     $d2u_module_manager->autoupdate();
 }
