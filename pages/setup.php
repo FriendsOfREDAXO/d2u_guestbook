@@ -57,6 +57,10 @@ if ('tvsgb' === rex_request('import', 'string') && $tvsgb_available) {
 <h2>Support</h2>
 <p>Fehlermeldungen bitte im <a href="https://github.com/TobiasKrais/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
+<p>1.0.13-DEV:</p>
+<ul>
+	<li>...</li>
+</ul>
 <p>1.0.12:</p>
 <ul>
 	<li>Modul "60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs": Fehler im Spamschutz und CSRF Schutz behoben.</li>
