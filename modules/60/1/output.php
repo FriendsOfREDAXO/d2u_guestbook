@@ -192,11 +192,10 @@ $form_data = '
 
 $yform = new rex_yform();
 $yform->setFormData(trim($form_data));
-$yform->setObjectparams('csrf_protection', false);
 $yform->setObjectparams('Error-occured', $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
 $yform->setObjectparams('form_action', rex_getUrl(rex_article::getCurrentId()));
 $yform->setObjectparams('form_anchor', 'tab_write');
-$yform->setObjectparams('form_name', 'd2u_guestbook_module_60_1_'. random_int(1, 100));
+$yform->setObjectparams('form_name', 'd2u_guestbook_module_60_1_'. $this->getCurrentSlice()->getId()); /** @phpstan-ignore-line */
 $yform->setObjectparams('real_field_names', true);
 
 // action - showtext

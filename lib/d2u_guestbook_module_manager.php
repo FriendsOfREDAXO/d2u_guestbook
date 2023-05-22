@@ -15,13 +15,13 @@ class D2UGuestbookModules
         $modules = [];
         $modules[] = new D2UModule('60-1',
             'D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs',
-            14);
+            15);
         $modules[] = new D2UModule('60-2',
             'D2U Guestbook - Infobox Bewertung',
             4);
         $modules[] = new D2UModule('60-3',
             'D2U Guestbook - Gästebuch ohne Tabs',
-            11);
+            12);
         return $modules;
     }
 }
