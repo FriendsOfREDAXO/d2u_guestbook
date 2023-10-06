@@ -26,7 +26,7 @@ $entries = D2U_Guestbook\Entry::getAll(true);
                     for ($i = 1; $i <= 5; ++$i) {
                         if ($i <= $rating) {
                             echo '<span class="icon star-full"></span> ';
-                        } elseif ($i <= $rating + 1) {
+                        } elseif ($i <= $rating + 0.99) {
                             echo '<span class="icon star-half"></span> ';
                         } else {
                             echo '<span class="icon star-empty"></span> ';

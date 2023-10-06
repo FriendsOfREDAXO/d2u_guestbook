@@ -59,7 +59,7 @@ if ('tvsgb' === rex_request('import', 'string') && $tvsgb_available) {
 <h2>Changelog</h2>
 <p>1.0.13-DEV:</p>
 <ul>
-	<li>...</li>
+	<li>Modul "60-2 D2U Guestbook - Infobox Bewertung": Berechnung der Sterne korrigiert.</li>
 </ul>
 <p>1.0.12:</p>
 <ul>
