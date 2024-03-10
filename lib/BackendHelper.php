@@ -1,6 +1,6 @@
 <?php
 
-namespace D2U_Guestbook;
+namespace FriendsOfREDAXO\D2UGuestbook;
 
 use rex;
 use rex_addon;
@@ -11,7 +11,7 @@ use rex_yrewrite;
 /**
  * Offers helper functions for backend.
  */
-class d2u_guestbook_backend_helper
+class BackendHelper
 {
     /**
      * Send mail to admin address when news guestbook entry is created.

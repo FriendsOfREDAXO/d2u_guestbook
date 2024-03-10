@@ -2,9 +2,9 @@
 /*
  * Modules
  */
-$d2u_module_manager = new D2UModuleManager(D2UGuestbookModules::getModules(), 'modules/', 'd2u_guestbook');
+$d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager(D2UGuestbookModules::getModules(), 'modules/', 'd2u_guestbook');
 
-// D2UModuleManager actions
+// \TobiasKrais\D2UHelper\ModuleManager actions
 $d2u_module_id = rex_request('d2u_module_id', 'string');
 $paired_module = (int) rex_request('pair_'. $d2u_module_id, 'int');
 $function = rex_request('function', 'string');
@@ -12,7 +12,7 @@ if ('' !== $d2u_module_id) {
     $d2u_module_manager->doActions($d2u_module_id, $function, $paired_module);
 }
 
-// D2UModuleManager show list
+// \TobiasKrais\D2UHelper\ModuleManager show list
 $d2u_module_manager->showManagerList();
 
 // Import from TVS Guestbook
@@ -55,11 +55,21 @@ if ('tvsgb' === rex_request('import', 'string') && $tvsgb_available) {
 		Hotel Albatros</a>.</li>
 </ul>
 <h2>Support</h2>
-<p>Fehlermeldungen bitte im <a href="https://github.com/TobiasKrais/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
+<p>Fehlermeldungen bitte im <a href="https://github.com/FriendsOfREDAXO/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
-<p>1.0.13-DEV:</p>
+<p>1.1.0:</p>
 <ul>
+	<li>Vorbereitung auf R6: Folgende Klassen werden ab Version 2 dieses Addons umbenannt. Schon jetzt stehen die neuen Klassen für die Übergangszeit zur Verfügung:
+		<ul>
+			<li><code>D2U_Guestbook\d2u_guestbook_backend_helper</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\BackendHelper</code>.</li>
+			<li><code>d2u_guestbook_lang_helper</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\LangHelper</code>.</li>
+			<li><code>D2UGuestbookModules</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\Modules</code>.</li>
+			<li><code>D2U_Guestbook\Entry</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\Entry</code>.</li>
+		</ul>
+	</li>
+	<li>Projekt an FriendsOfREDAXO übergeben.</li>
 	<li>Modul "60-2 D2U Guestbook - Infobox Bewertung": Berechnung der Sterne korrigiert.</li>
+	<li>Anpassungen an kommende d2u_helper 2.x Version</li>
 </ul>
 <p>1.0.12:</p>
 <ul>

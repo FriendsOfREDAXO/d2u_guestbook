@@ -6,8 +6,8 @@ $sql = \rex_sql::factory();
 $sql->setQuery('DROP TABLE IF EXISTS ' . rex::getTablePrefix() . 'd2u_guestbook');
 
 // Delete language replacements
-if (!class_exists('d2u_guestbook_lang_helper')) {
+if (!class_exists(FriendsOfREDAXO\D2UGuestbook\LangHelper::class)) {
     // Load class in case addon is deactivated
-    require_once 'lib/d2u_guestbook_lang_helper.php';
+    require_once 'lib/LangHelper.php';
 }
-d2u_guestbook_lang_helper::factory()->uninstall();
+FriendsOfREDAXO\D2UGuestbook\LangHelper::factory()->uninstall();

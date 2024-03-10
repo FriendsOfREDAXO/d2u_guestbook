@@ -16,7 +16,7 @@ if ('save' === filter_input(INPUT_POST, 'btn_save')) {
         echo rex_view::success(rex_i18n::msg('form_saved'));
 
         // Install / update language replacements
-        d2u_guestbook_lang_helper::factory()->install();
+        FriendsOfREDAXO\D2UGuestbook\LangHelper::factory()->install();
     } else {
         echo rex_view::error(rex_i18n::msg('form_save_error'));
     }
@@ -30,10 +30,10 @@ if ('save' === filter_input(INPUT_POST, 'btn_save')) {
 				<legend><small><i class="rex-icon fa-book"></i></small> <?= rex_i18n::msg('d2u_helper_settings') ?></legend>
 				<div class="panel-body-wrapper slide">
 					<?php
-                        d2u_addon_backend_helper::form_input('d2u_guestbook_settings_request_form_email', 'settings[request_form_email]', (string) rex_config::get('d2u_guestbook', 'request_form_email'), true, false, 'email');
-                        d2u_addon_backend_helper::form_linkfield('d2u_guestbook_settings_article', '1', (int) rex_config::get('d2u_guestbook', 'guestbook_article_id'), (int) rex_config::get('d2u_helper', 'default_lang', rex_clang::getStartId()));
-                        d2u_addon_backend_helper::form_checkbox('d2u_guestbook_settings_allow_answer', 'settings[allow_answer]', 'true', 'true' === (string) rex_config::get('d2u_guestbook', 'allow_answer'));
-                        d2u_addon_backend_helper::form_input('d2u_guestbook_settings_no_entries_page', 'settings[no_entries_page]', (int) rex_config::get('d2u_guestbook', 'no_entries_page', 10), true, false, 'number');
+                        \TobiasKrais\D2UHelper\BackendHelper::form_input('d2u_guestbook_settings_request_form_email', 'settings[request_form_email]', (string) rex_config::get('d2u_guestbook', 'request_form_email'), true, false, 'email');
+                        \TobiasKrais\D2UHelper\BackendHelper::form_linkfield('d2u_guestbook_settings_article', '1', (int) rex_config::get('d2u_guestbook', 'guestbook_article_id'), (int) rex_config::get('d2u_helper', 'default_lang', rex_clang::getStartId()));
+                        \TobiasKrais\D2UHelper\BackendHelper::form_checkbox('d2u_guestbook_settings_allow_answer', 'settings[allow_answer]', 'true', 'true' === (string) rex_config::get('d2u_guestbook', 'allow_answer'));
+                        \TobiasKrais\D2UHelper\BackendHelper::form_input('d2u_guestbook_settings_no_entries_page', 'settings[no_entries_page]', (int) rex_config::get('d2u_guestbook', 'no_entries_page', 10), true, false, 'number');
                     ?>
 				</div>
 			</fieldset>
@@ -41,7 +41,7 @@ if ('save' === filter_input(INPUT_POST, 'btn_save')) {
 				<legend><small><i class="rex-icon rex-icon-language"></i></small> <?= rex_i18n::msg('d2u_helper_lang_replacements') ?></legend>
 				<div class="panel-body-wrapper slide">
 					<?php
-                        d2u_addon_backend_helper::form_checkbox('d2u_helper_lang_wildcard_overwrite', 'settings[lang_wildcard_overwrite]', 'true', 'true' === rex_config::get('d2u_guestbook', 'lang_wildcard_overwrite'));
+                        \TobiasKrais\D2UHelper\BackendHelper::form_checkbox('d2u_helper_lang_wildcard_overwrite', 'settings[lang_wildcard_overwrite]', 'true', 'true' === rex_config::get('d2u_guestbook', 'lang_wildcard_overwrite'));
                         foreach (rex_clang::getAll() as $rex_clang) {
                             echo '<dl class="rex-form-group form-group">';
                             echo '<dt><label>'. $rex_clang->getName() .'</label></dt>';
@@ -72,6 +72,6 @@ if ('save' === filter_input(INPUT_POST, 'btn_save')) {
 	</div>
 </form>
 <?php
-    echo d2u_addon_backend_helper::getCSS();
-    echo d2u_addon_backend_helper::getJS();
-    echo d2u_addon_backend_helper::getJSOpenAll();
+    echo \TobiasKrais\D2UHelper\BackendHelper::getCSS();
+    echo \TobiasKrais\D2UHelper\BackendHelper::getJS();
+    echo \TobiasKrais\D2UHelper\BackendHelper::getJSOpenAll();

@@ -9,6 +9,14 @@ if (rex::isBackend()) {
     rex_extension::register('CLANG_DELETED', 'rex_d2u_guestbook_clang_deleted');
 }
 
+rex_extension::register('PACKAGES_INCLUDED', static function ($params) {
+    /** @deprecated starting with version 2, class alias will be removed */
+    class_alias(FriendsOfREDAXO\D2UGuestbook\BackendHelper::class, D2U_Guestbook\d2u_guestbook_backend_helper::class);
+    class_alias(FriendsOfREDAXO\D2UGuestbook\Entry::class, D2U_Guestbook\Entry::class);
+    class_alias(FriendsOfREDAXO\D2UGuestbook\LangHelper::class, d2u_guestbook_lang_helper::class);
+    class_alias(FriendsOfREDAXO\D2UGuestbook\Modules::class, D2UGuestbookModules::class);
+});
+
 /**
  * Deletes language specific configurations and objects.
  * @param rex_extension_point<array<string>> $ep Redaxo extension point
@@ -21,7 +29,7 @@ function rex_d2u_guestbook_clang_deleted(rex_extension_point $ep)
     $clang_id = $params['id'];
 
     // Delete
-    $entries = D2U_Guestbook\Entry::getAll(false);
+    $entries = FriendsOfREDAXO\D2UGuestbook\Entry::getAll(false);
     foreach ($entries as $entry) {
         if ($entry->clang_id === $clang_id) {
             $entry->delete();
@@ -33,7 +41,7 @@ function rex_d2u_guestbook_clang_deleted(rex_extension_point $ep)
         rex_config::remove('d2u_guestbook', 'lang_replacement_'. $clang_id);
     }
     // Delete language replacements
-    d2u_guestbook_lang_helper::factory()->uninstall($clang_id);
+    FriendsOfREDAXO\D2UGuestbook\LangHelper::factory()->uninstall($clang_id);
 
     return $warning;
 }

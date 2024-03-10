@@ -1,27 +1,30 @@
 <?php
+
+namespace FriendsOfREDAXO\D2UGuestbook;
+
 /**
  * Class managing modules published by www.design-to-use.de.
  *
  * @author Tobias Krais
  */
-class D2UGuestbookModules
+class Modules
 {
     /**
      * Get modules offered by this addon.
-     * @return D2UModule[] Modules offered by this addon
+     * @return \TobiasKrais\D2UHelper\Module[] Modules offered by this addon
      */
     public static function getModules()
     {
         $modules = [];
-        $modules[] = new D2UModule('60-1',
+        $modules[] = new \TobiasKrais\D2UHelper\Module('60-1',
             'D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs',
-            15);
-        $modules[] = new D2UModule('60-2',
+            16);
+        $modules[] = new \TobiasKrais\D2UHelper\Module('60-2',
             'D2U Guestbook - Infobox Bewertung',
             5);
-        $modules[] = new D2UModule('60-3',
+        $modules[] = new \TobiasKrais\D2UHelper\Module('60-3',
             'D2U Guestbook - Gästebuch ohne Tabs',
-            12);
+            13);
         return $modules;
     }
 }

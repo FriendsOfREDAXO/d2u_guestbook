@@ -21,24 +21,24 @@ if (!rex_config::has('d2u_guestbook', 'guestbook_article_id')) {
 }
 
 // Update modules
-if (class_exists('D2UModuleManager')) {
+if (class_exists(TobiasKrais\D2UHelper\ModuleManager::class)) {
     $modules = [];
-    $modules[] = new D2UModule('60-1',
+    $modules[] = new \TobiasKrais\D2UHelper\Module('60-1',
         'D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs',
-        15);
-    $modules[] = new D2UModule('60-2',
+        16);
+    $modules[] = new \TobiasKrais\D2UHelper\Module('60-2',
         'D2U Guestbook - Infobox Bewertung',
         5);
-    $modules[] = new D2UModule('60-3',
+    $modules[] = new \TobiasKrais\D2UHelper\Module('60-3',
         'D2U Guestbook - Gästebuch ohne Tabs',
-        12);
-    $d2u_module_manager = new D2UModuleManager($modules, '', 'd2u_guestbook');
+        13);
+    $d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager($modules, '', 'd2u_guestbook');
     $d2u_module_manager->autoupdate();
 }
 
 // Update language replacements
-if (!class_exists('d2u_guestbook_lang_helper')) {
+if (!class_exists(FriendsOfREDAXO\D2UGuestbook\LangHelper::class)) {
     // Load class in case addon is deactivated
-    require_once 'lib/d2u_guestbook_lang_helper.php';
+    require_once 'lib/LangHelper.php';
 }
-d2u_guestbook_lang_helper::factory()->install();
+FriendsOfREDAXO\D2UGuestbook\LangHelper::factory()->install();

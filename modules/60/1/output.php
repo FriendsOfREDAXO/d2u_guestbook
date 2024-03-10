@@ -20,7 +20,7 @@ if (!function_exists('sendAdminNotification')) {
      */
     function sendAdminNotification($yform):void
     {
-        \D2U_Guestbook\d2u_guestbook_backend_helper::sendAdminNotification($yform);
+        \FriendsOfREDAXO\D2UGuestbook\BackendHelper::sendAdminNotification($yform);
     }
 }
 
@@ -42,7 +42,7 @@ echo '<div class="tab-content">';
 echo '<div id="tab_guestbook" class="tab-pane fade active show guestbook-tab">';
 
 // Entries
-$entries = \D2U_Guestbook\Entry::getAll(true);
+$entries = \FriendsOfREDAXO\D2UGuestbook\Entry::getAll(true);
 $page_no = 0;
 
 if (0 === count($entries)) {
@@ -185,7 +185,7 @@ $form_data = '
 	validate|empty|name|'. $tag_open .'d2u_guestbook_form_validate_name'. $tag_close .'
 	validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_description'. $tag_close .'
 	validate|empty|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_validate_privacy_policy'. $tag_close .'
-	validate|customfunction|validate_timer|d2u_addon_frontend_helper::yform_validate_timer|5|'. $tag_open .'d2u_guestbook_form_validate_spambots'. $tag_close .'|
+	validate|customfunction|validate_timer|TobiasKrais\D2UHelper\FrontendHelper::yform_validate_timer|5|'. $tag_open .'d2u_guestbook_form_validate_spambots'. $tag_close .'|
 
 	action|callback|sendAdminNotification
 	action|db|'. rex::getTablePrefix() .'d2u_guestbook|';

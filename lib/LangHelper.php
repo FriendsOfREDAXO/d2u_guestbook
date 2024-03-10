@@ -1,9 +1,12 @@
 <?php
+
+namespace FriendsOfREDAXO\D2UGuestbook;
+
 /**
  * @api
  * Offers helper functions for language issues.
  */
-class d2u_guestbook_lang_helper extends \D2U_Helper\ALangHelper
+class LangHelper extends \TobiasKrais\D2UHelper\ALangHelper
 {
     /**
      * @var array<string,string> Array with english replacements. Key is the wildcard,
