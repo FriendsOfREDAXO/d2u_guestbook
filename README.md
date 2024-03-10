@@ -16,3 +16,7 @@ Es stehen mehrere Beispielmodule auf Basis von Bootstrap 4 zur Verfügung:
 - 60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs: ermöglicht die Anzeige und das Schreiben von Gästebucheinträgen. Dabei werden die Gästebucheinträge paginiert.
 - 60-2 D2U Guestbook - Infobox Bewertung: zeigt den Durchschnittswert des im Gästebuch vergebenen Ratings an.
 - 60-3 D2U Guestbook - Gästebuch ohne Tabs: ähnlich wie Modul 60-1, nur ohne Tabs
+
+## Autor
+
+Dieses Addon wurde von Tobias Krais (<https://github.com/TobiasKrais>) an FriendsOfREDAXO übergeben und nach wie vor betreut.
