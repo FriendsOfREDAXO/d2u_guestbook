@@ -17,6 +17,6 @@ Es stehen mehrere Beispielmodule auf Basis von Bootstrap 4 zur Verfügung:
 - 60-2 D2U Guestbook - Infobox Bewertung: zeigt den Durchschnittswert des im Gästebuch vergebenen Ratings an.
 - 60-3 D2U Guestbook - Gästebuch ohne Tabs: ähnlich wie Modul 60-1, nur ohne Tabs
 
-## Autor
+## Autor und Projektleitung
 
 Dieses Addon wurde von Tobias Krais (<https://github.com/TobiasKrais>) an FriendsOfREDAXO übergeben und nach wie vor betreut.
