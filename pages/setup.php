@@ -2,7 +2,7 @@
 /*
  * Modules
  */
-$d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager(D2UGuestbookModules::getModules(), 'modules/', 'd2u_guestbook');
+$d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager(\FriendsOfREDAXO\D2UGuestbook\Module::getModules(), 'modules/', 'd2u_guestbook');
 
 // \TobiasKrais\D2UHelper\ModuleManager actions
 $d2u_module_id = rex_request('d2u_module_id', 'string');
@@ -15,29 +15,6 @@ if ('' !== $d2u_module_id) {
 // \TobiasKrais\D2UHelper\ModuleManager show list
 $d2u_module_manager->showManagerList();
 
-// Import from TVS Guestbook
-$sql = rex_sql::factory();
-$sql->setQuery("SHOW TABLES LIKE '". rex::getTablePrefix() ."771_entries'");
-$tvsgb_available = $sql->getRows() > 0 ? true : false;
-if ('tvsgb' === rex_request('import', 'string') && $tvsgb_available) {
-    $sql->setQuery('UPDATE `'. rex::getTablePrefix() ."771_entries` SET description = REPLACE(description, '\r\n', '<br>');
-		INSERT INTO ". rex::getTablePrefix() .'d2u_guestbook (`name`, `email`, `description`, `clang_id`, `online_status`, `create_date`)
-			SELECT `create_user`, `email`, `description`, `clang`, `status`, FROM_UNIXTIME(`create_date`) FROM '. rex::getTablePrefix() .'771_entries;
-		UPDATE `'. rex::getTablePrefix() ."d2u_guestbook` SET `online_status` = 'online' WHERE `online_status` = '1';
-		UPDATE `". rex::getTablePrefix() ."d2u_guestbook` SET `online_status` = 'offline' WHERE `online_status` = '0';
-		UPDATE `". rex::getTablePrefix() .'d2u_guestbook` SET rating = 0 WHERE rating = NULL;
-		DROP TABLE `'. rex::getTablePrefix() .'771_entries`;');
-    if ($sql->hasError()) {
-        echo rex_view::error('Fehler beim Import: '. $sql->getError());
-    } else {
-        echo rex_view::success('Daten aus TVS Gästebucherfolgreich importiert und alte Tabelle gelöscht.');
-    }
-} elseif ($tvsgb_available) {
-    echo '<h2>Import aus Redaxo 4 TVS Gästebuch</h2>';
-    echo '<p>Es wurde eine TVS Gästebuch Tabelle aus Redaxo 4 in der Datenbank gefunden.'
-    . 'Sollen die Daten importiert werden und die alte Tabelle gelöscht werden?</p>';
-    echo '<a href="'. rex_url::currentBackendPage(['import' => 'tvsgb'], false) .'"><button class="btn btn-save">Import</button></a>';
-}
 ?>
 <h2>Installation der Module</h2>
 <p>Die zu den obigen Modulen gehörenden CSS Vorlagen befinden sich im Addon
@@ -57,19 +34,20 @@ if ('tvsgb' === rex_request('import', 'string') && $tvsgb_available) {
 <h2>Support</h2>
 <p>Fehlermeldungen bitte im <a href="https://github.com/FriendsOfREDAXO/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
-<p>1.1.0:</p>
+<p>2.0.0:</p>
 <ul>
-	<li>Vorbereitung auf R6: Folgende Klassen werden ab Version 2 dieses Addons umbenannt. Schon jetzt stehen die neuen Klassen für die Übergangszeit zur Verfügung:
+	<li>Vorbereitung auf R6: Folgende Klassen wurden umbenannt:
 		<ul>
 			<li><code>D2U_Guestbook\d2u_guestbook_backend_helper</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\BackendHelper</code>.</li>
 			<li><code>d2u_guestbook_lang_helper</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\LangHelper</code>.</li>
-			<li><code>D2UGuestbookModules</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\Modules</code>.</li>
+			<li><code>D2UGuestbookModules</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\Module</code>.</li>
 			<li><code>D2U_Guestbook\Entry</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\Entry</code>.</li>
 		</ul>
 	</li>
 	<li>Projekt an FriendsOfREDAXO übergeben.</li>
 	<li>Modul "60-2 D2U Guestbook - Infobox Bewertung": Berechnung der Sterne korrigiert.</li>
 	<li>Anpassungen an kommende d2u_helper 2.x Version</li>
+	<li>Import aus TVSGB von Redaxo 4 entfernt.</li>
 </ul>
 <p>1.0.12:</p>
 <ul>

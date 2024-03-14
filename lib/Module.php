@@ -7,7 +7,7 @@ namespace FriendsOfREDAXO\D2UGuestbook;
  *
  * @author Tobias Krais
  */
-class Modules
+class Module
 {
     /**
      * Get modules offered by this addon.

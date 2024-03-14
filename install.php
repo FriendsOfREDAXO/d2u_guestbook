@@ -21,20 +21,9 @@ if (!rex_config::has('d2u_guestbook', 'guestbook_article_id')) {
 }
 
 // Update modules
-if (class_exists(TobiasKrais\D2UHelper\ModuleManager::class)) {
-    $modules = [];
-    $modules[] = new \TobiasKrais\D2UHelper\Module('60-1',
-        'D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs',
-        16);
-    $modules[] = new \TobiasKrais\D2UHelper\Module('60-2',
-        'D2U Guestbook - Infobox Bewertung',
-        5);
-    $modules[] = new \TobiasKrais\D2UHelper\Module('60-3',
-        'D2U Guestbook - Gästebuch ohne Tabs',
-        13);
-    $d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager($modules, '', 'd2u_guestbook');
-    $d2u_module_manager->autoupdate();
-}
+include __DIR__ . DIRECTORY_SEPARATOR .'lib'. DIRECTORY_SEPARATOR .'Module.php';
+$d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager(\FriendsOfREDAXO\D2UGuestbook\Module::getModules(), '', 'd2u_guestbook');
+$d2u_module_manager->autoupdate();
 
 // Update language replacements
 if (!class_exists(FriendsOfREDAXO\D2UGuestbook\LangHelper::class)) {

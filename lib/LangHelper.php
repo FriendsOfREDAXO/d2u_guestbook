@@ -2,6 +2,9 @@
 
 namespace FriendsOfREDAXO\D2UGuestbook;
 
+use rex_clang;
+use rex_config;
+
 /**
  * @api
  * Offers helper functions for language issues.
@@ -77,7 +80,7 @@ class LangHelper extends \TobiasKrais\D2UHelper\ALangHelper
 
     /**
      * Factory method.
-     * @return d2u_guestbook_lang_helper Object
+     * @return self Object
      */
     public static function factory()
     {
