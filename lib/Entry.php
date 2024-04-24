@@ -5,7 +5,7 @@
  * @author <a href="http://www.design-to-use.de">www.design-to-use.de</a>
  */
 
-namespace FriendsOfREDAXO\D2UGuestbook;
+namespace FriendsOfRedaxo\D2UGuestbook;
 
 use rex;
 use rex_sql;

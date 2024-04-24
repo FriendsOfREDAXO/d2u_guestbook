@@ -13,7 +13,7 @@ if (1 === (int) filter_input(INPUT_POST, 'btn_save') || 1 === (int) filter_input
     $form = rex_post('form', 'array', []);
 
     // Media fields and links need special treatment
-    $entry = new FriendsOfREDAXO\D2UGuestbook\Entry($form['entry_id']);
+    $entry = new FriendsOfRedaxo\D2UGuestbook\Entry($form['entry_id']);
     $entry->clang_id = $form['clang_id'];
     $entry->name = $form['name'];
     $entry->email = $form['email'];
@@ -42,14 +42,14 @@ if (1 === (int) filter_input(INPUT_POST, 'btn_delete', FILTER_VALIDATE_INT) || '
         $form = rex_post('form', 'array', []);
         $entry_id = $form['entry_id'];
     }
-    $entry = new FriendsOfREDAXO\D2UGuestbook\Entry($entry_id);
+    $entry = new FriendsOfRedaxo\D2UGuestbook\Entry($entry_id);
     $entry->delete();
 
     $func = '';
 }
 // Change online status of machine
 elseif ('changestatus' === $func) {
-    $entry = new FriendsOfREDAXO\D2UGuestbook\Entry($entry_id);
+    $entry = new FriendsOfRedaxo\D2UGuestbook\Entry($entry_id);
     $entry->changeStatus();
 
     header('Location: '. rex_url::currentBackendPage());
@@ -68,7 +68,7 @@ if ('edit' === $func || 'add' === $func) {
 					<legend><?= rex_i18n::msg('d2u_guestbook_entry') ?></legend>
 					<div class="panel-body-wrapper slide">
 						<?php
-                            $entry = new FriendsOfREDAXO\D2UGuestbook\Entry($entry_id);
+                            $entry = new FriendsOfRedaxo\D2UGuestbook\Entry($entry_id);
                             if (count(rex_clang::getAllIds(true)) > 1) {
                                 $options_clang = [];
                                 foreach (rex_clang::getAll(true) as $rex_clang) {

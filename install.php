@@ -22,12 +22,12 @@ if (!rex_config::has('d2u_guestbook', 'guestbook_article_id')) {
 
 // Update modules
 include __DIR__ . DIRECTORY_SEPARATOR .'lib'. DIRECTORY_SEPARATOR .'Module.php';
-$d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager(\FriendsOfREDAXO\D2UGuestbook\Module::getModules(), '', 'd2u_guestbook');
+$d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager(\FriendsOfRedaxo\D2UGuestbook\Module::getModules(), '', 'd2u_guestbook');
 $d2u_module_manager->autoupdate();
 
 // Update language replacements
-if (!class_exists(FriendsOfREDAXO\D2UGuestbook\LangHelper::class)) {
+if (!class_exists(FriendsOfRedaxo\D2UGuestbook\LangHelper::class)) {
     // Load class in case addon is deactivated
     require_once 'lib/LangHelper.php';
 }
-FriendsOfREDAXO\D2UGuestbook\LangHelper::factory()->install();
+FriendsOfRedaxo\D2UGuestbook\LangHelper::factory()->install();

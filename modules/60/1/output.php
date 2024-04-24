@@ -20,7 +20,7 @@ if (!function_exists('sendAdminNotification')) {
      */
     function sendAdminNotification($yform):void
     {
-        \FriendsOfREDAXO\D2UGuestbook\BackendHelper::sendAdminNotification($yform);
+        \FriendsOfRedaxo\D2UGuestbook\BackendHelper::sendAdminNotification($yform);
     }
 }
 
@@ -42,7 +42,7 @@ echo '<div class="tab-content">';
 echo '<div id="tab_guestbook" class="tab-pane fade active show guestbook-tab">';
 
 // Entries
-$entries = \FriendsOfREDAXO\D2UGuestbook\Entry::getAll(true);
+$entries = \FriendsOfRedaxo\D2UGuestbook\Entry::getAll(true);
 $page_no = 0;
 
 if (0 === count($entries)) {

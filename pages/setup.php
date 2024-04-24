@@ -2,7 +2,7 @@
 /*
  * Modules
  */
-$d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager(\FriendsOfREDAXO\D2UGuestbook\Module::getModules(), 'modules/', 'd2u_guestbook');
+$d2u_module_manager = new \TobiasKrais\D2UHelper\ModuleManager(\FriendsOfRedaxo\D2UGuestbook\Module::getModules(), 'modules/', 'd2u_guestbook');
 
 // \TobiasKrais\D2UHelper\ModuleManager actions
 $d2u_module_id = rex_request('d2u_module_id', 'string');
@@ -32,19 +32,19 @@ $d2u_module_manager->showManagerList();
 		Hotel Albatros</a>.</li>
 </ul>
 <h2>Support</h2>
-<p>Fehlermeldungen bitte im <a href="https://github.com/FriendsOfREDAXO/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
+<p>Fehlermeldungen bitte im <a href="https://github.com/FriendsOfRedaxo/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
 <h2>Changelog</h2>
 <p>2.0.0:</p>
 <ul>
 	<li>Vorbereitung auf R6: Folgende Klassen wurden umbenannt:
 		<ul>
-			<li><code>D2U_Guestbook\d2u_guestbook_backend_helper</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\BackendHelper</code>.</li>
-			<li><code>d2u_guestbook_lang_helper</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\LangHelper</code>.</li>
-			<li><code>D2UGuestbookModules</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\Module</code>.</li>
-			<li><code>D2U_Guestbook\Entry</code> wird zu <code>FriendsOfREDAXO\D2UGuestbook\Entry</code>.</li>
+			<li><code>D2U_Guestbook\d2u_guestbook_backend_helper</code> wird zu <code>FriendsOfRedaxo\D2UGuestbook\BackendHelper</code>.</li>
+			<li><code>d2u_guestbook_lang_helper</code> wird zu <code>FriendsOfRedaxo\D2UGuestbook\LangHelper</code>.</li>
+			<li><code>D2UGuestbookModules</code> wird zu <code>FriendsOfRedaxo\D2UGuestbook\Module</code>.</li>
+			<li><code>D2U_Guestbook\Entry</code> wird zu <code>FriendsOfRedaxo\D2UGuestbook\Entry</code>.</li>
 		</ul>
 	</li>
-	<li>Projekt an FriendsOfREDAXO übergeben.</li>
+	<li>Projekt an FriendsOfRedaxo übergeben.</li>
 	<li>Modul "60-2 D2U Guestbook - Infobox Bewertung": Berechnung der Sterne korrigiert.</li>
 	<li>Anpassungen an kommende d2u_helper 2.x Version</li>
 	<li>Import aus TVSGB von Redaxo 4 entfernt.</li>

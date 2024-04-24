@@ -6,7 +6,7 @@ if (!function_exists('sendAdminNotification')) {
      */
     function sendAdminNotification($yform):void
     {
-        \FriendsOfREDAXO\D2UGuestbook\BackendHelper::sendAdminNotification($yform);
+        \FriendsOfRedaxo\D2UGuestbook\BackendHelper::sendAdminNotification($yform);
     }
 }
 
@@ -92,7 +92,7 @@ if ('add' === rex_get('entry', 'string')) {
     echo '</div>';
     // End request form
 } else {
-    $entries = FriendsOfREDAXO\D2UGuestbook\Entry::getAll(true);
+    $entries = FriendsOfRedaxo\D2UGuestbook\Entry::getAll(true);
     $page_no = 0;
     // Add entry button
     echo '<div class="col-12">';

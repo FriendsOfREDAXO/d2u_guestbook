@@ -7,9 +7,9 @@ $tag_close = $sprog->getConfig('wildcard_close_tag');
 $d2u_guestbook = rex_addon::get('d2u_guestbook');
 $show_link = ($d2u_guestbook->hasConfig('guestbook_article_id') && 0 < (int) $d2u_guestbook->getConfig('guestbook_article_id')) ? true : false;
 
-$rating = round(FriendsOfREDAXO\D2UGuestbook\Entry::getRating(), 1);
-$num_recommendations = FriendsOfREDAXO\D2UGuestbook\Entry::getRecommendation();
-$entries = FriendsOfREDAXO\D2UGuestbook\Entry::getAll(true);
+$rating = round(FriendsOfRedaxo\D2UGuestbook\Entry::getRating(), 1);
+$num_recommendations = FriendsOfRedaxo\D2UGuestbook\Entry::getRecommendation();
+$entries = FriendsOfRedaxo\D2UGuestbook\Entry::getAll(true);
 ?>
 <div class="col-12 col-sm-6 col-md-4 col-lg-12">
 	<div class="infobox">

@@ -1,6 +1,6 @@
 <?php
 
-namespace FriendsOfREDAXO\D2UGuestbook;
+namespace FriendsOfRedaxo\D2UGuestbook;
 
 /**
  * Class managing modules published by www.design-to-use.de.

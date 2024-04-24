@@ -1,6 +1,6 @@
 <?php
 
-namespace FriendsOfREDAXO\D2UGuestbook;
+namespace FriendsOfRedaxo\D2UGuestbook;
 
 use rex_clang;
 use rex_config;

@@ -21,7 +21,7 @@ function rex_d2u_guestbook_clang_deleted(rex_extension_point $ep)
     $clang_id = $params['id'];
 
     // Delete
-    $entries = FriendsOfREDAXO\D2UGuestbook\Entry::getAll(false);
+    $entries = FriendsOfRedaxo\D2UGuestbook\Entry::getAll(false);
     foreach ($entries as $entry) {
         if ($entry->clang_id === $clang_id) {
             $entry->delete();
@@ -33,7 +33,7 @@ function rex_d2u_guestbook_clang_deleted(rex_extension_point $ep)
         rex_config::remove('d2u_guestbook', 'lang_replacement_'. $clang_id);
     }
     // Delete language replacements
-    FriendsOfREDAXO\D2UGuestbook\LangHelper::factory()->uninstall($clang_id);
+    FriendsOfRedaxo\D2UGuestbook\LangHelper::factory()->uninstall($clang_id);
 
     return $warning;
 }
