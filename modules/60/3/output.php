@@ -182,7 +182,5 @@ if ('add' === rex_get('entry', 'string')) {
         echo '</div>';
         echo '</div>';
     }
-
-    echo '</div>';
 }
 ?>
