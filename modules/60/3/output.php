@@ -1,4 +1,7 @@
 <?php
+
+use Sprog\Wildcard;
+
 if (!function_exists('sendAdminNotification')) {
     /**
      * Send mail to admin address when news guestbook entry is created.
@@ -11,9 +14,8 @@ if (!function_exists('sendAdminNotification')) {
 }
 
 // Get placeholder wildcard tags and other presets
-$sprog = rex_addon::get('sprog');
-$tag_open = $sprog->getConfig('wildcard_open_tag');
-$tag_close = $sprog->getConfig('wildcard_close_tag');
+$tag_open = Wildcard::getOpenTag();
+$tag_close = Wildcard::getCloseTag();
 
 if ('add' === rex_get('entry', 'string')) {
     // Entry Form
