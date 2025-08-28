@@ -30,7 +30,6 @@ a.recommendation:hover {
 .icon {
 	color: #3c3c3c;
 	font-family: FontAwesome;
-	font-weight: normal;
 	line-height: 1em;
 }
 .mail:before {

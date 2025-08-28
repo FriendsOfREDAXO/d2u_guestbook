@@ -25,11 +25,9 @@ $entries = FriendsOfRedaxo\D2UGuestbook\Entry::getAll(true);
                     echo '<div class="recommendation-stars">';
                     for ($i = 1; $i <= 5; ++$i) {
                         if ($i <= $rating) {
-                            echo '<span class="icon star-full"></span> ';
+                            echo '<span class="fas fa-star"></span> ';
                         } elseif ($i <= $rating + 0.99) {
-                            echo '<span class="icon star-half"></span> ';
-                        } else {
-                            echo '<span class="icon star-empty"></span> ';
+                            echo '<span class="fas fa-star-half"></span> ';
                         }
                     }
                     echo '</div>';

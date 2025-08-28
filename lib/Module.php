@@ -18,13 +18,13 @@ class Module
         $modules = [];
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-1',
             'D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs',
-            16);
+            17);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-2',
             'D2U Guestbook - Infobox Bewertung',
-            5);
+            6);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-3',
             'D2U Guestbook - Gästebuch ohne Tabs',
-            13);
+            14);
         return $modules;
     }
 }

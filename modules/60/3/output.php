@@ -26,15 +26,15 @@ if ('add' === rex_get('entry', 'string')) {
 		function d2u_guestbook_module_60_3_set_stars(wert) {
 			for(var x = 1; x <= 5; x++) {
 				if(x <= wert) {
-					if($('#d2u_guestbook_module_60_3_star' + x).hasClass('star-empty')) {
-						$('#d2u_guestbook_module_60_3_star' + x).removeClass('star-empty');
-						$('#d2u_guestbook_module_60_3_star' + x).addClass('star-full');
+					if($('#d2u_guestbook_module_60_3_star' + x).hasClass('far')) {
+						$('#d2u_guestbook_module_60_3_star' + x).removeClass('far');
+						$('#d2u_guestbook_module_60_3_star' + x).addClass('fas');
 					}
 				}
 				else {
-					if($('#d2u_guestbook_module_60_3_star' + x).hasClass('star-full')) {
-						$('#d2u_guestbook_module_60_3_star' + x).removeClass('star-full');
-						$('#d2u_guestbook_module_60_3_star' + x).addClass('star-empty');
+					if($('#d2u_guestbook_module_60_3_star' + x).hasClass('fas')) {
+						$('#d2u_guestbook_module_60_3_star' + x).removeClass('fas');
+						$('#d2u_guestbook_module_60_3_star' + x).addClass('far');
 					}
 				}
 			}
@@ -50,7 +50,7 @@ if ('add' === rex_get('entry', 'string')) {
 	<?php
     $stars = '';
     for ($i = 1; $i <= 5; ++$i) {
-        $stars .= '<span class="icon star-empty" id="d2u_guestbook_module_60_3_star'. $i.'" onmouseover="d2u_guestbook_module_60_3_set_stars('. $i.')" onmouseout="d2u_guestbook_module_60_3_reset_stars('. $i.')" onclick="d2u_guestbook_module_60_3_click_stars('. $i.')"></span> ';
+        $stars .= '<span class="recommendation-stars"><span class="far fa-star" id="d2u_guestbook_module_60_3_star'. $i.'" onmouseover="d2u_guestbook_module_60_3_set_stars('. $i.')" onmouseout="d2u_guestbook_module_60_3_reset_stars('. $i.')" onclick="d2u_guestbook_module_60_3_click_stars('. $i.')"></span></span> ';
     }
     $form_data = '
 		text|name|'. $tag_open .'d2u_guestbook_form_name'. $tag_close .' *
@@ -144,9 +144,9 @@ if ('add' === rex_get('entry', 'string')) {
                 echo '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
                 for ($j = 1; $j <= 5; ++$j) {
                     if ($j <= $entry->rating) {
-                        echo ' <span class="icon star-full"></span>';
+                        echo ' <span class="fas fa-star"></span>';
                     } else {
-                        echo ' <span class="icon star-empty"></span>';
+                        echo ' <span class="far fa-star"></span>';
                     }
                 }
                 echo '</b></div>';
