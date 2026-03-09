@@ -1,4 +1,7 @@
 <?php
+$showChangelogOnly = defined('D2U_GUESTBOOK_SHOW_CHANGELOG');
+
+if (!$showChangelogOnly) {
 /*
  * Modules
  */
@@ -33,6 +36,9 @@ $d2u_module_manager->showManagerList();
 </ul>
 <h2>Support</h2>
 <p>Fehlermeldungen bitte im <a href="https://github.com/FriendsOfRedaxo/d2u_guestbook" target="_blank">GitHub Repository</a> melden.</p>
+<?php } ?>
+
+<?php if ($showChangelogOnly) { ?>
 <h2>Changelog</h2>
 <p>2.0.1:</p>
 <ul>
@@ -139,3 +145,4 @@ $d2u_module_manager->showManagerList();
 <ul>
 	<li>Initiale Version.</li>
 </ul>
+<?php } ?>

@@ -11,6 +11,12 @@ page:
         entries: { title: 'translate:d2u_guestbook_entries', icon: rex-icon fa-book, perm: 'd2u_guestbook[]' }
         setup: { title: 'translate:d2u_helper_setup', icon: rex-icon rex-icon-install, itemClass: pull-right, perm: 'd2u_guestbook[settings]' }
         settings: { title: 'translate:d2u_helper_settings', icon: rex-icon rex-icon-system, itemClass: pull-right, perm: 'd2u_guestbook[settings]' }
+        help:
+            title: ''
+            icon: rex-icon rex-icon-help
+            itemClass: pull-right
+            subpages:
+                changelog: { title: 'translate:d2u_helper_help_chapter_changelog' }
 
 requires:
     redaxo: '>=5.10.0'
