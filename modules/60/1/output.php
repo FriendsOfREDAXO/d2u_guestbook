@@ -25,15 +25,12 @@ if (!function_exists('sendAdminNotification')) {
 }
 
 // Get placeholder wildcard tags and other presets
-$sprog = rex_addon::get('sprog');
-$tag_open = $sprog->getConfig('wildcard_open_tag');
-$tag_close = $sprog->getConfig('wildcard_close_tag');
 
 // Tabs
 echo '<div class="col-12 d-print-none">';
 echo '<ul class="nav nav-pills" id="guestbook_tabs">';
-echo '<li class="nav-item"><a data-toggle="tab" href="#tab_guestbook" class="nav-link active">'. $tag_open .'d2u_guestbook_tab_title'. $tag_close .'</a></li>';
-echo '<li class="nav-item"><a data-toggle="tab" href="#tab_write" class="nav-link">'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</a></li>';
+echo '<li class="nav-item"><a data-toggle="tab" href="#tab_guestbook" class="nav-link active">'. \Sprog\Wildcard::get('d2u_guestbook_tab_title') .'</a></li>';
+echo '<li class="nav-item"><a data-toggle="tab" href="#tab_write" class="nav-link">'. \Sprog\Wildcard::get('d2u_guestbook_tab_write') .'</a></li>';
 echo '</ul>';
 echo '</div>';
 
@@ -73,7 +70,7 @@ if (0 === count($entries)) {
         echo '</b></div>';
 		$time = strtotime($entry->create_date);
 		if(false !== $time) {
-        	echo '<div class="col-6 right">'. date('d.m.Y H:i', $time) .' '. $tag_open .'d2u_guestbook_oclock'. $tag_close .'</div>';
+        	echo '<div class="col-6 right">'. date('d.m.Y H:i', $time) .' '. \Sprog\Wildcard::get('d2u_guestbook_oclock') .'</div>';
 		}
         echo '</div>';
         echo '</div>'; // entry-header
@@ -82,7 +79,7 @@ if (0 === count($entries)) {
         echo '<div class="row">';
         echo '<div class="col-12">'. nl2br($entry->description) .'</div>';
         if (!$hide_rating && $entry->rating > 0) { /** @phpstan-ignore-line */
-            echo '<div class="col-12 recommendation-stars"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
+            echo '<div class="col-12 recommendation-stars"><b>'. \Sprog\Wildcard::get('d2u_guestbook_rating') .': ';
             for ($j = 1; $j <= 5; ++$j) {
                 if ($j <= $entry->rating) {
                     echo ' <span class="fas fa-star"></span>';
@@ -114,7 +111,7 @@ if (0 === count($entries)) {
 					}
 				</script>";
 			echo '<div class="row">';
-			echo '<div class="col-12 page-selection">'. $tag_open .'d2u_guestbook_page'. $tag_close .': ';
+			echo '<div class="col-12 page-selection">'. \Sprog\Wildcard::get('d2u_guestbook_page') .': ';
 			for ($i = 1; $i <= $page_no; ++$i) {
 				echo '<a href="javascript:changePage('. $i .')" class="page'. (1 === $i ? ' active-page' : '') .'" id="page-'. $i .'">'. $i .'</a>';
 			}
@@ -129,7 +126,7 @@ echo '</div>'; // tab_guestbook
 echo '<div id="tab_write" class="tab-pane fade guestbook-tab">';
 echo '<div class="row">';
 echo '<div class="col-12">';
-echo '<fieldset><legend>'. $tag_open .'d2u_guestbook_tab_write'. $tag_close .'</legend>';
+echo '<fieldset><legend>'. \Sprog\Wildcard::get('d2u_guestbook_tab_write') .'</legend>';
 ?>
 <script>
 	function d2u_guestbook_module_60_1_set_stars(wert) {
@@ -162,42 +159,42 @@ for ($i = 1; $i <= 5; ++$i) {
     $stars .= '<span class="recommendation-stars"><span class="far fa-star" id="d2u_guestbook_module_60_1_star'. $i.'" onmouseover="d2u_guestbook_module_60_1_set_stars('. $i.')" onmouseout="d2u_guestbook_module_60_1_reset_stars('. $i.')" onclick="d2u_guestbook_module_60_1_click_stars('. $i.')"></span></span> ';
 }
 $form_data = '
-	text|name|'. $tag_open .'d2u_guestbook_form_name'. $tag_close .' *
-	email|email|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'
+	text|name|'. \Sprog\Wildcard::get('d2u_guestbook_form_name') .' *
+	email|email|'. \Sprog\Wildcard::get('d2u_guestbook_form_email') .'
 	html|honeypot||<div class="hide-validation">
-	text|mailvalidate|'. $tag_open .'d2u_guestbook_form_email'. $tag_close .'||no_db
-	validate|compare_value|mailvalidate||!=|'. $tag_open .'d2u_guestbook_form_validate_spam_detected'. $tag_close .'|
+	text|mailvalidate|'. \Sprog\Wildcard::get('d2u_guestbook_form_email') .'||no_db
+	validate|compare_value|mailvalidate||!=|'. \Sprog\Wildcard::get('d2u_guestbook_form_validate_spam_detected') .'|
     html|honeypot||</div>
-	textarea|description|'. $tag_open .'d2u_guestbook_form_message'. $tag_close .'
-	choice|recommendation|'. $tag_open .'d2u_guestbook_form_recommendation'. $tag_close .'|{"'. $tag_open .'d2u_guestbook_no'. $tag_close .'":"0","'. $tag_open .'d2u_guestbook_yes'. $tag_close .'":"1"}|1|0|
-	checkbox|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_privacy_policy'. $tag_close . ' *|0,1|0
-	'. ($hide_rating ? 'hidden|rating|0' : 'text|rating|'. $tag_open .'d2u_guestbook_form_rating'. $tag_close .'   '. $stars.'|0||{"style":"display:none"}')  /** @phpstan-ignore-line */ .'
-	html||<br>* '. $tag_open .'d2u_guestbook_form_required'. $tag_close .'<br><br>
+	textarea|description|'. \Sprog\Wildcard::get('d2u_guestbook_form_message') .'
+	choice|recommendation|'. \Sprog\Wildcard::get('d2u_guestbook_form_recommendation') .'|{"'. \Sprog\Wildcard::get('d2u_guestbook_no') .'":"0","'. \Sprog\Wildcard::get('d2u_guestbook_yes') .'":"1"}|1|0|
+	checkbox|privacy_policy_accepted|'. \Sprog\Wildcard::get('d2u_guestbook_form_privacy_policy') . ' *|0,1|0
+	'. ($hide_rating ? 'hidden|rating|0' : 'text|rating|'. \Sprog\Wildcard::get('d2u_guestbook_form_rating') .'   '. $stars.'|0||{"style":"display:none"}')  /** @phpstan-ignore-line */ .'
+	html||<br>* '. \Sprog\Wildcard::get('d2u_guestbook_form_required') .'<br><br>
 	php|validate_timer|Spamprotection|<input name="validate_timer" type="hidden" value="'. microtime(true) .'" />|
 	hidden|online_status|offline
 	hidden|create_date|'. date('Y-m-d H:i:s') .'
 	hidden|clang_id|'. rex_clang::getCurrentId() .'
 
-	submit|submit|'. $tag_open .'d2u_guestbook_form_send'. $tag_close .'|no_db
+	submit|submit|'. \Sprog\Wildcard::get('d2u_guestbook_form_send') .'|no_db
 
-	validate|empty|name|'. $tag_open .'d2u_guestbook_form_validate_name'. $tag_close .'
-	validate|empty|description|'. $tag_open .'d2u_guestbook_form_validate_description'. $tag_close .'
-	validate|empty|privacy_policy_accepted|'. $tag_open .'d2u_guestbook_form_validate_privacy_policy'. $tag_close .'
-	validate|customfunction|validate_timer|TobiasKrais\D2UHelper\FrontendHelper::yform_validate_timer|5|'. $tag_open .'d2u_guestbook_form_validate_spambots'. $tag_close .'|
+	validate|empty|name|'. \Sprog\Wildcard::get('d2u_guestbook_form_validate_name') .'
+	validate|empty|description|'. \Sprog\Wildcard::get('d2u_guestbook_form_validate_description') .'
+	validate|empty|privacy_policy_accepted|'. \Sprog\Wildcard::get('d2u_guestbook_form_validate_privacy_policy') .'
+	validate|customfunction|validate_timer|TobiasKrais\D2UHelper\FrontendHelper::yform_validate_timer|5|'. \Sprog\Wildcard::get('d2u_guestbook_form_validate_spambots') .'|
 
 	action|callback|sendAdminNotification
 	action|db|'. rex::getTablePrefix() .'d2u_guestbook|';
 
 $yform = new rex_yform();
 $yform->setFormData(trim($form_data));
-$yform->setObjectparams('Error-occured', $tag_open .'d2u_guestbook_form_validate_title'. $tag_close);
+$yform->setObjectparams('Error-occured', \Sprog\Wildcard::get('d2u_guestbook_form_validate_title'));
 $yform->setObjectparams('form_action', rex_getUrl(rex_article::getCurrentId()));
 $yform->setObjectparams('form_anchor', 'tab_write');
 $yform->setObjectparams('form_name', 'd2u_guestbook_module_60_1_'. $this->getCurrentSlice()->getId()); /** @phpstan-ignore-line */
 $yform->setObjectparams('real_field_names', true);
 
 // action - showtext
-$yform->setActionField('showtext', [$tag_open .'d2u_guestbook_form_thanks'. $tag_close]);
+$yform->setActionField('showtext', [\Sprog\Wildcard::get('d2u_guestbook_form_thanks')]);
 
 echo $yform->getForm();
 echo '</fieldset>';

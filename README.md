@@ -11,11 +11,14 @@ Schritte zur Installation
 
 Ein Gästebucheintrag wird nicht automatisch online gestellt. Nach einem neuen Gästebucheintrag wird eine E-Mail an die in den Einstellungen hinterlegte E-Mail-Adresse geschickt. Nach Prüfung muss der Gästebucheintrag in Redaxo manuell freigeschaltet werden.
 
-Es stehen mehrere Beispielmodule auf Basis von Bootstrap 4 zur Verfügung:
+Es stehen mehrere Beispielmodule zur Verfügung:
 
-- 60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs: ermöglicht die Anzeige und das Schreiben von Gästebucheinträgen. Dabei werden die Gästebucheinträge paginiert.
-- 60-2 D2U Guestbook - Infobox Bewertung: zeigt den Durchschnittswert des im Gästebuch vergebenen Ratings an.
-- 60-3 D2U Guestbook - Gästebuch ohne Tabs: ähnlich wie Modul 60-1, nur ohne Tabs
+- 60-1 D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs (BS4, deprecated): ermöglicht die Anzeige und das Schreiben von Gästebucheinträgen. Dabei werden die Gästebucheinträge paginiert.
+- 60-2 D2U Guestbook - Infobox Bewertung (BS4, deprecated): zeigt den Durchschnittswert des im Gästebuch vergebenen Ratings an.
+- 60-3 D2U Guestbook - Gästebuch ohne Tabs (BS4, deprecated): ähnlich wie Modul 60-1, nur ohne Tabs.
+- 60-4 D2U Guestbook - Gästebuch mit Tabs (BS5): BS5-Variante mit Tab-Navigation ohne jQuery.
+- 60-5 D2U Guestbook - Infobox Bewertung (BS5): BS5-Variante der Bewertungsbox.
+- 60-6 D2U Guestbook - Gästebuch ohne Tabs (BS5): BS5-Variante ohne Tab-Navigation.
 
 ## Autor und Projektleitung
 

@@ -37,24 +37,51 @@ a.recommendation:hover {
 	color: gold
 }
 
-#guestbook_tabs {
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tabs {
+	--bs-nav-pills-border-radius: 0;
+	--bs-nav-pills-link-active-bg: var(--article-color-h);
+	--bs-nav-pills-link-active-color: var(--article-color-bg);
+	border-bottom: 1px solid var(--article-color-h);
+}
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tabs .nav-item {
+	margin-right: 1px;
+}
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tabs .nav-item:last-child {
+	margin-right: 0;
+}
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tabs .nav-link,
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tabs .nav-link:focus {
+	background-color: var(--article-color-bg);
+	border-left: 1px solid var(--article-color-h);
+	border-right: 1px solid var(--article-color-h);
+	border-top: 1px solid var(--article-color-h);
 	border-bottom: none;
+	border-radius: 0 !important;
+	box-shadow: none;
+	color: var(--article-color-h);
+	font-weight: bold;
+	padding: 0.3em 0.75em;
 }
-#guestbook_tabs a.active {
-	background-color: var(--navi-color-bg);
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tabs .nav-link.active,
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tabs .nav-link.active:hover,
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tabs .nav-link.active:focus {
+	background-color: var(--article-color-h);
+	border-color: var(--article-color-h);
+	color: var(--article-color-bg);
+	margin-bottom: -1px;
+	padding-bottom: calc(0.3em + 1px);
 }
-#guestbook_tabs .nav-link {
-	border-radius: 0.25rem 0.25rem 0rem 0rem;
-	border-left: var(--navi-color-bg) 1px solid;
-	border-right: var(--navi-color-bg) 1px solid;
-	border-top: var(--navi-color-bg) 1px solid;
-	padding: 0.75em;
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tabs .nav-link:hover {
+	background-color: var(--article-color-h10);
+	color: var(--article-color-h);
+	text-decoration: none;
 }
-#d2u_guestbook_module_60_1 .tab-pane {
-	border: var(--navi-color-bg) 1px solid;
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tab-content {
+	border: 1px solid var(--article-color-h);
+	border-top: none;
 	padding: 15px 15px 0 15px;
 }
-#d2u_guestbook_module_60_1 #tab_write {
+[id^="d2u_guestbook_module_60_4_"] .guestbook-tab-write {
 	padding-bottom: 15px;
 }
 .page-selection {
