@@ -1,4 +1,8 @@
 <h2>Changelog</h2>
+<p>2.1.1-DEV:</p>
+<ul>
+	<li>...</li>
+</ul>
 <p>2.1.0:</p>
 <ul>
 	<li>Neue Module 60-4 bis 60-6 als Bootstrap-5-Varianten der bestehenden Beispielmodule hinzugefügt.</li>
