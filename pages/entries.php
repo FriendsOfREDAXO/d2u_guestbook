@@ -1,4 +1,6 @@
 <?php
+
+use TobiasKrais\D2UHelper\BackendHelper;
 $func = rex_request('func', 'string');
 $entry_id = rex_request('entry_id', 'int');
 $message = rex_get('message', 'string');
@@ -74,18 +76,18 @@ if ('edit' === $func || 'add' === $func) {
                                 foreach (rex_clang::getAll(true) as $rex_clang) {
                                     $options_clang[$rex_clang->getId()] = $rex_clang->getName();
                                 }
-                                \TobiasKrais\D2UHelper\BackendHelper::form_select('d2u_guestbook_clang', 'form[clang_id]', $options_clang, [$entry->clang_id], 1, false);
+                                BackendHelper::form_select('d2u_guestbook_clang', 'form[clang_id]', $options_clang, [$entry->clang_id], 1, false);
                             } else {
                                 echo '<input type="hidden" name="form[clang_id]" value="'. rex_clang::getStartId() .'">';
                             }
 
-                            \TobiasKrais\D2UHelper\BackendHelper::form_input('d2u_helper_name', 'form[name]', $entry->name, true, false);
-                            \TobiasKrais\D2UHelper\BackendHelper::form_input('d2u_guestbook_email', 'form[email]', $entry->email, false, false, 'email');
-                            \TobiasKrais\D2UHelper\BackendHelper::form_input('d2u_guestbook_rating', 'form[rating]', $entry->rating, false, false, 'number');
-                            \TobiasKrais\D2UHelper\BackendHelper::form_checkbox('d2u_guestbook_recommendation', 'form[recommendation]', 'true', $entry->recommendation);
-                            \TobiasKrais\D2UHelper\BackendHelper::form_checkbox('d2u_guestbook_privacy_policy_accepted', 'form[privacy_policy_accepted]', 'true', $entry->privacy_policy_accepted, true);
-                            \TobiasKrais\D2UHelper\BackendHelper::form_textarea('d2u_guestbook_description', 'form[description]', $entry->description, 10, true, false, false);
-                            \TobiasKrais\D2UHelper\BackendHelper::form_checkbox('d2u_helper_online_status', 'form[online_status]', 'online', 'online' === $entry->online_status ? true : false);
+                            BackendHelper::form_input('d2u_helper_name', 'form[name]', $entry->name, true, false);
+                            BackendHelper::form_input('d2u_guestbook_email', 'form[email]', $entry->email, false, false, 'email');
+                            BackendHelper::form_input('d2u_guestbook_rating', 'form[rating]', $entry->rating, false, false, 'number');
+                            BackendHelper::form_checkbox('d2u_guestbook_recommendation', 'form[recommendation]', 'true', $entry->recommendation);
+                            BackendHelper::form_checkbox('d2u_guestbook_privacy_policy_accepted', 'form[privacy_policy_accepted]', 'true', $entry->privacy_policy_accepted, true);
+                            BackendHelper::form_textarea('d2u_guestbook_description', 'form[description]', $entry->description, 10, true, false, false);
+                            BackendHelper::form_checkbox('d2u_helper_online_status', 'form[online_status]', 'online', 'online' === $entry->online_status ? true : false);
                         ?>
 					</div>
 				</fieldset>
@@ -112,8 +114,8 @@ if ('edit' === $func || 'add' === $func) {
 		});
 	</script>
 	<?php
-        echo \TobiasKrais\D2UHelper\BackendHelper::getCSS();
-//		print \TobiasKrais\D2UHelper\BackendHelper::getJS();
+        echo BackendHelper::getCSS();
+    //		print BackendHelper::getJS();
 }
 
 if ('' === $func) {
