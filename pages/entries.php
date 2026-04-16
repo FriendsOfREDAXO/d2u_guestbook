@@ -120,9 +120,8 @@ if ('edit' === $func || 'add' === $func) {
 
 if ('' === $func) {
     $query = 'SELECT id, name, email, rating, create_date, online_status '
-        . 'FROM '. rex::getTablePrefix() .'d2u_guestbook '
-        . 'ORDER BY create_date DESC';
-    $list = rex_list::factory($query, 1000);
+        . 'FROM '. rex::getTablePrefix() .'d2u_guestbook ';
+    $list = rex_list::factory(query: $query, rowsPerPage: 1000, defaultSort: ['create_date' => 'DESC']);
 
     $list->addTableAttribute('class', 'table-striped table-hover');
 
@@ -133,15 +132,20 @@ if ('' === $func) {
 
     $list->setColumnLabel('id', rex_i18n::msg('id'));
     $list->setColumnLayout('id', ['<th class="rex-table-id">###VALUE###</th>', '<td class="rex-table-id">###VALUE###</td>']);
+    $list->setColumnSortable('id');
 
     $list->setColumnLabel('name', rex_i18n::msg('d2u_helper_name'));
     $list->setColumnParams('name', ['func' => 'edit', 'entry_id' => '###id###']);
+    $list->setColumnSortable('name');
 
     $list->setColumnLabel('email', rex_i18n::msg('d2u_guestbook_email'));
+    $list->setColumnSortable('email');
 
     $list->setColumnLabel('rating', rex_i18n::msg('d2u_guestbook_rating'));
+    $list->setColumnSortable('rating');
 
     $list->setColumnLabel('create_date', rex_i18n::msg('d2u_guestbook_date'));
+    $list->setColumnSortable('create_date');
 
     $list->removeColumn('online_status');
     $list->addColumn(rex_i18n::msg('status_online'), '<a class="rex-###online_status###" href="' . rex_url::currentBackendPage(['func' => 'changestatus']) . '&entry_id=###id###"><i class="rex-icon rex-icon-###online_status###"></i> ###online_status###</a>');
