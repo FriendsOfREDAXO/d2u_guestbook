@@ -1,0 +1,20 @@
+d2u_guestbook = Gastenboek
+d2u_guestbook_clang = Taal
+d2u_guestbook_date = Datum
+d2u_guestbook_description = Bericht
+d2u_guestbook_email = E-mailadres
+d2u_guestbook_entries = Gastenboekberichten
+d2u_guestbook_entry = Gastenboekbericht
+d2u_guestbook_no_entries_found = Er zijn nog geen gastenboekberichten.
+d2u_guestbook_privacy_policy_accepted = Privacyverklaring geaccepteerd
+d2u_guestbook_rating = Beoordeling (1=slecht / 5=uitstekend)
+d2u_guestbook_recommendation = Aanbeveling
+d2u_guestbook_url = Website
+
+d2u_guestbook_rights = Gastenboek add-on
+d2u_guestbook_rights_settings = Gastenboek add-on: instellingen
+
+d2u_guestbook_settings_allow_answer = E-mailadres van berichten beschermd publiceren om antwoorden toe te staan?
+d2u_guestbook_settings_article = Gastenboekartikel
+d2u_guestbook_settings_no_entries_page = Aantal berichten per pagina
+d2u_guestbook_settings_request_form_email = Admin e-mail
