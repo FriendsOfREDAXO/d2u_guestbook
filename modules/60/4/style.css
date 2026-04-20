@@ -58,7 +58,7 @@ a.recommendation:hover {
 	border-bottom: none;
 	border-radius: 0 !important;
 	box-shadow: none;
-	color: var(--article-color-h);
+	color: var(--bs-body-color);
 	font-weight: bold;
 	padding: 0.3em 0.75em;
 }
@@ -73,7 +73,7 @@ a.recommendation:hover {
 }
 [id^="d2u_guestbook_module_60_4_"] .guestbook-tabs .nav-link:hover {
 	background-color: var(--article-color-h10);
-	color: var(--article-color-h);
+	color: var(--bs-body-color);
 	text-decoration: none;
 }
 [id^="d2u_guestbook_module_60_4_"] .guestbook-tab-content {
