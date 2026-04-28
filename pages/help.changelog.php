@@ -1,6 +1,7 @@
 <h2>Changelog</h2>
 <p>2.1.1-DEV:</p>
 <ul>
+	<li>Backend: CSRF-Schutz fuer Speichern-, Loesch- und Statusaktionen der Eintragsverwaltung ergaenzt.</li>
 	<li>Backend-Liste sortierbar gemacht und Standardsortierung von SQL-Query auf <code>rex_list</code>-<code>defaultSort</code> umgestellt.</li>
 </ul>
 <p>2.1.0:</p>
