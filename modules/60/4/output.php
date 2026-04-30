@@ -79,7 +79,7 @@ echo '<div id="'. $moduleId .'" class="col-12 col-sm-'. $cols_sm .' col-md-'. $c
 
 							echo '<div class="entry-body">';
 								echo '<div class="row">';
-									echo '<div class="col-12">'. nl2br($entry->description) .'</div>';
+									echo '<div class="col-12">'. nl2br(rex_escape((string) $entry->description)) .'</div>';
 										if (!$hide_rating && $entry->rating > 0) { 
 											echo '<div class="col-12 recommendation-stars"><b>'. \Sprog\Wildcard::get('d2u_guestbook_rating') .': ';
 											for ($j = 1; $j <= 5; ++$j) {

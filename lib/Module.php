@@ -18,22 +18,22 @@ class Module
         $modules = [];
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-1',
             'D2U Guestbook - Gästebuch mit Bootstrap 4 Tabs (BS4, deprecated)',
-            17);
+            18);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-2',
             'D2U Guestbook - Infobox Bewertung (BS4, deprecated)',
             6);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-3',
             'D2U Guestbook - Gästebuch ohne Tabs (BS4, deprecated)',
-            14);
+            15);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-4',
             'D2U Guestbook - Gästebuch mit Tabs (BS5)',
-            1);
+            2);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-5',
             'D2U Guestbook - Infobox Bewertung (BS5)',
             1);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-6',
             'D2U Guestbook - Gästebuch ohne Tabs (BS5)',
-            1);
+            2);
         return $modules;
     }
 }

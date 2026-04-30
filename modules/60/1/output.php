@@ -77,7 +77,7 @@ if (0 === count($entries)) {
 
         echo '<div class="entry-body">';
         echo '<div class="row">';
-        echo '<div class="col-12">'. nl2br($entry->description) .'</div>';
+        echo '<div class="col-12">'. nl2br(rex_escape((string) $entry->description)) .'</div>';
         if (!$hide_rating && $entry->rating > 0) { /** @phpstan-ignore-line */
             echo '<div class="col-12 recommendation-stars"><b>'. \Sprog\Wildcard::get('d2u_guestbook_rating') .': ';
             for ($j = 1; $j <= 5; ++$j) {

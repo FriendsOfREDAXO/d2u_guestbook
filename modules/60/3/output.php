@@ -139,7 +139,7 @@ if ('add' === rex_get('entry', 'string')) {
 
             echo '<div class="entry-body">';
             echo '<div class="row">';
-            echo '<div class="col-12">'. nl2br($entry->description) .'</div>';
+            echo '<div class="col-12">'. nl2br(rex_escape((string) $entry->description)) .'</div>';
             if ($entry->rating > 0) {
                 echo '<div class="col-12"><b>'. $tag_open .'d2u_guestbook_rating'. $tag_close .': ';
                 for ($j = 1; $j <= 5; ++$j) {
