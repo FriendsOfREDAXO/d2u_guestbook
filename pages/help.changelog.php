@@ -3,8 +3,8 @@
 <ul>
 	<li>Backend: CSRF-Schutz fuer Speichern-, Loesch- und Statusaktionen der Eintragsverwaltung ergaenzt.</li>
 	<li>Backend: CSRF-Schutz fuer Modul-Installation, -Update und -Deinstallation auf der Setup-Seite ergaenzt.</li>
-	<li>Backend-Liste sortierbar gemacht und Standardsortierung von SQL-Query auf <code>rex_list</code>-<code>defaultSort</code> umgestellt.</li>
-</ul>
+	<li>Backend-Liste sortierbar gemacht und Standardsortierung von SQL-Query auf <code>rex_list</code>-<code>defaultSort</code> umgestellt.</li>        <li>Security: Die <code>save()</code>-Methode in <code>lib/Entry.php</code> verwendet jetzt gebundene Parameter statt SQL-String-Konkatenation mit <code>addslashes()</code>.</li>
+        <li>Security: Modul-Ausgaben (<code>modules/60/1/output.php</code>, <code>modules/60/3/output.php</code>, <code>modules/60/4/output.php</code>, <code>modules/60/6/output.php</code>) härten von Besuchern eingereichte Inhalte (Name, E-Mail) gegen XSS via <code>rex_escape()</code> in HTML- und <code>mailto:</code>-Attributausgaben.</li></ul>
 <p>2.1.0:</p>
 <ul>
 	<li>Neue Module 60-4 bis 60-6 als Bootstrap-5-Varianten der bestehenden Beispielmodule hinzugefügt.</li>

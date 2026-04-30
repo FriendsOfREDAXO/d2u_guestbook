@@ -167,22 +167,26 @@ class Entry
     {
         $error = false;
         $query = rex::getTablePrefix() .'d2u_guestbook SET '
-                .'clang_id = '. $this->clang_id .', '
-                ."name = '". addslashes($this->name) ."', "
-                ."email = '". $this->email ."', "
-                .'rating = '. $this->rating .', '
+                .'clang_id = '. (int) $this->clang_id .', '
+                .'name = :name, '
+                .'email = :email, '
+                .'rating = '. (int) $this->rating .', '
                 .'recommendation = '. ($this->recommendation ? 1 : 0) .', '
                 ."privacy_policy_accepted = '". ($this->privacy_policy_accepted ? 'yes' : 'no') ."', "
-                ."description = '". addslashes(htmlspecialchars($this->description)) ."', "
+                .'description = :description, '
                 ."online_status = '". $this->online_status ."' ";
         if (0 === $this->id) {
             $query = 'INSERT INTO '. $query . ', create_date = CURRENT_TIMESTAMP';
         } else {
-            $query = 'UPDATE '. $query .' WHERE id = '. $this->id;
+            $query = 'UPDATE '. $query .' WHERE id = '. (int) $this->id;
         }
 
         $result = rex_sql::factory();
-        $result->setQuery($query);
+        $result->setQuery($query, [
+            ':name' => $this->name,
+            ':email' => $this->email,
+            ':description' => htmlspecialchars($this->description),
+        ]);
         if (0 === $this->id) {
             $this->id = (int) $result->getLastId();
             $error = $result->hasError();

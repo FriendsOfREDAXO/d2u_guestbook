@@ -63,11 +63,11 @@ echo '<div id="'. $moduleId .'" class="col-12 col-sm-'. $cols_sm .' col-md-'. $c
 								echo '<div class="row">';
 									echo '<div class="col-6"><b>';
 										if ('' !== $entry->email && 'true' === (string) rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
-											echo '<a href="mailto:'. $entry->email .'">';
-											echo $entry->name .' <span class="icon mail"></span>';
+											echo '<a href="mailto:'. rex_escape($entry->email) .'">';
+											echo rex_escape($entry->name) .' <span class="icon mail"></span>';
 											echo '</a>';
 										} else {
-											echo $entry->name;
+											echo rex_escape($entry->name);
 										}
 									echo '</b></div>';
 									$time = strtotime($entry->create_date);

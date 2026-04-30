@@ -97,11 +97,11 @@ if ('add' === rex_get('entry', 'string')) {
             echo '<div class="row">';
             echo '<div class="col-6 left"><b>'. $tag_open .'d2u_guestbook_form_name'. $tag_close .': ';
             if ('' !== $entry->email && 'true' === (string) rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
-                echo '<a href="mailto:'. $entry->email .'">';
-                echo $entry->name .' <span class="icon mail"></span>';
+                echo '<a href="mailto:'. rex_escape($entry->email) .'">';
+                echo rex_escape($entry->name) .' <span class="icon mail"></span>';
                 echo '</a>';
             } else {
-                echo $entry->name;
+                echo rex_escape($entry->name);
             }
             echo '</b></div>';
             $time = strtotime($entry->create_date);
