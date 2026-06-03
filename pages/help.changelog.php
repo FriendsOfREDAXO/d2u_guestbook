@@ -1,5 +1,5 @@
 <h2>Changelog</h2>
-<p>2.1.1-DEV:</p>
+<p>2.1.1:</p>
 <ul>
 	<li>Backend: Abbrechen-Button im Eintragsformular fuehrt jetzt wieder zur Liste.</li>
 	<li>Backend: CSRF-Schutz fuer Speichern-, Loesch- und Statusaktionen der Eintragsverwaltung ergaenzt.</li>
