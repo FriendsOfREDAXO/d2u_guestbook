@@ -1,7 +1,7 @@
 <h2>Changelog</h2>
 <p>2.1.2-DEV:</p>
 <ul>
-	<li>...</li>
+	<li>Barrierefreiheit: Das dekorative Mail-Icon neben dem Besuchernamen (Modul 60-1) wird für Screenreader mit <code>aria-hidden="true"</code> ausgeblendet, da der Name bereits als Text vorhanden ist.</li>
 </ul>
 <p>2.1.1:</p>
 <ul>

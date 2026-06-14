@@ -62,7 +62,7 @@ if (0 === count($entries)) {
         echo '<div class="col-6"><b>';
         if ('' !== $entry->email && 'true' === (string) rex_config::get('d2u_guestbook', 'allow_answer', 'false')) {
             echo '<a href="mailto:'. rex_escape($entry->email) .'">';
-            echo rex_escape($entry->name) .' <span class="icon mail"></span>';
+            echo rex_escape($entry->name) .' <span class="icon mail" aria-hidden="true"></span>';
             echo '</a>';
         } else {
             echo rex_escape($entry->name);
