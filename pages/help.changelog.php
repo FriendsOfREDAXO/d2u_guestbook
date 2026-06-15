@@ -2,6 +2,7 @@
 <p>2.1.2-DEV:</p>
 <ul>
 	<li>Barrierefreiheit: Das dekorative Mail-Icon neben dem Besuchernamen (Modul 60-1) wird für Screenreader mit <code>aria-hidden="true"</code> ausgeblendet, da der Name bereits als Text vorhanden ist.</li>
+	<li>Security/Bugfix: Das zuletzt noch per String-Konkatenation gesetzte Feld <code>online_status</code> in <code>lib/Entry.php</code> verwendet jetzt ebenfalls einen gebundenen Parameter. Verhindert SQL-Injection und <code>rex_sql_exception</code>.</li>
 </ul>
 <p>2.1.1:</p>
 <ul>

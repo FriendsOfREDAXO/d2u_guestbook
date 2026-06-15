@@ -172,9 +172,9 @@ class Entry
                 .'email = :email, '
                 .'rating = '. (int) $this->rating .', '
                 .'recommendation = '. ($this->recommendation ? 1 : 0) .', '
-                ."privacy_policy_accepted = '". ($this->privacy_policy_accepted ? 'yes' : 'no') ."', "
+                .'privacy_policy_accepted = '. ($this->privacy_policy_accepted ? "'yes'" : "'no'") .', '
                 .'description = :description, '
-                ."online_status = '". $this->online_status ."' ";
+                .'online_status = :online_status ';
         if (0 === $this->id) {
             $query = 'INSERT INTO '. $query . ', create_date = CURRENT_TIMESTAMP';
         } else {
@@ -186,6 +186,7 @@ class Entry
             ':name' => $this->name,
             ':email' => $this->email,
             ':description' => htmlspecialchars($this->description),
+            ':online_status' => $this->online_status,
         ]);
         if (0 === $this->id) {
             $this->id = (int) $result->getLastId();
