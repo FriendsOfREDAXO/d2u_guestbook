@@ -1,6 +1,7 @@
 <h2>Changelog</h2>
 <p>2.1.2-DEV:</p>
 <ul>
+	<li>Bugfix: Der Online/Offline-Schalter in der Backend-Liste funktioniert wieder. Beim Erzeugen des CSRF-geschützten Status-Links wurde der Platzhalter für die Datensatz-ID URL-kodiert und dadurch nicht mehr durch die echte ID ersetzt.</li>
 	<li>Barrierefreiheit: Das dekorative Mail-Icon neben dem Besuchernamen (Modul 60-1) wird für Screenreader mit <code>aria-hidden="true"</code> ausgeblendet, da der Name bereits als Text vorhanden ist.</li>
 	<li>Security/Bugfix: Das zuletzt noch per String-Konkatenation gesetzte Feld <code>online_status</code> in <code>lib/Entry.php</code> verwendet jetzt ebenfalls einen gebundenen Parameter. Verhindert SQL-Injection und <code>rex_sql_exception</code>.</li>
 </ul>

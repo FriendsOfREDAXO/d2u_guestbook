@@ -169,7 +169,7 @@ if ('' === $func) {
     $list->setColumnSortable('create_date');
 
     $list->removeColumn('online_status');
-    $list->addColumn(rex_i18n::msg('status_online'), '<a class="rex-###online_status###" href="' . BackendHelper::getCurrentBackendPage(['func' => 'changestatus', 'entry_id' => '###id###'], [], true) . '"><i class="rex-icon rex-icon-###online_status###"></i> ###online_status###</a>');
+    $list->addColumn(rex_i18n::msg('status_online'), '<a class="rex-###online_status###" href="' . BackendHelper::getCurrentBackendPage(['func' => 'changestatus'], [], true) . '&entry_id=###id###"><i class="rex-icon rex-icon-###online_status###"></i> ###online_status###</a>');
     $list->setColumnLayout(rex_i18n::msg('status_online'), ['', '<td class="rex-table-action">###VALUE###</td>']);
 
     $list->addColumn(rex_i18n::msg('module_functions'), '<i class="rex-icon rex-icon-edit"></i> ' . rex_i18n::msg('edit'));
