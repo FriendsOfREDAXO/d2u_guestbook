@@ -24,7 +24,7 @@ class Module
             6);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-3',
             'D2U Guestbook - Gästebuch ohne Tabs (BS4, deprecated)',
-            15);
+            16);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-4',
             'D2U Guestbook - Gästebuch mit Tabs (BS5)',
             2);
@@ -33,7 +33,7 @@ class Module
             1);
         $modules[] = new \TobiasKrais\D2UHelper\Module('60-6',
             'D2U Guestbook - Gästebuch ohne Tabs (BS5)',
-            2);
+            3);
         return $modules;
     }
 }

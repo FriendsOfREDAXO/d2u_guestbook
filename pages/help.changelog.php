@@ -1,7 +1,7 @@
 <h2>Changelog</h2>
 <p>2.1.3-DEV:</p>
 <ul>
-	<li>...</li>
+	<li>Bugfix Module 60-3 und 60-6: Die Formular- und Ausgabetexte wurden über <code>Wildcard::getOpenTag()</code>/<code>getCloseTag()</code>-Platzhalter eingebunden. Diese werden jetzt direkt über <code>Sprog\Wildcard::get()</code> aufgelöst, damit die Beschriftungen zuverlässig übersetzt ausgegeben werden. Modul-Revisionen erhöht.</li>
 </ul>
 <p>2.1.2:</p>
 <ul>
